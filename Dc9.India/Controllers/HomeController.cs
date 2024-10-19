@@ -17,5 +17,9 @@ namespace Dc9.India.Controllers
         {
             return View();
         }
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
     }
 }

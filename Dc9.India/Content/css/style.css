@@ -9349,7 +9349,7 @@ header .left-nav .sidebar-part1 a.logo img {
 /* header animation */
 .navbar-top {
     position: fixed;
-    top: 0;
+    top: 40px;
     left: 0;
     right: 0;
     transition-duration: 0.3s;

@@ -4,10 +4,327 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="../Content/images/favicon.png">
+    <link rel="apple-touch-icon" href="../Content/images/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../Content/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../Content/images/apple-touch-icon-114x114.png">
+    <!-- animation -->
+    @*<link rel="stylesheet" href="../Content/css/animate.css" />*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/animate.css")">
+    <!-- bootstrap -->
+    @*<link rel="stylesheet" href="../Content/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/bootstrap.min.css")">
+    <!-- et line icon -->
+    @*<link rel="stylesheet" href="../Content/css/et-line-icons.css" />*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/et-line-icons.css")">
+    <!-- font-awesome icon -->
+    @*<link rel="stylesheet" href="../Content/css/font-awesome.min.css" />*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/font-awesome.min.css")">
+    <!-- themify icon -->
+    @*<link rel="stylesheet" href="../Content/css/themify-icons.css">*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/themify-icons.css")">
+    <!-- swiper carousel -->
+    @*<link rel="stylesheet" href="../Content/css/swiper.min.css">*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/swiper.min.css")">
+    <!-- justified gallery  -->
+    @*<link rel="stylesheet" href="../Content/css/justified-gallery.min.css">*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/justified-gallery.min.css")">
+    <!-- magnific popup -->
+    @*<link rel="stylesheet" href="../Content/css/magnific-popup.css" />*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/magnific-popup.css")">
+    <!-- revolution slider -->
+    @*<link rel="stylesheet" type="text/css" href="../revolution/css/settings.css" media="screen" />*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/revolution/css/settings.css")" media="screen">
+    @*<link rel="stylesheet" type="text/css" href="../revolution/css/layers.css">*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/revolution/css/layers.css")">
+    @*<link rel="stylesheet" type="text/css" href="../revolution/css/navigation.css">*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/revolution/css/navigation.css")">
+    <!-- bootsnav -->
+    @*<link rel="stylesheet" href="../Content/css/bootsnav.css">*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/bootsnav.css")">
+    <!-- style -->
+    @*<link rel="stylesheet" href="../Content/css/style.css" />*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/style.css")">
+    <!-- responsive css -->
+    @*<link rel="stylesheet" href="../Content/css/responsive.css" />*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/responsive.css")">
 </head>
 <body>
+    <header>
+        <style>
+            .headers {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: black;
+                /*padding: 10px;*/
+                color: white;
+                font-family: Arial, sans-serif;
+            }
+
+            .left {
+                display: flex;
+                align-items: center;
+            }
+
+            .sale {
+                background-color: #2E2D8B;
+                padding: 5px 10px;
+                border-radius: 4px;
+                margin-right: 10px;
+            }
+
+            .discount {
+                font-size: 14px;
+            }
+
+                .discount a {
+                    color: white;
+                    text-decoration: underline;
+                }
+
+            .right a {
+                color: white;
+                margin-left: 15px;
+                text-decoration: none;
+            }
+
+            .right .search-icon, .right .cart-icon {
+                font-size: 18px;
+            }
+
+            .right a:hover {
+                text-decoration: underline;
+            }
+        </style>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            /* Modal styles */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0,0.4);
+                padding-top: 60px;
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 5% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 300px;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+                .close:hover,
+                .close:focus {
+                    color: black;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+        </style>
+        <div class="headers">
+            <div class="left">
+                <span class="sale">Black Friday sale</span>
+                <span class="discount">Up to 75% off <a href="#">Shop now</a></span>
+            </div>
+            <div class="right">
+                <a href="#">Support</a>
+                <a href="#">Contact</a>
+                <a href="#"><i class="search-icon">🔍</i></a>
+                <a href="#"><i class="cart-icon">🛒</i></a>
+                <button class="btn btn-dark-gray btn-rounded" id="loginBtn">Login</button>
+            </div>
+        </div>
+        <div id="loginModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Login</h2>
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" class="form-control" name="password" required>
+                <button class="btn btn-primary btn-rounded" type="button">Login</button>Don't have an account?<a href="../Home/Registration">Sign up</a>
+
+            </div>
+        </div>
+        <!-- start navigation -->
+        <nav class="navbar navbar-default bootsnav navbar-top white-link header-dark background-transparent nav-box-width padding-four-lr navbar-expand-lg">
+            <div class="container-fluid nav-header-container">
+                <!-- start logo -->
+                <div class="col col-md-auto col-lg-2 pl-0">
+                    <a href="index.html" title="Pofo" class="logo"><img src="~/Content/images/logo.png" data-rjs="~/Content/images/logo@2x.png" class="logo-dark" alt="Pofo"><img src="~/Content/images/logo-white.png" data-rjs="~/Content/images/logo-white@2x.png" alt="Pofo" class="logo-light default"></a>
+                </div>
+                <!-- end logo -->
+                <div class="col col-md accordion-menu pr-0 pr-lg-3">
+                    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar-collapse-toggle-1">
+                        <span class="sr-only">toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-collapse collapse justify-content-center" id="navbar-collapse-toggle-1">
+                        <ul class="nav navbar-nav alt-font text-normal">
+                            <!-- start menu item -->
+                            <li><a href="#demos" class="inner-link">Demos</a></li>
+                            <!-- end menu item -->
+                            <!-- start menu item -->
+                            <li><a href="#portfolio" class="inner-link">Portfolio</a></li>
+                            <!-- end menu item -->
+                            <!-- start menu item -->
+                            <li><a href="#blog" class="inner-link">Blog</a></li>
+                            <!-- end menu item -->
+                            <!-- start menu item -->
+                            <li><a href="#features" class="inner-link">Features</a></li>
+                            <!-- end menu item -->
+                            <!-- start menu item -->
+                            <li><a href="http://www.themezaa.com/html/pofo/documentation/" target="_blank">Documentation</a></li>
+                            <!-- end menu item -->
+                            <!-- start menu item -->
+                            <li><a href="http://www.themezaa.com/support.php" target="_blank">Support</a></li>
+                            <!-- end menu item -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col-md-auto col-lg-2 pr-0 text-right">
+                    <a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-very-small btn-rounded btn-white box-shadow-dark">Buy Now<i class="fas fa-shopping-cart"></i></a>
+                </div>
+            </div>
+        </nav>
+        <!-- end navigation -->
+    </header>
     <div>
         @RenderBody()
     </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("loginModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("loginBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    @*<script type="text/javascript" src="../Content/js/jquery.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.js")"></script>
+    @*<script type="text/javascript" src="../Content/js/modernizr.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/modernizr.js")"></script>
+    @*<script type="text/javascript" src="../Content/js/bootstrap.bundle.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/bootstrap.bundle.js")"></script>
+    @*<script type="text/javascript" src="../Content/js/jquery.easing.1.3.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.easing.1.3.js")"></script>
+    @*<script type="text/javascript" src="../Content/js/skrollr.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/skrollr.min.js")"></script>
+    @*<script type="text/javascript" src="../Content/js/smooth-scroll.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/smooth-scroll.js")"></script>
+    @*<script type="text/javascript" src="../Content/js/jquery.appear.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.appear.js")"></script>
+    <!-- menu navigation -->
+    @*<script type="text/javascript" src="../Content/js/bootsnav.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/bootsnav.js")"></script>
+    @*<script type="text/javascript" src="../Content/js/jquery.nav.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.nav.js")"></script>
+    <!-- animation -->
+    @*<script type="text/javascript" src="../Content/js/wow.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/wow.min.js")"></script>
+    <!-- page scroll -->
+    @*<script type="text/javascript" src="../Content/js/page-scroll.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/page-scroll.js")"></script>
+    <!-- swiper carousel -->
+    @*<script type="text/javascript" src="../Content/js/swiper.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/swiper.min.js")"></script>
+    <!-- counter -->
+    @*<script type="text/javascript" src="../Content/js/jquery.count-to.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.count-to.js")"></script>
+    <!-- parallax -->
+    @*<script type="text/javascript" src="../Content/js/jquery.stellar.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.stellar.js")"></script>
+    <!-- magnific popup -->
+    @*<script type="text/javascript" src="../Content/js/jquery.magnific-popup.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.magnific-popup.min.js")"></script>
+    <!-- portfolio with shorting tab -->
+    @*<script type="text/javascript" src="../Content/js/isotope.pkgd.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/isotope.pkgd.min.js")"></script>
+    <!-- images loaded -->
+    @*<script type="text/javascript" src="../Content/js/imagesloaded.pkgd.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/imagesloaded.pkgd.min.js")"></script>
+    <!-- pull menu -->
+    @*<script type="text/javascript" src="../Content/js/classie.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/classie.js")"></script>
+    @*<script type="text/javascript" src="../Content/js/hamburger-menu.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/hamburger-menu.js")"></script>
+    <!-- counter  -->
+    @*<script type="text/javascript" src="../Content/js/counter.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/counter.js")"></script>
+    <!-- fit video  -->
+    @*<script type="text/javascript" src="../Content/js/jquery.fitvids.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.fitvids.js")"></script>
+    <!-- skill bars  -->
+    @*<script type="text/javascript" src="../Content/js/skill.bars.jquery.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/skill.bars.jquery.js")"></script>
+    <!-- justified gallery  -->
+    @*<script type="text/javascript" src="../Content/js/justified-gallery.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/justified-gallery.min.js")"></script>
+    <!--pie chart-->
+    @*<script type="text/javascript" src="../Content/js/jquery.easypiechart.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.easypiechart.min.js")"></script>
+    <!-- retina -->
+    @*<script type="text/javascript" src="../Content/js/retina.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/retina.min.js")"></script>
+    <!-- revolution -->
+    @*<script type="text/javascript" src="../revolution/js/jquery.themepunch.tools.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/revolution/js/jquery.themepunch.tools.min.js")"></script>
+    @*<script type="text/javascript" src="../revolution/js/jquery.themepunch.revolution.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/revolution/js/jquery.themepunch.revolution.min.js")"></script>
+    <!-- revolution slider extensions (load below extensions JS files only on local file systems to make the slider work! The following part can be removed on server for on demand loading) -->
+    <!--<script type="text/javascript" src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.video.min.js"></script>-->
+    <!-- setting -->
+    @*<script type="text/javascript" src="../Content/js/main.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/Content/js/main.js")"></script>
 </body>
 </html>
