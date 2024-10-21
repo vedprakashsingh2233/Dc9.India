@@ -4,7 +4,71 @@
     Layout = "~/Views/Shared/_LayOut.cshtml";
 }
 
-<h2>Registration</h2>
-<div class="container">
-   
-</div>
+<section class="wow fadeIn bg-light-gray">
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6 wow fadeIn">
+                <div class="padding-fifteen-all bg-white border-radius-6 lg-padding-seven-all">
+                    <div class="text-extra-dark-gray alt-font text-large font-weight-600 margin-30px-bottom">Create Your User Account</div>
+                    <div>
+                        <div id="success-contact-form-3" class="mx-0"></div>
+                        <input type="text" name="txtuserName" id="txtuserName" placeholder="Enter Your User Name" class="input-bg">
+                        <input type="text" name="txtEmail" id="txtEmail" placeholder="Enter Your Email Id" class="input-bg">
+                        <input type="text" name="txtMobileNo" id="txtMobileNo" placeholder="Enter Your Mobile Number" class="input-bg">
+                        <input type="text" name="txtPassword" id="txtPassword" placeholder="Enter Your Password" class="input-bg">
+                        <button id="contact-us-button-3" type="submit" onclick="InsertUserDetails();" class="btn btn-small border-radius-4 btn-black">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script>
+    function InsertUserDetails() {
+        if ($("#txtuserName").val() == "") {
+            alert('Please Enter Your User Name..');
+            $("#txtuserName").focus();
+        }
+        else if ($("#txtEmail").val() == "") {
+            alert('Please Enter Your Email Id..');
+            $("#txtEmail").focus();
+        }
+        else if ($("#txtMobileNo").val() == "") {
+            alert('Please Enter Your Mobile Number..');
+            $("#txtMobileNo").focus();
+        }
+        else if ($("#txtPassword").val() == "") {
+            alert('Please Enter Your Password..');
+            $("#txtPassword").focus();
+        }
+
+        else {
+            $.post("/UserLogin/InsertUserDetails",
+                {
+                  
+                    UserName: $("#txtuserName").val(),
+                    EmailId: $("#txtEmail").val(),
+                    Password: $("#txtPassword").val(),
+                    MobileNo: $("#txtMobileNo").val(),
+                },
+                function (data) {
+                  
+                        if (data.Result == "Fail") {
+                            alert('Something went wrong!')
+                        }
+                        else if (data.Result == "Success") {
+
+                        $(window.location).attr("href", "/Home/Index");
+                        }
+                    
+                    else {
+                        alert(data.Result);
+
+                    }
+                });
+        }
+    }
+</script>
