@@ -162,13 +162,18 @@
                 <a href="#">Contact</a>
                 <a href="#"><i class="search-icon">🔍</i></a>
                 <a href="#"><i class="cart-icon">🛒</i></a>
-                <button class="btn btn-very-small btn-rounded btn-white box-shadow-dark" id="loginBtn" type="button">Login</button>
+                <button class="btn btn-very-small btn-rounded btn-white box-shadow-dark" onclick="Login()" type="button">Login</button>
+                <script>
+                    function Login() {
+                        $(window.location).attr("href", "/UserLogin/Login");
+                    }
+                </script>
             </div>
         </div>
-        <div id="loginModal" class="modal">
+        <!--<div id="loginModal" class="modal">-->
 
             <!-- Modal content -->
-            <div class="modal-content">
+            <!--<div class="modal-content">
                 <span class="close">&times;</span>
                 <h2>Login</h2>
 
@@ -179,13 +184,13 @@
                 <button class="btn btn-primary btn-rounded"id="btnLogin" type="button">Login</button>Don't have an account?<a href="../Home/Registration">Sign up</a>
 
             </div>
-        </div>
+        </div>-->
         <!-- start navigation -->
         <nav class="navbar navbar-default bootsnav navbar-top white-link header-dark background-transparent nav-box-width padding-four-lr navbar-expand-lg">
             <div class="container-fluid nav-header-container">
                 <!-- start logo -->
                 <div class="col col-md-auto col-lg-2 pl-0">
-                    <a href="index.html" title="Pofo" class="logo"><img src="~/Content/images/Dc9Logo.png" data-rjs="~/Content/images/Dc9Logo.png" class="logo-dark" alt="Pofo"><img src="~/Content/images/Dc9Logo.png" data-rjs="~/Content/images/Dc9Logo.png" alt="Pofo" class="logo-light default"></a>
+                    <a href="#" title="DC9India" class="logo" ><img src="~/Content/images/Dc9Logo.png" data-rjs="~/Content/images/Dc9Logo.png" class="logo-dark" alt="Pofo"><img src="~/Content/images/Dc9Logo.png" data-rjs="~/Content/images/Dc9Logo.png" alt="Pofo" class="logo-light default"style="width:100px;"></a>
                 </div>
                 <!-- end logo -->
                 <div class="col col-md accordion-menu pr-0 pr-lg-3">
@@ -228,7 +233,7 @@
     <div>
         @RenderBody()
     </div>
-    <script>
+    @*<script>
         // Get the modal
         var modal = document.getElementById("loginModal");
 
@@ -254,7 +259,7 @@
                 modal.style.display = "none";
             }
         }
-    </script>
+    </script>*@
     @*<script type="text/javascript" src="../Content/js/jquery.js"></script>*@
     <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.js")"></script>
     @*<script type="text/javascript" src="../Content/js/modernizr.js"></script>*@
@@ -329,66 +334,5 @@
     <script type="text/javascript" src="@Url.Content("~/Content/js/main.js")"></script>
 
 
-    <script>
-        $(document).ready(function () {
-            ClearData();
-            $("#btnLogin").click(function () {
-                Login();
-                return false;
-            });
-            $("#btnLogin").keydown(function (e) {
-                if (e.which == 13) {
-                    Login();
-                    return false;
-                }
-            });
-            $("#txtPassword").keydown(function (e) {
-                if (e.which == 13) {
-                    Login();
-                    return false;
-                }
-            });
-        });
-
-
-        function Login() {
-            try {
-                if ($("#txtUserCode").val() == "") {
-                    alert("Please enter User Code.!");
-                    $("#txtUserCode").focus();
-                }
-                else if ($("#txtPassword").val() == "") {
-                    alert("Please enter PASSWORD.!");
-                    $("#txtPassword").focus();
-                }
-                else {
-                    $.post("/UserLogin/LoginDetail",
-                        {
-                            UserCode: $("#txtUserCode").val(),
-                            Password: $("#txtPassword").val()
-                        }, function (data) {
-                            if (data.Result == "Success") {
-                                alert("You've successfully logged in.");
-                                $(window.location).attr("href", "/Home/Index");
-                            }
-                            else {
-                                $("#txtPassword").val("");
-                                alert(data.Result);
-                            }
-                        }).fail(function (xhr, err) {
-                            var responseTitle = $(xhr.responseText).filter('title').get(0);
-                            alert($(responseTitle).text() + "\n" + AjaxError(xhr, err));
-                        });
-                }
-            }
-            catch (e) {
-                alert("Error In Login: " + e.message);
-            }
-        }
-        function ClearData() {
-            $("#txtUserCode").val("");
-            $("#txtPassword").val("");
-        }
-    </script>
 </body>
 </html>

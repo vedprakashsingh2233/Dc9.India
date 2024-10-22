@@ -13,7 +13,12 @@ namespace Dc9.India.Controllers
 {
     public class UserLoginController : Controller
     {
-        // GET: UserLogin
+       public ActionResult Login()
+        {
+            return View();
+        }
+
+
        [HttpPost]
         public JsonResult InsertUserDetails( string UserName, string EmailId, string Password, string MobileNo)
         {
