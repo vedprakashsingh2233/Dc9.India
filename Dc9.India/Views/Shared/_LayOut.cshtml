@@ -65,6 +65,7 @@
             .left {
                 display: flex;
                 align-items: center;
+                margin-left: 40%;
             }
 
             .sale {
@@ -73,7 +74,19 @@
                 border-radius: 4px;
                 margin-right: 10px;
             }
-
+            .home-pill {
+                display: inline-block;
+                background: linear-gradient(90deg, #344385 2%, #a24739 99.97%), linear-gradient(103deg, #fff -0.01%, #ffdb4c 67.22%, #c3ce7f 101.27%);
+                backdrop-filter: blur(1.8896210193634033px);
+                padding: 6px 9px;
+                font-size: 13px !important;
+                line-height: 1;
+                color: #fff;
+                border-radius: 6px;
+                margin: -2px 8px 0 0;
+                font-weight: 500 !important;
+                letter-spacing: 0.01em !important;
+            }
             .discount {
                 font-size: 14px;
             }
@@ -141,7 +154,7 @@
         </style>
         <div class="headers">
             <div class="left">
-                <span class="sale">Black Friday sale</span>
+                <span class="sale home-pill">Black Friday sale</span>
                 <span class="discount">Up to 75% off <a href="#">Shop now</a></span>
             </div>
             <div class="right">
@@ -149,7 +162,7 @@
                 <a href="#">Contact</a>
                 <a href="#"><i class="search-icon">🔍</i></a>
                 <a href="#"><i class="cart-icon">🛒</i></a>
-                <button class="btn btn-dark-gray btn-rounded" id="loginBtn">Login</button>
+                <button class="btn btn-very-small btn-rounded btn-white box-shadow-dark" id="loginBtn" type="button">Login</button>
             </div>
         </div>
         <div id="loginModal" class="modal">

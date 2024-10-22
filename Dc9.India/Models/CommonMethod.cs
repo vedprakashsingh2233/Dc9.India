@@ -5,6 +5,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -109,6 +111,70 @@ namespace Dc9.India.Models
             for (int index = 0; index < hash.Length; ++index)
                 stringBuilder.Append(hash[index].ToString("X2"));
             return stringBuilder.ToString();
+        }
+        public static string Send(MailMessage mm, string EmailFrom)
+        {
+            string MailError = "";
+            try
+            {
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
+                string Port = System.Configuration.ConfigurationManager.AppSettings.Get("Port");
+
+                string UserName = EmailFrom;
+                string Password = System.Configuration.ConfigurationManager.AppSettings.Get("Password");
+                SmtpClient smtp = new SmtpClient();
+                smtp.Port = Convert.ToInt32(Port);
+
+                string Host = System.Configuration.ConfigurationManager.AppSettings.Get("MicrosoftHost");
+                smtp.EnableSsl = false;
+                smtp.UseDefaultCredentials = true;
+
+                smtp.Host = Host;
+                smtp.Credentials = new NetworkCredential(UserName, Password);
+                smtp.Timeout = 1000 * 60 * 5;
+                smtp.Send(mm);
+            }
+            catch (Exception ex)
+            {
+                MailError = ex.Message;
+                if (ex.InnerException != null)
+                    MailError = "; Inner Exception: " + ex.InnerException;
+            }
+            return MailError;
+        }
+        public static string SendMailForContact(string Name, string EmailID, string Message)
+        {
+            string mBody;
+            mBody = "<html><body><style>table,th,td,tr{ border-collapse:collapse; font-family:Arial, Helvetica, sans-serif; font-size:13px; padding:4px 13px; color:#000; border:1px solid #c5c5c5;}</style>";
+            mBody += "<table border='1' width='100%'>";
+            mBody += "<tr><td><br /><strong>Dear Sir/Mam</strong>,<br /><br />";
+            mBody += " <strong> Receive below contact-us details  from EzRozgar website</strong><br/><br/>";
+            mBody += "<table border='1'>";
+
+            mBody += "<tr>";
+            mBody += "<td valign='top'><b>Name </b></td>";
+            mBody += "<td valign='top'>:</td>";
+            mBody += "<td valign='top'>" + Name.Trim() + "</td>";
+            mBody += "</tr>";
+
+            mBody += "<tr>";
+            mBody += "<td valign='top'><b>Email Address</b></td>";
+            mBody += "<td valign='top'>:</td>";
+            mBody += "<td valign='top'>" + EmailID.Trim() + "</td>";
+            mBody += "</tr>";
+
+            mBody += "<tr>";
+            mBody += "<td valign='top'><b> Message </b></td>";
+            mBody += "<td valign='top'>:</td>";
+            mBody += "<td valign='top'>" + Message.Trim() + "</td>";
+            mBody += "</tr>";
+            mBody += "</table><br/>";
+
+            mBody += "<br />";
+            mBody += "<br /><br style='font-family:Arial,Helvetica, sans-serif;'>Thanks<br /><br />";
+            mBody += "</body></html>";
+            return mBody;
         }
     }
 }
