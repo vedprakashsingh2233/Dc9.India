@@ -21,5 +21,9 @@ namespace Dc9.India.Controllers
         {
             return View();
         }
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
     }
 }

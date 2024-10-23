@@ -74,6 +74,7 @@
                 border-radius: 4px;
                 margin-right: 10px;
             }
+
             .home-pill {
                 display: inline-block;
                 background: linear-gradient(90deg, #344385 2%, #a24739 99.97%), linear-gradient(103deg, #fff -0.01%, #ffdb4c 67.22%, #c3ce7f 101.27%);
@@ -87,6 +88,7 @@
                 font-weight: 500 !important;
                 letter-spacing: 0.01em !important;
             }
+
             .discount {
                 font-size: 14px;
             }
@@ -171,9 +173,8 @@
             </div>
         </div>
         <!--<div id="loginModal" class="modal">-->
-
-            <!-- Modal content -->
-            <!--<div class="modal-content">
+        <!-- Modal content -->
+        <!--<div class="modal-content">
                 <span class="close">&times;</span>
                 <h2>Login</h2>
 
@@ -190,7 +191,7 @@
             <div class="container-fluid nav-header-container">
                 <!-- start logo -->
                 <div class="col col-md-auto col-lg-2 pl-0">
-                    <a href="#" title="DC9India" class="logo" ><img src="~/Content/images/Dc9Logo.png" data-rjs="~/Content/images/Dc9Logo.png" class="logo-dark" alt="Pofo"><img src="~/Content/images/Dc9Logo.png" data-rjs="~/Content/images/Dc9Logo.png" alt="Pofo" class="logo-light default"style="width:100px;"></a>
+                    <a href="#" title="DC9India" class="logo"><img src="~/Content/images/Dc9Logo.png" data-rjs="~/Content/images/Dc9Logo.png" class="logo-dark" alt="Pofo"><img src="~/Content/images/Dc9Logo.png" data-rjs="~/Content/images/Dc9Logo.png" alt="Pofo" class="logo-light default" style="width:100px;"></a>
                 </div>
                 <!-- end logo -->
                 <div class="col col-md accordion-menu pr-0 pr-lg-3">
@@ -233,33 +234,104 @@
     <div>
         @RenderBody()
     </div>
+    <!-- start call to action -->
+    <section class="half-section wow fadeIn cover-background" style="background-image: url('http://placehold.it/1920x472');">
+        <div class="opacity-medium bg-extra-dark-gray"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 position-relative text-center">
+                    <span class="text-extra-large text-white-2 alt-font d-inline-block margin-5px-top margin-30px-right sm-no-margin-right sm-no-margin-top sm-margin-15px-bottom sm-width-100">We'd love to hear about your project</span>
+                    <a href="contact-us-simple.html" class="btn btn-white btn-small align-top sm-no-margin-right">Start a Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end call to action -->
+    <!-- start footer -->
+    <footer class="footer-clean padding-five-tb sm-padding-30px-tb">
+        <div class="footer-widget-area padding-40px-bottom sm-padding-30px-bottom">
+            <div class="container">
+                <div class="row">
+                    <!-- start logo -->
+                    <div class="col-lg-3 widget text-left text-md-center text-lg-left md-margin-50px-bottom sm-margin-30px-bottom">
+                        <a href="http://www.themezaa.com" class="d-inline-block"><img class="footer-logo" src="images/logo.png" data-rjs="images/logo@2x.png" alt=""></a>
+                    </div>
+                    <!-- end logo -->
+                    <!-- start contact information -->
+                    <div class="col-lg-3 col-md-4 widget sm-margin-30px-bottom">
+                        <div class="widget-title alt-font text-extra-small text-extra-dark-gray text-uppercase margin-15px-bottom font-weight-600">contact information</div>
+                        <div class="text-small line-height-24 width-75 sm-width-100 text-medium-gray">301 The Greenhouse, Custard Factory, London, E2 8DY.</div>
+                        <div class="text-small line-height-24 text-medium-gray">Email: <a href="mailto:sales@domain.com" class="text-medium-gray">sales@domain.com</a></div>
+                        <div class="text-small line-height-24 text-medium-gray">Phone: +44 (0) 123 456 7890</div>
+                    </div>
+                    <!-- end contact information -->
+                    <!-- start social media -->
+                    <div class="col-lg-3 col-md-4 widget sm-margin-30px-bottom">
+                        <div class="widget-title alt-font text-extra-small text-extra-dark-gray text-uppercase margin-15px-bottom font-weight-600">On social networks</div>
+                        <ul class="list-unstyled">
+                            <li class="w-50 float-left"><a href="https://www.facebook.com/" target="_blank" class="text-medium-gray text-small">Facebook</a></li>
+                            <li class="w-50 float-left"><a href="https://www.pinterest.com/" target="_blank" class="text-medium-gray text-small">Pinterest</a></li>
+                            <li class="w-50 float-left"><a href="https://www.twitter.com/" target="_blank" class="text-medium-gray text-small">Twitter</a></li>
+                            <li class="w-50 float-left"><a href="https://www.linkedin.com/" target="_blank" class="text-medium-gray text-small">Linkedin</a></li>
+                            <li class="w-50 float-left"><a href="https://www.dribbble.com/" target="_blank" class="text-medium-gray text-small">Dribbble</a></li>
+                            <li class="w-50 float-left"><a href="https://www.youtube.com/" target="_blank" class="text-medium-gray text-small">Youtube</a></li>
+                            <li class="w-50 float-left"><a href="https://www.instagram.com/" target="_blank" class="text-medium-gray text-small">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <!-- end social media -->
+                    <!-- start newsletter -->
+                    <div class="col-lg-3 col-md-4 widget">
+                        <div class="widget-title alt-font text-extra-small text-extra-dark-gray text-uppercase margin-20px-bottom font-weight-600">subscribe newsletter</div>
+                        <form id="subscribenewsletterform" action="javascript:void(0)" method="post">
+                            <div class="position-relative w-100">
+                                <div id="success-subscribe-newsletter" class="mx-0"></div>
+                                <input type="text" id="email" name="email" class="bg-transparent text-small margin-10px-bottom" placeholder="Enter your email...">
+                                <button id="button-subscribe-newsletter" type="submit" class="btn btn-dark-gray btn-very-small">subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- end newsletter -->
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="border-color-extra-light-gray border-top padding-40px-top sm-padding-30px-top">
+                <div class="row">
+                    <!-- start copyright -->
+                    <div class="col-12 text-small text-center text-medium-gray">&COPY; 2019 POFO is Proudly Powered by <a href="http://wwwo.themezaa.com" target="_blank" title="ThemeZaa" class="text-medium-gray">ThemeZaa</a></div>
+                    <!-- end copyright -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end footer -->
     @*<script>
-        // Get the modal
-        var modal = document.getElementById("loginModal");
+            // Get the modal
+            var modal = document.getElementById("loginModal");
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("loginBtn");
+            // Get the button that opens the modal
+            var btn = document.getElementById("loginBtn");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
 
-        // When the user clicks the button, open the modal
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
+            // When the user clicks the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
                 modal.style.display = "none";
             }
-        }
-    </script>*@
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>*@
     @*<script type="text/javascript" src="../Content/js/jquery.js"></script>*@
     <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.js")"></script>
     @*<script type="text/javascript" src="../Content/js/modernizr.js"></script>*@
