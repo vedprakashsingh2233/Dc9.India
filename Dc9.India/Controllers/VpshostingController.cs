@@ -13,5 +13,9 @@ namespace Dc9.India.Controllers
         {
             return View();
         }
+        public ActionResult Cart()
+        {
+            return View();
+        }
     }
 }
