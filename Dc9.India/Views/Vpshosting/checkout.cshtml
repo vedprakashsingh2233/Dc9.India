@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewBag.Title = "checkout";
+    Layout = "~/Views/Shared/_LayOut.cshtml";
+}
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<style>
+
+    .contai {
+        display: flex;
+        max-width: 1200px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .lefts, .rights {
+        padding: 20px;
+    }
+
+    .lefts {
+        width: 60%;
+        background-color: #f8f8f8;
+        border-left: 1px solid #ddd;
+    }
+
+    .rights {
+        width: 40%;
+        background-color: #f8f8f8;
+        border-left: 1px solid #ddd;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 0 20px;
+    }
+
+    .info {
+        font-size: 0.9rem;
+        color: #666;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+        .info i {
+            color: #4b90ff;
+        }
+
+
+
+
+    .payment-method, .cart {
+        background-color: #fff;
+        border-radius: 6px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+        .payment-method input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+    .cart-item, .cart-summary {
+        margin-top: 10px;
+        padding: 10px 0;
+        border-top: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .cart-item:last-child, .cart-summary {
+            border-bottom: 1px solid #eee;
+        }
+
+    .summary {
+        text-align: right;
+    }
+
+        .summary h3 {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #4b90ff;
+        }
+
+       
+
+    .price {
+        color: green;
+        font-weight: bold;
+    }
+</style>
+
+<!-- start page title section -->
+<section class="wow fadeIn bg-extra-dark-gray padding-35px-tb page-title-small top-space">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-8 col-md-6 text-center text-md-left">
+                <!-- start page title -->
+                <h1 class="alt-font text-white-2 font-weight-600 mb-0 text-uppercase">Secure Checkout</h1>
+                <!-- end page title -->
+            </div>
+            <div class="col-xl-4 col-md-6 breadcrumb alt-font text-small justify-content-center justify-content-md-end sm-margin-10px-top">
+                <!-- start breadcrumb -->
+                <ul class="text-center text-md-right">
+                    <li><a href="#" class="text-dark-gray">Vpshosting</a></li>
+                    <li><a href="#" class="text-dark-gray">Checkout</a></li>
+                </ul>
+                <!-- end breadcrumb -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end page title section -->
+<div class="contai">
+    <div class="lefts">
+        <div class="cart">
+            <div class="info">
+                <i>✔</i> <span>30-day money-back guarantee</span>
+                <i>✔</i> <span>24/7 Expert Hosting Support</span>
+                <i>✔</i> <span>SSL secure payment</span>
+            </div>
+
+
+
+            <div class="payment-method">
+                <h2>Payment Method</h2>
+                <div>
+                    <input type="radio" id="creditCard" name="paymentMethod">
+                    <label for="creditCard">Credit Card</label>
+                    <input type="radio" id="paypal" name="paymentMethod">
+                    <label for="paypal">PayPal</label>
+                </div>
+                <input type="text" placeholder="Card Number">
+                <input type="text" placeholder="Expiry Date">
+                <input type="text" placeholder="CCV">
+                <input type="text" placeholder="First Name">
+                <input type="text" placeholder="Last Name">
+            </div>
+        </div>
+    </div>
+
+    <div class="rights">
+        <div class="cart">
+            <h2>Cart</h2>
+            <div class="cart-item">
+                <div>
+                    <h3>Cloud VPS</h3>
+                    <p><span class="price">$33/mo</span> <del>$110/mo</del> -70% for 3 mos</p>
+                    <small>Server Type: 6 vCPUs, 24GB Memory, 540GB Storage</small>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                <div class="summary">
+                    <p>Savings (USD): <span class="price">$77</span></p>
+                    <p>Due today (USD): <span class="price">$33</span></p>
+                    <small>Does not include tax or costs based on usage.</small>
+                </div>
+            </div>
+                <button class="btn btn-very-small btn-rounded btn-black box-shadow-dark m-4">Place your order</button>
+        </div>
+    </div>
+</div>

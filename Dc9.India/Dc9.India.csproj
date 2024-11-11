@@ -3998,6 +3998,7 @@
     <Content Include="revolution\php\twitter\RestApi.php" />
     <Content Include="revolution\php\vimeo\class-vimeo.php" />
     <Content Include="revolution\php\youtube\class-youtube.php" />
+    <Content Include="SQLScript.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -4131,6 +4132,8 @@
     <Content Include="Views\UserLogin\Login.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Vpshosting\ManagedVps.cshtml" />
+    <Content Include="Views\Vpshosting\Cart.cshtml" />
+    <Content Include="Views\Vpshosting\checkout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

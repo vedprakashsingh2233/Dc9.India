@@ -3,7 +3,7 @@
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_LayOut.cshtml";
 }
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <section class="p-0 one-third-screen position-relative wow fadeIn">
     <div class="opacity-medium bg-extra-dark-gray z-index-0"></div>
     <div class="container">
@@ -41,42 +41,105 @@
 </section>
 <div class="row">
     <div class="col-sm-4">
-            <div class="pricing-box border-all border-color-extra-light-gray">
-                <div class="padding-55px-all bg-very-light-gray md-padding-30px-all sm-padding-40px-all">
-                    <!-- start price title -->
-                    @*<div class="pricing-title text-center">
+        <div class="pricing-box border-all border-color-extra-light-gray">
+            <div class="padding-55px-all bg-very-light-gray md-padding-30px-all sm-padding-40px-all">
+                <!-- start price title -->
+                @*<div class="pricing-title text-center">
                         <i class="ti-user icon-large text-deep-pink d-inline-block padding-30px-all bg-white box-shadow-light rounded-circle margin-25px-bottom"></i>
                     </div>*@
-                    <!-- end price title -->
-                    <!-- start price price -->
-                    <div class="pricing-price">
-                        <h5 class="text-extra-dark-gray alt-font font-weight-600 mb-0">24 GB Ram</h5><br />
-                        <h5 class="text-extra-dark-gray alt-font font-weight-600 mb-0">$33/mo</h5><br />
-                        <button class="btn btn-very-small btn-rounded btn-black box-shadow-dark" onclick="BuyNow('2')" type="button">Place</button><br /><br />
+                <!-- end price title -->
+                <!-- start price price -->
+                <div class="pricing-price">
+                    <h5 class="text-extra-dark-gray alt-font font-weight-600 mb-0">24 GB Ram</h5><br />
+                    <h5 class="text-extra-dark-gray alt-font font-weight-600 mb-0">$33/mo</h5>
 
-                    </div>
-
-                    <!-- end price price -->
                 </div>
-                <!-- start price features -->
-                <!-- end price features -->
-          
+
+                <!-- end price price -->
+            </div>
+            <!-- start price features -->
+            <!-- end price features -->
+
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-5">
         <div class="pricing-box border-all border-color-extra-light-gray">
             <div class="padding-55px-all bg-very-light-gray md-padding-30px-all sm-padding-40px-all">
-                <label>Antivirus A</label>
-                <input type="checkbox" name="name" value="Antivirus" />
+                <div class="row">
+                    <div class="col-sm-6 item">
+                        <label class="col-sm-8">Antivirus A</label>
+                        <input type="checkbox" class="form-check col-sm-3 chkAddtional" value="Antivirus A" />
+                        <span class="text-extra-dark-gray alt-font font-weight-600 mb-0">$<span class="AddtionalPrice">3</span>/mo</span>
+
+                    </div>
+                    <div class="col-sm-6 item">
+                        <label class="col-sm-8">Antivirus B</label>
+                        <input type="checkbox" class="form-check col-sm-3 chkAddtional" value="Antivirus B" />
+                        <span class="text-extra-dark-gray alt-font font-weight-600 mb-0 ">$<span class="AddtionalPrice">5</span>/mo</span>
+
+                    </div>
+                </div>
+
             </div>
         </div>
+
+    </div>
+    <div class="col-sm-3">
         <div class="pricing-box border-all border-color-extra-light-gray">
-            <div class="padding-55px-all bg-very-light-gray md-padding-30px-all sm-padding-40px-all">
-                <label>Antivirus A</label>
-                <input type="checkbox" name="name" value="Antivirus" />
+            <div class=" bg-very-light-gray md-padding-30px-all sm-padding-40px-all">
+                <h6 class="text-extra-dark-gray alt-font font-weight-600 mb-0">Order Summary</h6>
+                <label class="text-extra-dark-gray mr-2">Billed Monthly</label>
+                <span class="text-extra-dark-gray">$<span class="text-extra-dark-gray" id="Vpsprice">33</span></span><br />
+                <div id="divAdditionalItems"></div>
+                <label class="text-extra-dark-gray mr-2">Total</label><span class="text-extra-dark-gray" id="totalPrice">$33</span><br />
+                <button class="btn btn-very-small btn-rounded btn-black box-shadow-dark m-4" onclick="BuyNow('2')" type="button">Place Your Order</button>
+
             </div>
         </div>
     </div>
 </div>
 
 
+
+<script>
+    var additionalItem =[];
+    $(document).ready(function () {
+        // Event handler for checkbox change
+        $('.chkAddtional').change(function () {
+            let item = $(this).val();
+            let price = $(this).closest('.item').find('.AddtionalPrice').text();
+            if ($(this).is(':checked')) {
+                // If checked
+               
+                let items = {
+                    item: item,
+                    price: price
+                };
+                additionalItem.push(items);
+                AddPricing();
+            } else {
+                additionalItem = additionalItem.filter(function (items) {
+                    return items.item !== item;
+                });
+                AddPricing();
+            }
+        });
+    });
+    function AddPricing() {
+        var html = '';
+        var Tprice = 0;
+        $("#divAdditionalItems").html('');
+        var VpsPrice = $("#Vpsprice").text();
+        if (additionalItem.length > 0) {
+            additionalItem.forEach(function (items) {
+                html += '<label class="text-extra-dark-gray mr-2">' + items.item + '</label><span class="text-extra-dark-gray">$' + items.price + '</span><br />';
+                Tprice += parseFloat(items.price);
+            });
+            $("#divAdditionalItems").html(html)
+        }
+            $("#totalPrice").text('$' + (parseFloat(VpsPrice) + Tprice));
+    }
+    function BuyNow(id) {
+        $(window.location).attr("href", "/Vpshosting/checkout?id=" + id);
+    }
+</script>

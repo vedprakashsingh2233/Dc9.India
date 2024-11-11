@@ -17,5 +17,16 @@ namespace Dc9.India.Controllers
         {
             return View();
         }
+        public ActionResult checkout()
+        {
+            if (Session["UserId"] == null)
+            {
+                return Redirect("~/UserLogin/Login");
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }
