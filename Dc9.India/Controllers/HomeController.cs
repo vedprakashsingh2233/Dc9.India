@@ -25,5 +25,9 @@ namespace Dc9.India.Controllers
         {
             return View();
         }
+        public ActionResult UserPlans()
+        {
+            return View();
+        }
     }
 }

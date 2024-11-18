@@ -14,7 +14,7 @@
 
     .contai {
         display: flex;
-        max-width: 1200px;
+        max-width: 100%;
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -146,11 +146,11 @@
                     <input type="radio" id="paypal" name="paymentMethod">
                     <label for="paypal">PayPal</label>
                 </div>
-                <input type="text" placeholder="Card Number">
-                <input type="text" placeholder="Expiry Date">
-                <input type="text" placeholder="CCV">
-                <input type="text" placeholder="First Name">
-                <input type="text" placeholder="Last Name">
+                <input type="text" placeholder="Card Number" id="txtCardNumber">
+                <input type="text" placeholder="Expiry Date" id="txtExpDate">
+                <input type="text" placeholder="CCV" id="txtCCV">
+                <input type="text" placeholder="First Name" id="txtFName">
+                <input type="text" placeholder="Last Name" id="txtLName">
             </div>
         </div>
     </div>
@@ -162,18 +162,46 @@
                 <div>
                     <h3>Cloud VPS</h3>
                     <p><span class="price">$33/mo</span> <del>$110/mo</del> -70% for 3 mos</p>
-                    <small>Server Type: 6 vCPUs, 24GB Memory, 540GB Storage</small>
+                    <small>@*Server Type: 6 vCPUs, 24GB Memory, 540GB Storage*@</small>
                 </div>
             </div>
 
             <div class="cart-summary">
                 <div class="summary">
-                    <p>Savings (USD): <span class="price">$77</span></p>
-                    <p>Due today (USD): <span class="price">$33</span></p>
-                    <small>Does not include tax or costs based on usage.</small>
+                    <p>Antivirus A : <span class="price">$3</span></p>
+                    <p>Antivirus B: <span class="price">$5</span></p>
+                    @*<small>Does not include tax or costs based on usage.</small>*@
                 </div>
             </div>
-                <button class="btn btn-very-small btn-rounded btn-black box-shadow-dark m-4">Place your order</button>
+                <button class="btn btn-very-small btn-rounded btn-black box-shadow-dark m-4" onclick="SavePlan()">Place your order</button>
         </div>
     </div>
 </div>
+<script>
+    function SavePlan() {
+        if ($("#txtCardNumber").val() == '') {
+            alert('Please select Card Number')
+            $("#txtCardNumber").focus()
+        }
+        else if ($("#txtExpDate").val() == '') {
+            alert('Please select Exipery Date')
+            $("#txtExpDate").focus()
+        }
+        else if ($("#txtCCV").val() == '') {
+            alert('Please select Card CCV')
+            $("#txtCCV").focus()
+        }
+        else if ($("#txtFName").val() == '') {
+            alert('Please select First Name')
+            $("#txtFName").focus()
+        }
+        else if ($("#txtLName").val() == '') {
+            alert('Please select Last Name')
+            $("#txtLName").focus()
+        }
+        else {
+            alert('Your Payment has been done ...')
+            $(window.location).attr("href", "/Home/UserPlans");
+        }
+    }
+</script>
