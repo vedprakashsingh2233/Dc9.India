@@ -2393,6 +2393,7 @@
     <Content Include="Content\images\country-flag-16X16\Yemen.png" />
     <Content Include="Content\images\country-flag-16X16\Zambia.png" />
     <Content Include="Content\images\country-flag-16X16\Zimbabwe.png" />
+    <Content Include="Content\images\Dc9Logo.png" />
     <Content Include="Content\images\digital-text.png" />
     <Content Include="Content\images\explore-work-02.png" />
     <Content Include="Content\images\favicon.png" />
@@ -2414,6 +2415,10 @@
     <Content Include="Content\images\homepage-option18-banner.jpg" />
     <Content Include="Content\images\homepage-option18-image.png" />
     <Content Include="Content\images\homepage-option19-arrow-bg.jpg" />
+    <Content Include="Content\images\hosting1.jpg" />
+    <Content Include="Content\images\hosting2.jpg" />
+    <Content Include="Content\images\hosting3.jpg" />
+    <Content Include="Content\images\hosting4.jpg" />
     <Content Include="Content\images\icon-move-black.png" />
     <Content Include="Content\images\icon-move-light.png" />
     <Content Include="Content\images\icon-play-white.png" />

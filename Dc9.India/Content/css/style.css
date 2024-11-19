@@ -2077,7 +2077,7 @@ textarea.input-bg {
 }
 
 .border-color-extra-light-gray {
-    border-color: #ededed !important;
+    border-color: #dbd3d3 !important;
 }
 
 .border-color-light-gray {
@@ -16405,7 +16405,7 @@ a img.aligncenter {
 }
 
 .footer-logo {
-    max-height: 28px;
+    max-height: 120px;
 }
 
 /* footer input */
