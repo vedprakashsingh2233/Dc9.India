@@ -4140,6 +4140,9 @@
     <Content Include="Views\Vpshosting\Cart.cshtml" />
     <Content Include="Views\Vpshosting\checkout.cshtml" />
     <Content Include="Views\Home\UserPlans.cshtml" />
+    <Content Include="Views\Home\TermsAndCondition.cshtml" />
+    <Content Include="Views\Home\Privacy.cshtml" />
+    <Content Include="Views\Home\ReturnAndRefund.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

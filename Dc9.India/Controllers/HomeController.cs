@@ -29,5 +29,21 @@ namespace Dc9.India.Controllers
         {
             return View();
         }
+        public ActionResult TermsAndCondition()
+        {
+            return View();
+        }
+        public ActionResult Privacy()
+        {
+            return View();
+        }
+        public ActionResult ReturnAndRefund()
+        {
+            return View();
+        }
+        public ActionResult Cancelation()
+        {
+            return View();
+        }
     }
 }
