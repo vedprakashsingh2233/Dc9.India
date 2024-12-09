@@ -4143,6 +4143,10 @@
     <Content Include="Views\Home\TermsAndCondition.cshtml" />
     <Content Include="Views\Home\Privacy.cshtml" />
     <Content Include="Views\Home\ReturnAndRefund.cshtml" />
+    <Content Include="Views\Vpshosting\LinuxDedicatedSelfManagedSP.cshtml" />
+    <Content Include="Views\Vpshosting\WindowDedicatedSelfManagedSP.cshtml" />
+    <Content Include="Views\Vpshosting\LinuxVPSSelfManagedSP.cshtml" />
+    <Content Include="Views\Vpshosting\WindowVPSSelfManagedSP.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

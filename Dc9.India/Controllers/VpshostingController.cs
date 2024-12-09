@@ -28,5 +28,21 @@ namespace Dc9.India.Controllers
                 return View();
             }
         }
+        public ActionResult LinuxDedicatedSelfManagedSP()
+        {
+            return View();
+        }
+        public ActionResult WindowDedicatedSelfManagedSP()
+        {
+            return View();
+        }
+        public ActionResult LinuxVPSSelfManagedSP()
+        {
+            return View();
+        }
+        public ActionResult WindowVPSSelfManagedSP()
+        {
+            return View();
+        }
     }
 }

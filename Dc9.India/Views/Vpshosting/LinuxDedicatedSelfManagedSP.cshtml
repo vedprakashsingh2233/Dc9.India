@@ -1,0 +1,195 @@
+﻿
+@{
+    ViewBag.Title = "LinuxDedicatedSelfManagedSP";
+    Layout = "~/Views/Shared/_LayOut.cshtml";
+}
+<style>
+        /*body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+    */
+        .table-container {
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background-color: #fff;
+        }
+
+            table th, table td {
+                border: 1px solid #ddd;
+                text-align: center;
+                padding: 10px;
+            }
+
+            table th, table td {
+                color: black;
+            }
+
+            table th {
+                background-color: #151615;
+                color: white;
+            }
+
+        .price-linux {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .price-windows {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .btn-signup {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+            .btn-signup:hover {
+                background-color: #0056b3;
+            }
+
+        @@media (max-width: 768px) {
+            table th, table td {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            .btn-signup {
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+        }
+</style>
+<section class="p-0 one-third-screen position-relative wow fadeIn" style="height:500px;">
+    <div class="opacity-medium bg-extra-dark-gray z-index-0"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 one-third-screen d-flex flex-column justify-content-center page-title-large text-center">
+                <!-- start sub title -->
+                <h1 class="alt-font text-white-2 font-weight-600 width-55 md-width-80 sm-width-100 mx-auto mb-0">
+                    Linux Dedicated Self Managed Server Plans
+                </h1>
+
+                <!-- end sub title -->
+                <!-- start page title -->
+                <span class="d-block text-white-2 opacity6 margin-10px-bottom alt-font">
+                    Get flexible, instant cloud hosting that can be scaled up or down to meet your needs. Host WordPress, customize VPS configurations, and much more.
+                </span>
+                <!-- end page title -->
+            </div>
+            <div class="down-section text-center"><a href="#about" class="inner-link"><i class="ti-arrow-down icon-extra-small text-white-2 bg-deep-pink padding-15px-all sm-padding-10px-all rounded-circle"></i></a></div>
+        </div>
+    </div>
+    <div class="swiper-auto-fade swiper-container z-index-minus2 position-absolute top-0 w-100 h-100">
+        <div class="swiper-wrapper">
+            <!-- start slider item -->
+            <div class="swiper-slide cover-background one-third-screen" style="background-image: url('../Content/images/hosting1.jpg'); "></div>
+            <!-- end slider item -->
+       
+        </div>
+        <div class="swiper-pagination swiper-auto-pagination d-none"></div>
+    </div>
+</section>
+<section class=" wow fadeIn">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class=" text-center">
+                <h4 class="alt-font text-extra-dark-gray font-weight-600" style="text-align: center;">
+                    India Based Linux Dedicated Self Managed Server Plans
+                </h4>
+                <h6 class="alt-font text-extra-dark-gray font-weight-600" style="text-align: center;">(With Basic Management)</h6>
+                <h5 class="alt-font text-extra-dark-gray font-weight-600" style="text-align: center;">LINUX DEDICATED SERVER PRICE IN INDIA</h5>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Plans</th>
+                    <th>No. of Core</th>
+                    <th>SSD</th>
+                    <th>RAM</th>
+                    <th>Bandwidth/Mo</th>
+                    <th>Dedicated IP's</th>
+                    <th>Linux</th>
+                    <th>Windows</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Basic</td>
+                    <td>1 Core</td>
+                    <td>30GB</td>
+                    <td>2GB</td>
+                    <td>200GB</td>
+                    <td>1</td>
+                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                </tr>
+                <tr>
+                    <td>Standard</td>
+                    <td>2 Core</td>
+                    <td>40GB</td>
+                    <td>4GB</td>
+                    <td>400GB</td>
+                    <td>1</td>
+                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                     <td><span class="price-windows"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                </tr>
+                <tr>
+                    <td>Business</td>
+                    <td>2 Core</td>
+                    <td>60GB</td>
+                    <td>6GB</td>
+                    <td>500GB</td>
+                    <td>1</td>
+                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                    <td><span class="price-windows"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                </tr>
+                <tr>
+                    <td>Premium</td>
+                    <td>2 Core</td>
+                    <td>80GB</td>
+                    <td>8GB</td>
+                    <td>500GB</td>
+                    <td>1</td>
+                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                    <td><span class="price-windows"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                </tr>
+                <tr>
+                    <td>Elite</td>
+                    <td>4 Core</td>
+                    <td>100GB</td>
+                    <td>12GB</td>
+                    <td>750GB</td>
+                    <td>1</td>
+                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                    <td><span class="price-windows"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                </tr>
+                <tr>
+                    <td>Professional</td>
+                    <td>4 Core</td>
+                    <td>120GB</td>
+                    <td>18GB</td>
+                    <td>1TB</td>
+                    <td>1</td>
+                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                    <td><span class="price-windows"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
