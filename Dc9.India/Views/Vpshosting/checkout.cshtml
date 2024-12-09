@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<style>
+@*<style>
 
     .contai {
         display: flex;
@@ -98,11 +98,101 @@
             color: #4b90ff;
         }
 
-       
+
 
     .price {
         color: green;
         font-weight: bold;
+    }
+</style>*@
+<style>
+   
+    .main {
+        display: flex;
+    }
+
+    .aside2 {
+        padding-left: 50px;
+    }
+
+    .aside3 {
+        padding-left: 50px;
+    }
+
+        .aside1 a, .aside2 a, .aside3 a {
+            padding-right: 10px;
+        }
+
+    .content {
+        margin-top: 10px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .btn {
+        border-radius: 25px;
+        background-color: blue;
+        color: white;
+        padding: 10px;
+    }
+
+        .btn:hover {
+            background-color: grey;
+        }
+
+    .btn2 {
+        color: black;
+        border-radius: 25px;
+        padding: 10px;
+        text-decoration: none;
+    }
+
+        .btn2:hover {
+            background-color: grey;
+        }
+
+    .button3 {
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .button4 {
+        margin-left: 570px;
+        border-radius: 25px;
+    }
+
+    .contains {
+        text-align: center;
+        padding-left: 60px;
+        color: blue;
+    }
+
+    .contents {
+        margin-top: 70px;
+        p
+
+    {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    }
+
+    .btn3 {
+        color: black;
+        padding-left: 220px;
+    }
+
+    .side {
+        padding-left: 320px;
+    }
+
+    .button {
+        color: blue;
+        text-align: center;
+        border-radius: 40px;
+        padding-left: 110px;
+        padding-right: 110px;
     }
 </style>
 
@@ -127,7 +217,7 @@
     </div>
 </section>
 <!-- end page title section -->
-<div class="contai">
+<!--<div class="contai">
     <div class="lefts">
         <div class="cart">
             <div class="info">
@@ -162,46 +252,107 @@
                 <div>
                     <h3>Cloud VPS</h3>
                     <p><span class="price">$33/mo</span> <del>$110/mo</del> -70% for 3 mos</p>
-                    <small>@*Server Type: 6 vCPUs, 24GB Memory, 540GB Storage*@</small>
+                    <small>-->@*Server Type: 6 vCPUs, 24GB Memory, 540GB Storage*@<!--</small>
                 </div>
             </div>
 
             <div class="cart-summary">
                 <div class="summary">
                     <p>Antivirus A : <span class="price">$3</span></p>
-                    <p>Antivirus B: <span class="price">$5</span></p>
+                    <p>Antivirus B: <span class="price">$5</span></p>-->
                     @*<small>Does not include tax or costs based on usage.</small>*@
-                </div>
+                <!--</div>
             </div>
-                <button class="btn btn-very-small btn-rounded btn-black box-shadow-dark m-4" onclick="SavePlan()">Place your order</button>
+            <button class="btn btn-very-small btn-rounded btn-black box-shadow-dark m-4" onclick="SavePlan()">Place your order</button>
         </div>
     </div>
-</div>
-<script>
-    function SavePlan() {
-        if ($("#txtCardNumber").val() == '') {
-            alert('Please select Card Number')
-            $("#txtCardNumber").focus()
-        }
-        else if ($("#txtExpDate").val() == '') {
-            alert('Please select Exipery Date')
-            $("#txtExpDate").focus()
-        }
-        else if ($("#txtCCV").val() == '') {
-            alert('Please select Card CCV')
-            $("#txtCCV").focus()
-        }
-        else if ($("#txtFName").val() == '') {
-            alert('Please select First Name')
-            $("#txtFName").focus()
-        }
-        else if ($("#txtLName").val() == '') {
-            alert('Please select Last Name')
-            $("#txtLName").focus()
-        }
-        else {
-            alert('Your Payment has been done ...')
-            $(window.location).attr("href", "/Home/UserPlans");
-        }
-    }
-</script>
+</div>-->
+<div class="contai">
+    <h3>Dc9 India</h3>
+    <h1>Secure Checkout</h1>
+    <div class="main">
+        <div class="aside1"><a href="#"><i class="bi bi-check-circle"></i></a>30-day money-back guarantee</div>
+        <div class="aside2"><a href="#"><i class="fa-solid fa-user-clock"></i></a>24/7 Expert Hosting Support</div>
+        <div class="aside3"><a href="#"><i class="bi bi-shield-lock"></i></a>SSL secure payment</div>
+    </div>
+    <div class="content">
+         <div class="contain row">
+            <div class="col-sm-8">
+                <h3>Payment Method</h3>
+                <form>
+                    <button class="button3"><img src="img/card.jpg" alt="credit card" height="35" width="40"> Credit Card</button>
+                    <img src="img/payimg.jpg" alt="pay" height="60" width="60"><br><br>
+                    <input type="card number" id="card number" name="card number" placeholder="Card Number">
+                    <input type="expiry date" id="expiry date" name="expiry date" placeholder="Expiry Date">
+                    <input type="ccv" id="ccv" name="ccv" placeholder="CCV"><br><br>
+                    <input type="first name" id="first name" name="first name" placeholder="First Name">
+                    <input type="last name" id="last name" name="last name" placeholder="Last Name"><br><br>
+                    <input type="street address" id="street address" name="street address" placeholder="Street Address" required><br><br>
+                    <input type="country" id="country" name="country" placeholder="Country">
+                    <input type="region" id="region" name="region" placeholder="Region">
+                    <input type="city" id="city" name="city" placeholder="City"><br><br>
+                    <input type="billing zip code" id="billing zip code" name="billing zip code" placeholder="Billing Zip Code"><br><br>
+                    <button class="button4">save</button><br><br>
+                    <input type="special instructions" id="special instructions" name="special instructions" placeholder="Special Instructions">
+                    <div>
+                        <p><i class="bi bi-square"></i> I have read and agree to a Liquid Web's Terms of Service, Acceptable Use Policy, and acknowledgement receipt of the privacy policy</p>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <div class="cart">
+                    <h2>Cart</h2>
+                    <div class="cart-item">
+                        <div>
+                            <h3>Cloud VPS</h3>
+                            <p><span class="price">$33/mo</span> <del>$110/mo</del> -70% for 3 mos</p>
+                            <small>
+                                Server Type: 6 vCPUs, 24GB Memory, 540GB Storage
+                                </small>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary">
+                        <p>Antivirus A : <span class="price">$3</span></p>
+                        <p>Antivirus B: <span class="price">$5</span></p>
+                                <small>Does not include tax or costs based on usage.</small>
+                                </div>
+                        </div>
+                        <button class="btn btn-very-small btn-rounded btn-black box-shadow-dark m-4" onclick="SavePlan()">Place your order</button>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <script>
+                    function SavePlan() {
+                        //if ($("#txtCardNumber").val() == '') {
+                        //    alert('Please select Card Number')
+                        //    $("#txtCardNumber").focus()
+                        //}
+                        //else if ($("#txtExpDate").val() == '') {
+                        //    alert('Please select Exipery Date')
+                        //    $("#txtExpDate").focus()
+                        //}
+                        //else if ($("#txtCCV").val() == '') {
+                        //    alert('Please select Card CCV')
+                        //    $("#txtCCV").focus()
+                        //}
+                        //else if ($("#txtFName").val() == '') {
+                        //    alert('Please select First Name')
+                        //    $("#txtFName").focus()
+                        //}
+                        //else if ($("#txtLName").val() == '') {
+                        //    alert('Please select Last Name')
+                        //    $("#txtLName").focus()
+                        //}
+                        //else {
+                        //    alert('Your Payment has been done ...')
+                        //    $(window.location).attr("href", "/Home/UserPlans");
+                        //}
+                        $(window.location).attr("href", "/UserLogin/Login");
+
+                    }
+                </script>

@@ -187,7 +187,8 @@
             </div>
         </div>-->
         <!-- start navigation -->
-        <nav class="navbar navbar-default bootsnav navbar-top white-link header-dark background-transparent nav-box-width padding-four-lr navbar-expand-lg">
+        <nav class="navbar navbar-default bootsnav background-white header-light navbar-top navbar-expand-lg nav-box-width">
+
             <div class="container-fluid nav-header-container">
                 <!-- start logo -->
                 <div class="col col-md-auto col-lg-2 pl-0">
@@ -203,24 +204,24 @@
                     </button>
                     <div class="navbar-collapse collapse justify-content-center" id="navbar-collapse-toggle-1">
                         <!--<ul class="nav navbar-nav alt-font text-normal">
-                            <!-- start menu item -->
-                            <!--<li><a href="../Home/AboutUs" class="inner-link">About us</a></li>-->
-                            <!-- end menu item -->
-                            <!-- start menu item -->
-                            <!--<li><a href="../Home/ContactUs" class="inner-link">Contact Us</a></li>-->
-                            <!-- end menu item -->
-                            <!-- start menu item -->
-                            <!--<li><a href="#blog" class="inner-link">Blog</a></li>-->
-                            <!-- end menu item -->
-                            <!-- start menu item -->
-                            <!--<li><a href="#features" class="inner-link">Features</a></li>-->
-                            <!-- end menu item -->
-                            <!-- start menu item -->
-                            <!--<li><a href="http://www.themezaa.com/html/pofo/documentation/" target="_blank">Documentation</a></li>
-                            <!-- end menu item -->
-                            <!-- start menu item -->
-                            <!--<li><a href="#Support">Support</a></li>-->
-                            <!-- end menu item -->
+                        <!-- start menu item -->
+                        <!--<li><a href="../Home/AboutUs" class="inner-link">About us</a></li>-->
+                        <!-- end menu item -->
+                        <!-- start menu item -->
+                        <!--<li><a href="../Home/ContactUs" class="inner-link">Contact Us</a></li>-->
+                        <!-- end menu item -->
+                        <!-- start menu item -->
+                        <!--<li><a href="#blog" class="inner-link">Blog</a></li>-->
+                        <!-- end menu item -->
+                        <!-- start menu item -->
+                        <!--<li><a href="#features" class="inner-link">Features</a></li>-->
+                        <!-- end menu item -->
+                        <!-- start menu item -->
+                        <!--<li><a href="http://www.themezaa.com/html/pofo/documentation/" target="_blank">Documentation</a></li>
+                        <!-- end menu item -->
+                        <!-- start menu item -->
+                        <!--<li><a href="#Support">Support</a></li>-->
+                        <!-- end menu item -->
                         <!--</ul>-->
                         <ul id="accordion" class="nav navbar-nav no-margin alt-font text-normal" data-in="fadeIn" data-out="fadeOut">
                             <!-- start menu item -->
@@ -243,8 +244,8 @@
                                             <!-- start sub menu item  -->
                                             <ul>
                                                 <li class="dropdown-header">Self-Managed VPS Servers</li>
-                                                <li><a href="../Vpshosting/ManagedVps">VPS Windows Server (Self-Managed)</a></li>
-                                                <li><a href="../Vpshosting/ManagedVps">VPS Linux Server (Self-Managed)</a></li>
+                                                <li><a href="../Vpshosting/WindowVPSSelfManagedSP">VPS Windows Server (Self-Managed)</a></li>
+                                                <li><a href="../Vpshosting/LinuxVPSSelfManagedSP">VPS Linux Server (Self-Managed)</a></li>
                                             </ul>
                                             <!-- end sub menu item  -->
                                         </li>
@@ -272,8 +273,8 @@
                                             <!-- start sub menu item  -->
                                             <ul>
                                                 <li class="dropdown-header">Self-Managed Dedicated Servers</li>
-                                                <li><a href="../Vpshosting/ManagedVps">Dedicated Windows Server (Self-Managed)</a></li>
-                                                <li><a href="../Vpshosting/ManagedVps">Dedicated Linux Server (Self-Managed)</a></li>
+                                                <li><a href="../Vpshosting/WindowDedicatedSelfManagedSP">Dedicated Windows Server (Self-Managed)</a></li>
+                                                <li><a href="../Vpshosting/LinuxDedicatedSelfManagedSP">Dedicated Linux Server (Self-Managed)</a></li>
                                             </ul>
                                             <!-- end sub menu item  -->
                                         </li>
@@ -298,8 +299,8 @@
                     </div>
                 </div>
                 @*<div class="col col-md-auto col-lg-2 pr-0 text-right">
-                    <a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-very-small btn-rounded btn-white box-shadow-dark">Buy Now<i class="fas fa-shopping-cart"></i></a>
-                </div>*@
+                        <a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-very-small btn-rounded btn-white box-shadow-dark">Buy Now<i class="fas fa-shopping-cart"></i></a>
+                    </div>*@
             </div>
         </nav>
         <!-- end navigation -->
@@ -410,6 +411,11 @@
                 }
             }
         </script>*@
+    <script>
+                function BuyNow(id) {
+                    $(window.location).attr("href", "/Vpshosting/Cart?id=" + id);
+        }
+        </script>
     @*<script type="text/javascript" src="../Content/js/jquery.js"></script>*@
     <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.js")"></script>
     @*<script type="text/javascript" src="../Content/js/modernizr.js"></script>*@

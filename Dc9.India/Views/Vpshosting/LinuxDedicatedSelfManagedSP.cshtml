@@ -4,74 +4,74 @@
     Layout = "~/Views/Shared/_LayOut.cshtml";
 }
 <style>
-        /*body {
+    /*body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
     */
-        .table-container {
-            padding: 20px;
-            overflow-x: auto;
+    .table-container {
+        padding: 20px;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 10px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 0 auto;
-            background-color: #fff;
+        table th, table td {
+            color: black;
         }
 
-            table th, table td {
-                border: 1px solid #ddd;
-                text-align: center;
-                padding: 10px;
-            }
-
-            table th, table td {
-                color: black;
-            }
-
-            table th {
-                background-color: #151615;
-                color: white;
-            }
-
-        .price-linux {
-            color: #28a745;
-            font-weight: bold;
+        table th {
+            background-color: #151615;
+            color: white;
         }
 
-        .price-windows {
-            color: #dc3545;
-            font-weight: bold;
+    .price-linux {
+        color: #28a745;
+        font-weight: bold;
+    }
+
+    .price-windows {
+        color: #dc3545;
+        font-weight: bold;
+    }
+
+    .btn-signup {
+        background-color: #007bff;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+        .btn-signup:hover {
+            background-color: #0056b3;
+        }
+
+    @@media (max-width: 768px) {
+        table th, table td {
+            font-size: 12px;
+            padding: 8px;
         }
 
         .btn-signup {
-            background-color: #007bff;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-            cursor: pointer;
+            font-size: 12px;
+            padding: 5px 8px;
         }
-
-            .btn-signup:hover {
-                background-color: #0056b3;
-            }
-
-        @@media (max-width: 768px) {
-            table th, table td {
-                font-size: 12px;
-                padding: 8px;
-            }
-
-            .btn-signup {
-                font-size: 12px;
-                padding: 5px 8px;
-            }
-        }
+    }
 </style>
 <section class="p-0 one-third-screen position-relative wow fadeIn" style="height:500px;">
     <div class="opacity-medium bg-extra-dark-gray z-index-0"></div>
@@ -98,7 +98,7 @@
             <!-- start slider item -->
             <div class="swiper-slide cover-background one-third-screen" style="background-image: url('../Content/images/hosting1.jpg'); "></div>
             <!-- end slider item -->
-       
+
         </div>
         <div class="swiper-pagination swiper-auto-pagination d-none"></div>
     </div>
@@ -119,75 +119,233 @@
             <thead>
                 <tr>
                     <th>Plans</th>
-                    <th>No. of Core</th>
-                    <th>SSD</th>
-                    <th>RAM</th>
+                    <th>Price</th>
+                    <th>HDD</th>
+                    <th>Memory</th>
                     <th>Bandwidth/Mo</th>
                     <th>Dedicated IP's</th>
-                    <th>Linux</th>
-                    <th>Windows</th>
+                    <th>Buy Plan</th>
+                    <th>Detail</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Basic</td>
-                    <td>1 Core</td>
-                    <td>30GB</td>
-                    <td>2GB</td>
-                    <td>200GB</td>
-                    <td>1</td>
-                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                    <td>₹9777/month</td>
+                    <td>1TB</td>
+                    <td>16 GB DDR3/4 Memory</td>
+                    <td>2000GB</td>
+                    <td>2</td>
+                    <td><span class="price-linux"></span> <button onclick="BuyNow('1')" class="btn btn-transparent-black btn-small text-extra-small">Buy Now</button></td>
+                    <td>
+                        <!-- Trigger to collapse content -->
+                        <a data-toggle="collapse" href="#accordion-one-link1" aria-expanded="false">
+                            <div class="panel-title font-weight-500 text-uppercase position-relative padding-20px-right">
+                                <span class="">
+                                    <i class="ti-plus"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr id="accordion-one-link1" class="panel-collapse collapse">
+                    <td colspan="8">
+                        <!-- Adjust colspan to span all columns in the row -->
+                        <div class="panel-body">
+                            <ul class="list-style-11">
+                                <li>₹9777/month</li>
+                                <li>
+                                    Intel Xeon E3-1220L (Dual Core)
+                                </li>
+                                <li>
+                                    1 TB Enterprise HDD
+                                </li>
+                                <li>
+                                    16 GB DDR3/4 Memory
+                                </li>
+
+                                <li>
+                                    2000 GB Bandwidth
+                                </li>
+                                <li>
+                                    Operating Systems Choice
+                                </li>
+                                <li>Fully Managed*</li>
+                                <li>Free Bonuses</li>
+                                <li>
+                                    2 Dedicated IPs
+                                </li>
+                                <li>
+                                    Free Migration
+                                </li>
+                                <li>
+                                    Free SSL (Let's Encrypt)
+                                </li>
+                                <li>
+                                    Security
+                                </li>
+                                <li>
+                                    Server firewall and monitoring
+                                </li>
+                                <li>
+                                    DDoS attack prevention
+                                </li>
+                                <li>
+                                    Service and Support
+                                </li>
+                                <li>
+                                    24/7 Support
+                                </li>
+                                <li>99.9% Uptime Guarantee</li>
+                            </ul>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Standard</td>
-                    <td>2 Core</td>
-                    <td>40GB</td>
-                    <td>4GB</td>
-                    <td>400GB</td>
-                    <td>1</td>
-                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
-                     <td><span class="price-windows"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                    <td>₹13999/month</td>
+                    <td>2TB</td>
+                    <td>16 GB DDR3/4 Memory</td>
+                    <td>2000GB</td>
+                    <td>2</td>
+                    <td><span class="price-linux"></span> <button onclick="BuyNow('1')" class="btn btn-transparent-black btn-small text-extra-small">Buy Now</button></td>
+                    <td>
+                        <!-- Trigger to collapse content -->
+                        <a data-toggle="collapse" href="#accordion-one-link2" aria-expanded="false">
+                            <div class="panel-title font-weight-500 text-uppercase position-relative padding-20px-right">
+                                <span>
+                                    <i class="ti-plus"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr id="accordion-one-link2" class="panel-collapse collapse">
+                    <td colspan="8">
+                        <!-- Adjust colspan to span all columns in the row -->
+                        <div class="panel-body">
+                            <ul class="list-style-11">
+                                <li>₹13999/month</li>
+                                <li>
+                                    Intel Xeon E3-1220 (Quad Core)
+                                </li>
+                                <li>
+                                    2 TB Enterprise HDD
+                                </li>
+                                <li>
+                                    16 GB DDR3/4 Memory
+                                </li>
+
+                                <li>
+                                    2000 GB Bandwidth
+                                </li>
+                                <li>
+                                    Operating Systems Choice
+                                </li>
+                                <li>Fully Managed*</li>
+                                <li>Free Bonuses</li>
+                                <li>
+                                    2 Dedicated IPs
+                                </li>
+                                <li>
+                                    Free Migration
+                                </li>
+                                <li>
+                                    Free SSL (Let's Encrypt)
+                                </li>
+                                <li>
+                                    Security
+                                </li>
+                                <li>
+                                    Server firewall and monitoring
+                                </li>
+                                <li>
+                                    DDoS attack prevention
+                                </li>
+                                <li>
+                                    Service and Support
+                                </li>
+                                <li>
+                                    24/7 Support
+                                </li>
+                                <li>99.9% Uptime Guarantee</li>
+                            </ul>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Business</td>
-                    <td>2 Core</td>
-                    <td>60GB</td>
-                    <td>6GB</td>
-                    <td>500GB</td>
-                    <td>1</td>
-                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
-                    <td><span class="price-windows"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                    <td>Enterprise</td>
+                    <td>₹26999/month</td>
+                    <td>2TB</td>
+                    <td>32 GB DDR3/4 Memory</td>
+                    <td>3000GB</td>
+                    <td>2</td>
+                    <td><span class="price-linux"></span> <button onclick="BuyNow('1')" class="btn btn-transparent-black btn-small text-extra-small">Buy Now</button></td>
+                    <td>
+                        <!-- Trigger to collapse content -->
+                        <a data-toggle="collapse" href="#accordion-one-link3" aria-expanded="false">
+                            <div class="panel-title font-weight-500 text-uppercase position-relative padding-20px-right">
+                                <span>
+                                    <i class="ti-plus"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </td>
                 </tr>
-                <tr>
-                    <td>Premium</td>
-                    <td>2 Core</td>
-                    <td>80GB</td>
-                    <td>8GB</td>
-                    <td>500GB</td>
-                    <td>1</td>
-                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
-                    <td><span class="price-windows"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
+                <tr id="accordion-one-link3" class="panel-collapse collapse">
+                    <td colspan="8">
+                        <!-- Adjust colspan to span all columns in the row -->
+                        <div class="panel-body">
+                            <ul class="list-style-11">
+                                <li>₹26999/month</li>
+                                <li>
+                                    2 Intel Xeon E5-2620 (Hexa/Octa Core)
+                                </li>
+                                <li>
+                                    2 TB Enterprise HDD
+                                </li>
+                                <li>
+                                    32 GB DDR3/4 Memory
+                                </li>
+
+                                <li>
+                                    3000 GB Bandwidth
+                                </li>
+                                <li>
+                                    Operating Systems Choice
+                                </li>
+                                <li>Fully Managed*</li>
+                                <li>Free Bonuses</li>
+                                <li>
+                                    2 Dedicated IPs
+                                </li>
+                                <li>
+                                    Free Migration
+                                </li>
+                                <li>
+                                    Free SSL (Let's Encrypt)
+                                </li>
+                                <li>
+                                    Security
+                                </li>
+                                <li>
+                                    Server firewall and monitoring
+                                </li>
+                                <li>
+                                    DDoS attack prevention
+                                </li>
+                                <li>
+                                    Service and Support
+                                </li>
+                                <li>
+                                    24/7 Support
+                                </li>
+                                <li>99.9% Uptime Guarantee</li>
+                            </ul>
+                        </div>
+                    </td>
                 </tr>
-                <tr>
-                    <td>Elite</td>
-                    <td>4 Core</td>
-                    <td>100GB</td>
-                    <td>12GB</td>
-                    <td>750GB</td>
-                    <td>1</td>
-                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
-                    <td><span class="price-windows"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
-                </tr>
-                <tr>
-                    <td>Professional</td>
-                    <td>4 Core</td>
-                    <td>120GB</td>
-                    <td>18GB</td>
-                    <td>1TB</td>
-                    <td>1</td>
-                    <td><span class="price-linux"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
-                    <td><span class="price-windows"></span> <a href="#divMail"><button class="btn btn-transparent-black btn-small text-extra-small">Sign Up</button></a></td>
-                </tr>
+
             </tbody>
         </table>
     </div>

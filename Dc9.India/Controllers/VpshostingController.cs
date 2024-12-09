@@ -19,14 +19,15 @@ namespace Dc9.India.Controllers
         }
         public ActionResult checkout()
         {
-            if (Session["UserId"] == null)
-            {
-                return Redirect("~/UserLogin/Login");
-            }
-            else
-            {
-                return View();
-            }
+            //if (Session["UserId"] == null)
+            //{
+            //    return Redirect("~/UserLogin/Login");
+            //}
+            //else
+            //{
+            //    return View();
+            //}
+            return View();
         }
         public ActionResult LinuxDedicatedSelfManagedSP()
         {
