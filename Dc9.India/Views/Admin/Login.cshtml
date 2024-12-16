@@ -1,0 +1,92 @@
+﻿
+@{
+    Layout = null;
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<section class="wow fadeIn bg-light-gray">
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6 wow fadeIn">
+                <div class="padding-fifteen-all bg-white border-radius-6 lg-padding-seven-all">
+                    <div class="text-extra-dark-gray alt-font text-large font-weight-600 margin-30px-bottom">Login</div>
+                    <div>
+                        <div id="success-contact-form-3" class="mx-0"></div>
+                        <label for="username">Username:</label>
+                        <input type="text" id="txtUserCode" name="txtUserCode" class="form-control">
+                        <label for="password">Password:</label>
+                        <input type="password" id="txtPassword" class="form-control" name="txtPassword">
+                        <button class="btn btn-small border-radius-4 btn-black" id="btnLogin" type="button">Login</button><br />
+                        Don't have an account?<a href="../Home/Registration">Sign up</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        ClearData();
+        $("#btnLogin").click(function () {
+            Login();
+            return false;
+        });
+        $("#btnLogin").keydown(function (e) {
+            if (e.which == 13) {
+                Login();
+                return false;
+            }
+        });
+        $("#txtPassword").keydown(function (e) {
+            if (e.which == 13) {
+                Login();
+                return false;
+            }
+        });
+    });
+
+
+    function Login() {
+        try {
+            if ($("#txtUserCode").val() == "") {
+                alert("Please enter User Code.!");
+                $("#txtUserCode").focus();
+            }
+            else if ($("#txtPassword").val() == "") {
+                alert("Please enter PASSWORD.!");
+                $("#txtPassword").focus();
+            }
+            else {
+                $.post("/UserLogin/LoginDetail",
+                    {
+                        UserCode: $("#txtUserCode").val(),
+                        Password: $("#txtPassword").val()
+                    }, function (data) {
+                        if (data.Result == "Success") {
+                            alert("You've successfully logged in.");
+                            $(window.location).attr("href", "/Vpshosting/checkout");
+                        }
+                        else {
+                            $("#txtPassword").val("");
+                            alert(data.Result);
+                        }
+                    }).fail(function (xhr, err) {
+                        var responseTitle = $(xhr.responseText).filter('title').get(0);
+                        alert($(responseTitle).text() + "\n" + AjaxError(xhr, err));
+                    });
+            }
+        }
+        catch (e) {
+            alert("Error In Login: " + e.message);
+        }
+    }
+    function ClearData() {
+        $("#txtUserCode").val("");
+        $("#txtPassword").val("");
+    }
+</script>

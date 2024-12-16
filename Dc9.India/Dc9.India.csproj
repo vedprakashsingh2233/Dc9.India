@@ -4009,6 +4009,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Controllers\VpshostingController.cs" />
@@ -4113,6 +4114,7 @@
     <Content Include="bin\roslyn\vbc.exe.config" />
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="libman.json" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayOut.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -4147,6 +4149,7 @@
     <Content Include="Views\Vpshosting\WindowDedicatedSelfManagedSP.cshtml" />
     <Content Include="Views\Vpshosting\LinuxVPSSelfManagedSP.cshtml" />
     <Content Include="Views\Vpshosting\WindowVPSSelfManagedSP.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
