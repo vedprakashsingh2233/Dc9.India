@@ -4003,6 +4003,8 @@
     <Content Include="revolution\php\twitter\RestApi.php" />
     <Content Include="revolution\php\vimeo\class-vimeo.php" />
     <Content Include="revolution\php\youtube\class-youtube.php" />
+    <Content Include="Scripts\CategoryMaster.js" />
+    <Content Include="Scripts\Login.js" />
     <Content Include="SQLScript.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -4150,6 +4152,8 @@
     <Content Include="Views\Vpshosting\LinuxVPSSelfManagedSP.cshtml" />
     <Content Include="Views\Vpshosting\WindowVPSSelfManagedSP.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Shared\_Admin_LayOut.cshtml" />
+    <Content Include="Views\Admin\CategoryMaster.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4159,7 +4163,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

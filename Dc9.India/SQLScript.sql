@@ -78,3 +78,112 @@ JOIN AdditionItem t2 ON t2.ID = split_ids.value
 go
 
 insert into OrderMaster values(3,1,'1,2',43,1,getdate())
+go
+CREATE proc [dbo].[USP_InsertUpdateDelCategoryMaster]
+@Id Int=0,
+@CategoryName nvarchar(100)=null ,
+@IsActive bit=1,
+@Action varchar(20)
+
+As 
+Declare @msg varchar(100)
+Begin
+	 If(@Action='Insert')
+		 Begin
+		 if Exists(select 1 from CategoryMaster where CategoryName=@CategoryName )
+		 Begin
+			set @msg='Record Already Exist ..'
+			select @msg as Message
+		 End
+		 Else
+			Begin
+
+				Insert Into CategoryMaster(CategoryName,IsActive)values(@CategoryName,@IsActive)
+				set @msg='Record Inserted Successfully'
+				select @msg as Message
+			End
+		 End
+	 Else  If(@Action='Update')
+		 Begin
+			 if Exists(select 1 from CategoryMaster where CategoryName=@CategoryName and  Id!=@Id)
+			 Begin
+				set @msg='Record Already Exist ..'
+				select @msg as Message
+			 End
+			 Else
+				 Begin
+					Update CategoryMaster set CategoryName=@CategoryName,IsActive=@IsActive where Id=@Id
+					set @msg='Record Updated Successfully'
+					select @msg as Message
+				End
+		 End
+	 Else  If(@Action='Select')
+		 Begin
+			Select Id,CategoryName,IsActive from CategoryMaster
+		 End
+	  Else  If(@Action='Edit')
+		 Begin
+			Select * from CategoryMaster where Id=@Id
+		 End
+	 Else  If(@Action='Delete')
+		 Begin
+			Delete From CategoryMaster where Id=@Id
+			set @msg='Record Deleted Successfully'
+			select @msg as Message
+		 End
+	
+End
+
+go
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[LoginDetails](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [int] NULL,
+	[UserType] [nvarchar](10) NOT NULL,
+	[UserCode]  AS ('U'+right('00'+CONVERT([varchar](2),[id]),(4))) PERSISTED,
+	[Password] [nvarchar](50) NULL,
+	[createDate] [datetime] NULL,
+	[updateDate] [datetime] NULL,
+	[IsActive] [bit] NULL
+) ON [PRIMARY]
+go
+insert into LoginDetails(UserId,UserType,Password,createDate,IsActive)values(0,'Admin','Admin',GETDATE(),1)
+go
+cREATE proc [dbo].[USP_GetLoginDetail] 
+@UserCode nvarchar(10)=null,
+@Passwrd nvarchar(50)=null,
+@Id int =0,
+@Isactive int=0,
+@Action varchar(20)
+As
+Declare @msg nvarchar(100)
+Begin
+ If(@Action='Login')
+	Begin
+		If  Exists(Select 1 from LoginDetails where UserCode=@UserCode and IsActive=0)
+			Begin
+				Select '1' as Status
+			End
+		Else If Not Exists(Select 1 from LoginDetails where UserCode=@UserCode and Password=@Passwrd and IsActive=1)
+			Begin
+				Select '2' as Status
+			End
+		Else
+			Begin
+				Select UserType,UserId,'3' as Status from  LoginDetails where UserCode=@UserCode
+			End
+	ENd
+ Else If(@Action='GetUsers')
+	 Begin
+		Select Isnull(SD.Name,'Admin') as Name,LD.UserType,LD.Password,Format(LD.createDate,'dd-MMM-yyyy') as createDate
+		,LD.id,LD.IsActive,LD.UserCode from LoginDetails LD Left Join StudentDetail SD on LD.UserId=SD.StudentID
+	 End
+Else If(@Action='Avtive')
+	 Begin
+		Update LoginDetails set IsActive=@Isactive,updateDate=getdate() where id=@Id
+		Select '1' as Status
+	 End
+End
+

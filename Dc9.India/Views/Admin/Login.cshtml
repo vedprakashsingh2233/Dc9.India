@@ -3,90 +3,65 @@
     Layout = null;
 }
 
+<style>
+    .bg-image-vertical {
+        position: relative;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: auto 100%;
+    }
+
+    @@media (min-width: 1025px) {
+        .h-custom-2 {
+            height: 100%;
+        }
+    }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<section class="wow fadeIn bg-light-gray">
+<section class="vh-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 text-black">
 
+                <div class="px-5 ms-xl-4">
+                    <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
+                    <span class="h1 fw-bold mb-0"><img src="~/Assets/Image/logo.png" /></span>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-6 wow fadeIn">
-                <div class="padding-fifteen-all bg-white border-radius-6 lg-padding-seven-all">
-                    <div class="text-extra-dark-gray alt-font text-large font-weight-600 margin-30px-bottom">Login</div>
-                    <div>
-                        <div id="success-contact-form-3" class="mx-0"></div>
-                        <label for="username">Username:</label>
-                        <input type="text" id="txtUserCode" name="txtUserCode" class="form-control">
-                        <label for="password">Password:</label>
-                        <input type="password" id="txtPassword" class="form-control" name="txtPassword">
-                        <button class="btn btn-small border-radius-4 btn-black" id="btnLogin" type="button">Login</button><br />
-                        Don't have an account?<a href="../Home/Registration">Sign up</a>
-
-                    </div>
                 </div>
+
+                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4">
+
+                    <form style="width: 23rem;">
+
+                        <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log In</h3>
+
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label" for="txtUserCode">User Code</label>
+                            <input type="text" id="txtUserCode" class="form-control form-control-lg" placeholder="UserCode" />
+                        </div>
+
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label" for="txtPassword">Password</label>
+                            <input type="password" id="txtPassword" class="form-control form-control-lg" placeholder="Password" />
+                        </div>
+
+                        <div class="pt-1 mb-4">
+                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-info btn-lg btn-block" id="btnLogin" type="button">Login</button>
+                        </div>
+
+
+
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="col-sm-6 px-0 d-none d-sm-block">
+                <img src="~/Assets/Image/LibraryIMg.png" alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
             </div>
         </div>
-
     </div>
 </section>
-
-<script>
-    $(document).ready(function () {
-        ClearData();
-        $("#btnLogin").click(function () {
-            Login();
-            return false;
-        });
-        $("#btnLogin").keydown(function (e) {
-            if (e.which == 13) {
-                Login();
-                return false;
-            }
-        });
-        $("#txtPassword").keydown(function (e) {
-            if (e.which == 13) {
-                Login();
-                return false;
-            }
-        });
-    });
-
-
-    function Login() {
-        try {
-            if ($("#txtUserCode").val() == "") {
-                alert("Please enter User Code.!");
-                $("#txtUserCode").focus();
-            }
-            else if ($("#txtPassword").val() == "") {
-                alert("Please enter PASSWORD.!");
-                $("#txtPassword").focus();
-            }
-            else {
-                $.post("/UserLogin/LoginDetail",
-                    {
-                        UserCode: $("#txtUserCode").val(),
-                        Password: $("#txtPassword").val()
-                    }, function (data) {
-                        if (data.Result == "Success") {
-                            alert("You've successfully logged in.");
-                            $(window.location).attr("href", "/Vpshosting/checkout");
-                        }
-                        else {
-                            $("#txtPassword").val("");
-                            alert(data.Result);
-                        }
-                    }).fail(function (xhr, err) {
-                        var responseTitle = $(xhr.responseText).filter('title').get(0);
-                        alert($(responseTitle).text() + "\n" + AjaxError(xhr, err));
-                    });
-            }
-        }
-        catch (e) {
-            alert("Error In Login: " + e.message);
-        }
-    }
-    function ClearData() {
-        $("#txtUserCode").val("");
-        $("#txtPassword").val("");
-    }
-</script>
+<script src="~/Scripts/Login.js"></script>

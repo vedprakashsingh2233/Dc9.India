@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "CategoryMaster";
+    Layout = "~/Views/Shared/_Admin_LayOut.cshtml";
+}
+
+<h2>Category Master</h2>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
+<div class="container row">
+    <div class="col-sm-4">
+        <label>Category Name</label>
+        <input type="hidden" id="hdId" value="0" />
+        <input type="text" id="txtCategoryName" placeholder="Please Enter Category Name" class="form-control" />
+    </div>
+
+    <div class="col-sm-4 mt-4">
+        <label>IsActive</label>
+        <input type="checkbox" id="chkIsActive" checked class="form-check-input" />
+    </div>
+    <div class="col-sm-6 p-2">
+        <button id="btnSave" class="btn btn-primary" onclick="InsertUpdate()">Save</button>
+    </div>
+</div>
+<div class="card-body">
+
+    <div class="table-responsive">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered" id="tblBookList">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Is Active</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="~/Scripts/CategoryMaster.js"></script>
+<script>
+    $(document).on('keypress', '.number', function (event) {
+        var charCode = (event.which) ? event.which : event.keyCode;
+        var inputValue = $(this).val();
+        // Allow only digits, one dot, and prevent multiple dots or negative signs
+        if ((charCode != 46 || inputValue.indexOf('.') != -1) && (charCode < 48 || charCode > 57)) {
+            event.preventDefault();
+        }
+    });
+</script>
