@@ -54,7 +54,7 @@ body {
     background-color: #fff;
     font-smoothing: antialiased;
     font-size: 14px;
-    color: #6A9C89;
+    color: #6f6f6f;
     font-weight: 400;
     line-height: 24px;
 }
@@ -9343,7 +9343,7 @@ header .left-nav .sidebar-part1 a.logo img {
 }
 
 .logo-holder img {
-    max-height: 26px;
+    max-height: 100px;
 }
 
 /* header animation */
