@@ -176,5 +176,125 @@ namespace Dc9.India.Controllers
             return Json(dic);
         }
         #endregion Category Master
+
+        #region Sub Category Master
+        public ActionResult SubCategoryMaster()
+        {
+            if (Session["UserId"] == null)
+            {
+                return Redirect("~/Admin/Login");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public JsonResult InsertUpdateSubCategoryMaster(int Id, string CategoryName, string IsActive)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            string Action = "";
+            if (Id != 0)
+            {
+                Action = "Update";
+            }
+            else
+            {
+                Action = "Insert";
+            }
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action",Action },
+                    {"@Id",Id.ToString().Trim() },
+                    {"@CategoryName",CategoryName.Trim() },
+                    {"@IsActive",IsActive.Trim() },
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelCategoryMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Result"] = dt.Rows[0]["Message"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult ShowSubCategoryList()
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Select" },
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelCategoryMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Data"] = JsonConvert.SerializeObject(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult EditSubCategory(string Id)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Edit" },
+                    {"@Id",Id},
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelCategoryMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Record"] = JsonConvert.SerializeObject(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult DeleteSubCategory(string Id)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Delete" },
+                    {"@Id",Id},
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelCategoryMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Result"] = dt.Rows[0]["Message"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        #endregion Sub Category Master
     }
 }
