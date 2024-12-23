@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "SubCategoryMaster";
+    Layout = "~/Views/Shared/_Admin_LayOut.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<h2>SUB CATEGORY MASTER</h2>
+<div class="container row">
+    <div class="col-sm-4">
+        <input type="hidden" id="hdId" value="0" />
+        <label>Category</label>
+        <select class="form-control" id="ddlCategoryId">
+        </select>
+    </div>
+    <div class="col-sm-4">
+        <label>Sub Category Name</label>
+        <input type="text" id="txtSubCategoryName" placeholder="Please Enter Sub Category Name" class="form-control" />
+    </div>
+
+    <div class="col-sm-4">
+        <label>Heading1</label>
+        <input type="text" id="txtHeading1" placeholder="Please Enter Heading 1" class="form-control" />
+    </div>
+    <div class="col-sm-4">
+        <label>Heading2</label>
+        <input type="text" id="txtHeading2" placeholder="Please Enter Heading 2" class="form-control" />
+    </div>
+    <div class="col-sm-4">
+        <label>Heading3</label>
+        <input type="text" id="txtHeading3" placeholder="Please Enter Heading 3" class="form-control" />
+    </div>
+    <div class="col-sm-4">
+        <label>Heading4</label>
+        <input type="text" id="txtHeading4" placeholder="Please Enter Heading 4" class="form-control" />
+    </div>
+
+    <div class="col-sm-4 mt-4">
+        <label>IsActive</label>
+        <input type="checkbox" id="chkIsActive" checked class="form-check-input" />
+    </div>
+    <div class="col-sm-6 p-2">
+        <button id="btnSave" class="btn btn-primary" onclick="InsertUpdate()">Save</button>
+    </div>
+</div>
+<div class="card-body">
+
+    <div class="table-responsive">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered" id="tblBookList">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Is Active</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Scripts/SubCategoryMaster.js"></script>

@@ -1,19 +1,43 @@
 ﻿
 $(document).ready(function () {
+    BindCategory();
     showRecord();
 });
+function BindCategory() { 
+    $.post("/Admin/ShowCategoryList",
+        {},
+        function (data) {
+            var jsonData = JSON.parse(data.Data);
+            $('#ddlCategoryId').html("").append('<option value="0">Select Category</option>');
+            $(jsonData).each(function () {
+                $('#ddlCategoryId').append('<option value=' + this.Id + '>' + this.CategoryName + '</option>');
+            });
+        }).fail(function (edata) {
+            alert("error while feching record.");
+        });
+};
+
 function InsertUpdate() {
-    if ($("#txtCategoryName").val() == "") {
-        alert('Please Enter Category Name');
-        $("#txtCategoryName").focus();
+    if ($("#ddlCategoryId").val() == "0") {
+        alert('Please Select Category ');
+        $("#ddlCategoryId").focus();
     }
-  
+    else if ($("#txtSubCategoryName").val() == "") {
+        alert('Please Enter Sub Category Name');
+        $("#txtSubCategoryName").focus();
+    }
+
 
     else {
-        $.post("/Admin/InsertUpdateCategoryMaster",
+        $.post("/Admin/InsertUpdateSubCategoryMaster",
             {
                 Id: $("#hdId").val(),
-                CategoryName: $("#txtCategoryName").val(),
+                SubCategoryName: $("#txtSubCategoryName").val(),
+                Heading1: $("#txtHeading1").val(),
+                Heading2: $("#txtHeading2").val(),
+                Heading3: $("#txtHeading3").val(),
+                Heading4: $("#txtHeading4").val(),
+                Category_Id_FK: $("#ddlCategoryId").val(),
                 IsActive: $("#chkIsActive").is(':checked') ? 1 : 0,
             },
             function (data) {
@@ -26,7 +50,7 @@ function InsertUpdate() {
     }
 }
 function showRecord() {
-    $.post("/Admin/ShowCategoryList",
+    $.post("/Admin/ShowSubCategoryList",
         {},
         function (data) {
             if (data.Data != undefined && data.Data != "") {
@@ -35,8 +59,9 @@ function showRecord() {
                 $('#tblBookList').DataTable({
                     data: jsonData,
                     columns: [
+                        { data: "SubCategoryName", title: "Sub Category Name" },
+                        { data: "Heading1", title: "Heading 1" },
                         { data: "CategoryName", title: "Category Name" },
-                        { data: "IsActive", title: "Is Active" },
                         {
                             render: function (data, type, row, meta) {
                                 return '<button onclick="EditRecord(\'' + row.Id + '\')" class="btn btn-success">Edit</button>';
@@ -62,15 +87,20 @@ function showRecord() {
 
 }
 function EditRecord(Id) {
-    $.post("/Admin/EditRecord",
+    $.post("/Admin/EditSubCategory",
         { Id: Id },
         function (data) {
             if (data.Result == "") {
                 var Data = JSON.parse(data.Record);
                 $.each(Data, function (index, Value) {
                     $('#hdId').val(Value.Id),
-                        $('#txtCategoryName').val(Value.CategoryName),
-                    $('#chkIsActive').prop('checked', Value.IsActive == 1 ? true : false);
+                        $('#txtSubCategoryName').val(Value.SubCategoryName),
+                        $('#ddlCategoryId').val(Value.Category_Id_FK),
+                        $('#txtHeading1').val(Value.Heading1),
+                        $('#txtHeading2').val(Value.Heading2),
+                        $('#txtHeading3').val(Value.Heading3),
+                        $('#txtHeading4').val(Value.Heading4),
+                        $('#chkIsActive').prop('checked', Value.IsActive == 1 ? true : false);
                 })
                 $('#btnSave').text('Update');
             }
@@ -80,8 +110,8 @@ function EditRecord(Id) {
         });
 }
 function DeleteRecord(Id) {
-    if (confirm("Do you want to delete this Category ?")) {
-        $.post("/Admin/DeleteRecord",
+    if (confirm("Do you want to delete this Sub Category ?")) {
+        $.post("/Admin/DeleteSubCategory",
             { Id: Id },
             function (data) {
                 if (data.Result != "") {
@@ -93,6 +123,11 @@ function DeleteRecord(Id) {
 }
 function ClearData() {
     $("#hdId").val("0");
-    $("#txtCategoryName").val("");
+    $("#txtSubCategoryName").val("");
+    $("#txtHeading1").val("");
+    $("#txtHeading2").val("");
+    $("#txtHeading3").val("");
+    $("#txtHeading4").val("");
+    $("#ddlCategoryId").val("0");
     $('#btnSave').text('Save');
 }

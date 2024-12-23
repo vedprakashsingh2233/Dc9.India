@@ -177,7 +177,7 @@ namespace Dc9.India.Controllers
         }
         #endregion Category Master
 
-        #region Sub Category Master
+        #region Sub Category Mater
         public ActionResult SubCategoryMaster()
         {
             if (Session["UserId"] == null)
@@ -189,7 +189,8 @@ namespace Dc9.India.Controllers
                 return View();
             }
         }
-        public JsonResult InsertUpdateSubCategoryMaster(int Id, string CategoryName, string IsActive)
+        public JsonResult InsertUpdateSubCategoryMaster(int Id, string SubCategoryName,string Heading1,string Heading2,string Heading3,string Heading4,
+            int Category_Id_FK ,string IsActive)
         {
             Dictionary<string, string> dic = new Dictionary<string, string>();
             dic["Result"] = "";
@@ -208,10 +209,15 @@ namespace Dc9.India.Controllers
                 {
                     {"@Action",Action },
                     {"@Id",Id.ToString().Trim() },
-                    {"@CategoryName",CategoryName.Trim() },
+                    {"@SubCategoryName",SubCategoryName.Trim() },
+                    {"@Heading1",Heading1.Trim() },
+                    {"@Heading2",Heading2.Trim() },
+                    {"@Heading3",Heading3.Trim() },
+                    {"@Heading4",Heading4.Trim() },
+                    {"@Category_Id_FK",Category_Id_FK.ToString() },
                     {"@IsActive",IsActive.Trim() },
                 };
-                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelCategoryMaster", Param);
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelSubCategoryMaster", Param);
                 if (dt.Rows.Count > 0)
                 {
                     dic["Result"] = dt.Rows[0]["Message"].ToString();
@@ -234,7 +240,7 @@ namespace Dc9.India.Controllers
                 {
                     {"@Action","Select" },
                 };
-                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelCategoryMaster", Param);
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelSubCategoryMaster", Param);
                 if (dt.Rows.Count > 0)
                 {
                     dic["Data"] = JsonConvert.SerializeObject(dt);
@@ -258,7 +264,7 @@ namespace Dc9.India.Controllers
                     {"@Action","Edit" },
                     {"@Id",Id},
                 };
-                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelCategoryMaster", Param);
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelSubCategoryMaster", Param);
                 if (dt.Rows.Count > 0)
                 {
                     dic["Record"] = JsonConvert.SerializeObject(dt);
@@ -282,7 +288,7 @@ namespace Dc9.India.Controllers
                     {"@Action","Delete" },
                     {"@Id",Id},
                 };
-                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelCategoryMaster", Param);
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelSubCategoryMaster", Param);
                 if (dt.Rows.Count > 0)
                 {
                     dic["Result"] = dt.Rows[0]["Message"].ToString();
