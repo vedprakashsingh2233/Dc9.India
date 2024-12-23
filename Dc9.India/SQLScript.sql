@@ -187,3 +187,84 @@ Else If(@Action='Avtive')
 	 End
 End
 
+go
+
+
+CREATE TABLE [dbo].[SubCategoryMaster](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[SubCategoryName] [varchar](300) NULL,
+	[Heading1] varchar(500) null,
+	[Heading2] varchar(500) null,
+	[Heading3] varchar(500) null,
+	[Heading4] varchar(500) null,
+	[Category_Id_FK] int null,
+	[IsActive] [bit] NULL
+) ON [PRIMARY]
+
+
+
+go
+Create proc [dbo].[USP_InsertUpdateDelSubCategoryMaster]
+@Id Int=0,
+@SubCategoryName nvarchar(300)=null ,
+@Heading1 varchar(500)= null,
+@Heading2 varchar(500)= null,
+@Heading3 varchar(500)= null,
+@Heading4 varchar(500)= null,
+@Category_Id_FK int =null,
+@IsActive bit=1,
+@Action varchar(20)
+
+As 
+Declare @msg varchar(100)
+Begin
+	 If(@Action='Insert')
+		 Begin
+		 if Exists(select 1 from SubCategoryMaster where SubCategoryName=@SubCategoryName )
+		 Begin
+			set @msg='Record Already Exist ..'
+			select @msg as Message
+		 End
+		 Else
+			Begin
+
+				Insert Into SubCategoryMaster(SubCategoryName,Heading1,Heading2,Heading3,Heading4,Category_Id_FK,IsActive)values
+				(@SubCategoryName,@Heading1,@Heading2,@Heading3,@Heading4,@Category_Id_FK,@IsActive)
+				set @msg='Record Inserted Successfully'
+				select @msg as Message
+			End
+		 End
+	 Else  If(@Action='Update')
+		 Begin
+			 if Exists(select 1 from SubCategoryMaster where SubCategoryName=@SubCategoryName and  Id!=@Id)
+			 Begin
+				set @msg='Record Already Exist ..'
+				select @msg as Message
+			 End
+			 Else
+				 Begin
+					Update SubCategoryMaster set SubCategoryName=@SubCategoryName,Heading1=@Heading1,Heading2=@Heading2
+					,Heading3=@Heading3,Heading4=@Heading4,Category_Id_FK=@Category_Id_FK,IsActive=@IsActive where Id=@Id
+					set @msg='Record Updated Successfully'
+					select @msg as Message
+				End
+		 End
+	 Else  If(@Action='Select')
+		 Begin
+			Select sm.Id,sm.SubCategoryName,cm.CategoryName,sm.Heading1 from SubCategoryMaster sm
+			left join categorymaster cm on sm.Category_Id_FK=cm.Id
+		 End
+	  Else  If(@Action='Edit')
+		 Begin
+			Select * from SubCategoryMaster where Id=@Id
+		 End
+	 Else  If(@Action='Delete')
+		 Begin
+			Delete From SubCategoryMaster where Id=@Id
+			set @msg='Record Deleted Successfully'
+			select @msg as Message
+		 End
+	
+End
+
+
