@@ -12,6 +12,7 @@ namespace Dc9.India.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
+        #region Login
         public ActionResult Login()
         {
             return View();
@@ -56,6 +57,8 @@ namespace Dc9.India.Controllers
             }
             return Json(Dic);
         }
+
+        #endregion Login
 
         #region Category Mater
         public ActionResult CategoryMaster()
@@ -302,5 +305,147 @@ namespace Dc9.India.Controllers
             return Json(dic);
         }
         #endregion Sub Category Master
+
+        #region Plan Mater
+        public ActionResult PlanMaster()
+        {
+            if (Session["UserId"] == null)
+            {
+                return Redirect("~/Admin/Login");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public JsonResult InsertUpdatePlanMaster(int Id, string PlanName, string Price,string PlanType,string Ram, string vCPU, string SSD, string HDD, 
+            string Memory,  string Bandwidth,   string Sub_Cat_Id_Fk, string DedicatedIP, string OSChoice, string Remark, string ServerLocation, 
+            string NVMe, string Bonus, string Migration, string SSL, string Security, string Monitoring, string Prevention, string Service_Support,
+            string Support, string Guarantee, string IsActive)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            string Action = "";
+            if (Id != 0)
+            {
+                Action = "Update";
+            }
+            else
+            {
+                Action = "Insert";
+            }
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action",Action },
+                    {"@Id",Id.ToString().Trim() },
+                    {"@PlanName",PlanName.ToString().Trim() },
+                    {"@Price",Price.Trim() },
+                    {"@PlanType",PlanType.Trim() },
+                    {"@Ram",Ram.Trim() },
+                    {"@vCPU",vCPU.Trim() },
+                    {"@SSD",SSD.Trim() },
+                    {"@HDD",HDD.Trim() },
+                    {"@Memory",Memory.Trim() },
+                    {"@Bandwidth",Bandwidth.Trim() },
+                    {"@Sub_Cat_Id_Fk",Sub_Cat_Id_Fk.Trim() },
+                    {"@IsActive",IsActive.Trim() },
+                    {"@DedicatedIP",DedicatedIP.Trim() },
+                    {"@OSChoice",OSChoice.Trim() },
+                    {"@Remark",Remark.Trim() },
+                    {"@ServerLocation",ServerLocation.Trim() },
+                    {"@NVMe",NVMe.Trim() },
+                    {"@Bonus",Bonus.Trim() },
+                    {"@Migration",Migration.Trim() },
+                    {"@SSL",SSL.Trim() },
+                    {"@Security",Security.Trim() },
+                    {"@Monitoring",Monitoring.Trim() },
+                    {"@Prevention",Prevention.Trim() },
+                    {"@Service_Support",Service_Support.Trim() },
+                    {"@Support",Support.Trim() },
+                    {"@Guarantee",Guarantee.Trim() },
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelPlanMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Result"] = dt.Rows[0]["Message"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult ShowPlanList()
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Select" },
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelPlanMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Data"] = JsonConvert.SerializeObject(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult EditPlan(string Id)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Edit" },
+                    {"@Id",Id},
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelPlanMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Record"] = JsonConvert.SerializeObject(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult DeletePlan(string Id)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Delete" },
+                    {"@Id",Id},
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelPlanMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Result"] = dt.Rows[0]["Message"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        #endregion Plan Master
     }
 }
