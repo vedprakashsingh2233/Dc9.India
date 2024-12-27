@@ -4005,6 +4005,7 @@
     <Content Include="revolution\php\youtube\class-youtube.php" />
     <Content Include="Scripts\CategoryMaster.js" />
     <Content Include="Scripts\Login.js" />
+    <Content Include="Scripts\PlanMaster.js" />
     <Content Include="Scripts\SubCategoryMaster.js" />
     <Content Include="SQLScript.sql" />
     <Content Include="Web.config" />
@@ -4156,6 +4157,7 @@
     <Content Include="Views\Shared\_Admin_LayOut.cshtml" />
     <Content Include="Views\Admin\CategoryMaster.cshtml" />
     <Content Include="Views\Admin\SubCategoryMaster.cshtml" />
+    <Content Include="Views\Admin\PlanMaster.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
