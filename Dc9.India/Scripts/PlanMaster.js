@@ -1,5 +1,4 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
     BindSubCategory();
     showRecord();
 });
@@ -50,7 +49,7 @@ function InsertUpdate() {
     }
 }
 function showRecord() {
-    $.post("/Admin/ShowSubCategoryList",
+    $.post("/Admin/ShowPlanList",
         {},
         function (data) {
             if (data.Data != undefined && data.Data != "") {
