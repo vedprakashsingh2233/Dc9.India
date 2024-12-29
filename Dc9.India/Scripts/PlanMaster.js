@@ -17,26 +17,48 @@ function BindSubCategory() {
 };
 
 function InsertUpdate() {
-    if ($("#ddlCategoryId").val() == "0") {
-        alert('Please Select Category ');
-        $("#ddlCategoryId").focus();
+    if ($("#ddlSubCategory").val() == "0") {
+        alert('Please Select Sub Category ');
+        $("#ddlSubCategory").focus();
     }
-    else if ($("#txtSubCategoryName").val() == "") {
-        alert('Please Enter Sub Category Name');
-        $("#txtSubCategoryName").focus();
+    else if ($("#txtPlanName").val() == "") {
+        alert('Please Enter Plan Name');
+        $("#txtPlanName").focus();
+    }
+    else if ($("#txtPrice").val() == "") {
+        alert('Please Enter Plan Price');
+        $("#txtPrice").focus();
     }
 
 
     else {
-        $.post("/Admin/InsertUpdateSubCategoryMaster",
+        $.post("/Admin/InsertUpdatePlanMaster",
             {
                 Id: $("#hdId").val(),
-                SubCategoryName: $("#txtSubCategoryName").val(),
-                Heading1: $("#txtHeading1").val(),
-                Heading2: $("#txtHeading2").val(),
-                Heading3: $("#txtHeading3").val(),
-                Heading4: $("#txtHeading4").val(),
-                Category_Id_FK: $("#ddlCategoryId").val(),
+                PlanName: $("#txtPlanName").val(),
+                Price: $("#txtPrice").val(),
+                PlanType: $("#txtPlanType").val(),
+                Ram: $("#txtRam").val(),
+                vCPU: $("#txtvCPU").val(),
+                SSD: $("#txtSSD").val(),
+                HDD: $("#txtHDD").val(),
+                Memory: $("#txtMemory").val(),
+                Bandwidth: $("#txtBandwidth").val(),
+                DedicatedIP: $("#txtDedicatedIP").val(),
+                OSChoice: $("#txtOSChoice").val(),
+                Remark: $("#txtRemark").val(),
+                ServerLocation: $("#txtServerLocation").val(),
+                NVMe: $("#txtNVMe").val(),
+                Bonus: $("#txtBonus").val(),
+                Migration: $("#txtMigration").val(),
+                SSL: $("#txtSSL").val(),
+                Security: $("#txtSecurity").val(),
+                Monitoring: $("#txtMonitoring").val(),
+                Prevention: $("#txtPrevention").val(),
+                Service_Support: $("#txtService_Support").val(),
+                Support: $("#txtSupport").val(),
+                Guarantee: $("#txtGuarantee").val(),
+                Sub_Cat_Id_Fk: $("#ddlSubCategory").val(),
                 IsActive: $("#chkIsActive").is(':checked') ? 1 : 0,
             },
             function (data) {
@@ -58,12 +80,13 @@ function showRecord() {
                 $('#tblBookList').DataTable({
                     data: jsonData,
                     columns: [
-                        { data: "SubCategoryName", title: "Sub Category Name" },
-                        { data: "Heading1", title: "Heading 1" },
-                        { data: "CategoryName", title: "Category Name" },
+                        { data: "PlanName", title: "Plan Name" },
+                        { data: "Price", title: "Price" },
+                        { data: "Bandwidth", title: "Bandwidth" },
+                        { data: "SubCategoryName", title: "SubCategory Name" },
                         {
                             render: function (data, type, row, meta) {
-                                return '<button onclick="EditRecord(\'' + row.Id + '\')" class="btn btn-success">Edit</button>';
+                                return '<a href="#"><button onclick="EditRecord(\'' + row.Id + '\')" class="btn btn-success">Edit</button></a>';
                             },
                             title: "Edit"
                         },
@@ -86,21 +109,40 @@ function showRecord() {
 
 }
 function EditRecord(Id) {
-    $.post("/Admin/EditSubCategory",
+    $.post("/Admin/EditPlan",
         { Id: Id },
         function (data) {
             if (data.Result == "") {
                 var Data = JSON.parse(data.Record);
                 $.each(Data, function (index, Value) {
-                    $('#hdId').val(Value.Id),
-                        $('#txtSubCategoryName').val(Value.SubCategoryName),
-                        $('#ddlCategoryId').val(Value.Category_Id_FK),
-                        $('#txtHeading1').val(Value.Heading1),
-                        $('#txtHeading2').val(Value.Heading2),
-                        $('#txtHeading3').val(Value.Heading3),
-                        $('#txtHeading4').val(Value.Heading4),
-                        $('#chkIsActive').prop('checked', Value.IsActive == 1 ? true : false);
-                })
+                    $('#hdId').val(Value.Id);
+                    $('#txtPlanName').val(Value.PlanName);
+                    $('#txtPrice').val(Value.Price);
+                    $('#txtPlanType').val(Value.PlanType);
+                    $('#txtRam').val(Value.Ram);
+                    $('#txtvCPU').val(Value.vCPU);
+                    $('#txtSSD').val(Value.SSD);
+                    $('#txtHDD').val(Value.HDD);
+                    $('#txtMemory').val(Value.Memory);
+                    $('#txtBandwidth').val(Value.Bandwidth);
+                    $('#txtDedicatedIP').val(Value.DedicatedIP);
+                    $('#txtOSChoice').val(Value.OSChoice);
+                    $('#txtRemark').val(Value.Remark);
+                    $('#txtServerLocation').val(Value.ServerLocation);
+                    $('#txtNVMe').val(Value.NVMe);
+                    $('#txtBonus').val(Value.Bonus);
+                    $('#txtMigration').val(Value.Migration);
+                    $('#txtSSL').val(Value.SSL);
+                    $('#txtSecurity').val(Value.Security);
+                    $('#txtMonitoring').val(Value.Monitoring);
+                    $('#txtPrevention').val(Value.Prevention);
+                    $('#txtService_Support').val(Value.Service_Support);
+                    $('#txtSupport').val(Value.Support);
+                    $('#txtGuarantee').val(Value.Guarantee);
+                    $('#ddlSubCategory').val(Value.Sub_Cat_Id_Fk);
+                    $('#chkIsActive').prop('checked', Value.IsActive == 1 ? true : false);
+                });
+
                 $('#btnSave').text('Update');
             }
             else {
@@ -110,7 +152,7 @@ function EditRecord(Id) {
 }
 function DeleteRecord(Id) {
     if (confirm("Do you want to delete this ?")) {
-        $.post("/Admin/DeleteSubCategory",
+        $.post("/Admin/DeletePlan",
             { Id: Id },
             function (data) {
                 if (data.Result != "") {
@@ -122,11 +164,30 @@ function DeleteRecord(Id) {
 }
 function ClearData() {
     $("#hdId").val("0");
-    $("#txtSubCategoryName").val("");
-    $("#txtHeading1").val("");
-    $("#txtHeading2").val("");
-    $("#txtHeading3").val("");
-    $("#txtHeading4").val("");
-    $("#ddlCategoryId").val("0");
+    $("#txtPlanName").val("");
+    $("#txtPrice").val("");
+    $("#txtPlanType").val("");
+    $("#txtRam").val("");
+    $("#txtvCPU").val("");
+    $("#txtSSD").val("");
+    $("#txtHDD").val("");
+    $("#txtMemory").val("");
+    $("#txtBandwidth").val("");
+    $("#txtDedicatedIP").val("");
+    $("#txtOSChoice").val("");
+    $("#txtRemark").val("");
+    $("#txtServerLocation").val("");
+    $("#txtNVMe").val("");
+    $("#txtBonus").val("");
+    $("#txtMigration").val("");
+    $("#txtSSL").val("");
+    $("#txtSecurity").val("");
+    $("#txtMonitoring").val("");
+    $("#txtPrevention").val("");
+    $("#txtService_Support").val("");
+    $("#txtSupport").val("");
+    $("#txtGuarantee").val("");
+    $("#ddlSubCategory").val("0");
+    $("#chkIsActive").prop('checked', false);
     $('#btnSave').text('Save');
 }

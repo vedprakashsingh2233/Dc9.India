@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using System.Data;
+@using Dc9.India.Models;
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -173,19 +176,6 @@
             </div>
         </div>
         <!--<div id="loginModal" class="modal">-->
-        <!-- Modal content -->
-        <!--<div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Login</h2>
-
-                <label for="username">Username:</label>
-                <input type="text" id="txtUserCode" name="txtUserCode" class="form-control">
-                <label for="password">Password:</label>
-                <input type="password" id="txtPassword" class="form-control" name="txtPassword" >
-                <button class="btn btn-primary btn-rounded"id="btnLogin" type="button">Login</button>Don't have an account?<a href="../Home/Registration">Sign up</a>
-
-            </div>
-        </div>-->
         <!-- start navigation -->
         <nav class="navbar navbar-default bootsnav background-white header-light navbar-top navbar-expand-lg nav-box-width">
 
@@ -204,7 +194,7 @@
                     </button>
                     <div class="navbar-collapse collapse justify-content-center" id="navbar-collapse-toggle-1">
                         <!--<ul class="nav navbar-nav alt-font text-normal">
-    <!-- start menu item -->
+                        <!-- start menu item -->
                         <!--<li><a href="../Home/AboutUs" class="inner-link">About us</a></li>-->
                         <!-- end menu item -->
                         <!-- start menu item -->
@@ -218,96 +208,75 @@
                         <!-- end menu item -->
                         <!-- start menu item -->
                         <!--<li><a href="http://www.themezaa.com/html/pofo/documentation/" target="_blank">Documentation</a></li>
-    <!-- end menu item -->
+                        <!-- end menu item -->
                         <!-- start menu item -->
                         <!--<li><a href="#Support">Support</a></li>-->
                         <!-- end menu item -->
                         <!--</ul>-->
-                        <ul id="accordion" class="nav navbar-nav no-margin alt-font text-normal " data-in="fadeIn" data-out="fadeOut">
-                            <!-- start menu item -->
+                        @{
+                            DataSet ds = new DataSet();
+
+                            ds = CommonMethod.ExecuteProcByDataset("GetMenu_Bar_Cat_SubCat_SP");
+
+                            <ul id="accordion" class="nav navbar-nav no-margin alt-font text-normal " data-in="fadeIn" data-out="fadeOut">
+                                <!-- start menu item -->
+                                <li class="dropdown megamenu-fw">
+                                    <a href="../">Home</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                    <!-- start sub menu -->
+
+                                </li>
+                                @if (ds.Tables[0].Rows.Count > 0)
+                                {
+                                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                                    {
                             <li class="dropdown megamenu-fw">
-                                <a href="../">Home</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                <a href="#">@ds.Tables[0].Rows[i]["CategoryName"]</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 <!-- start sub menu -->
+                                @if (ds.Tables[1].Rows.Count > 0)
+                                {
+                                    <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
+                                        <ul>
+                                            @for (int j = 0; j < ds.Tables[1].Rows.Count; j++)
+                                            {
+                                                if (ds.Tables[0].Rows[i]["Id"].ToString() == ds.Tables[1].Rows[j]["Category_Id_FK"].ToString())
+                                                {
+
+                                                    <!-- start sub menu column  -->
+                                                    if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Managed)"))
+                                                        {                                                                                                                
+                                                       <li class="dropdown-header"><a href="../Vpshosting/ManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>                                                             
+                                                        }
+                                                        else if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Self-Managed)"))
+                                                        {                                                         
+                                                     <li class="dropdown-header"><a href="../Vpshosting/SelfManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>                                                              
+                                                        }
+                                                }
+                                            }
+                                        </ul>
+                                        <!-- end sub menu -->
+                                    </div>
+                                }
 
                             </li>
-                            <li class="dropdown megamenu-fw">
-                                <a href="#">VPS Servers</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                <!-- start sub menu -->
-                                <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
-                                    <ul>
-                                        <!-- start sub menu column  -->
-                                        <li class="mega-menu-column col-lg-4">
-                                            <!-- start sub menu item  -->
-                                            <ul>
-                                                <li class="dropdown-header">Managed VPS Servers</li>
-                                                <li><a href="../Vpshosting/ManagedVps">VPS Windows Server (Managed)</a></li>
-                                                <li><a href="../Vpshosting/ManagedVps">VPS Linux Server (Managed)</a></li>
-                                            </ul>
-                                            <!-- end sub menu item  -->
-                                        </li>
-                                        <li class="mega-menu-column col-lg-6">
-                                            <!-- start sub menu item  -->
-                                            <ul>
-                                                <li class="dropdown-header">Self-Managed VPS Servers</li>
-                                                <li><a href="../Vpshosting/WindowVPSSelfManagedSP">VPS Windows Server (Self-Managed)</a></li>
-                                                <li><a href="../Vpshosting/LinuxVPSSelfManagedSP">VPS Linux Server (Self-Managed)</a></li>
-                                            </ul>
-                                            <!-- end sub menu item  -->
-                                        </li>
+                                    }
 
-                                    </ul>
-                                    <!-- end sub menu -->
-                                </div>
-                            </li>
-                            <li class="dropdown megamenu-fw">
-                                <a href="#">Dedicated Servers</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                <!-- start sub menu -->
-                                <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
-                                    <ul>
-                                        <!-- start sub menu column  -->
-                                        <li class="mega-menu-column col-lg-4">
-                                            <!-- start sub menu item  -->
-                                            <ul>
-                                                <li class="dropdown-header">Managed Dedicated Servers</li>
-                                                <li><a href="../Vpshosting/ManagedVps">Dedicated Windows Server (Managed)</a></li>
-                                                <li><a href="../Vpshosting/ManagedVps">Dedicated Linux Server (Managed)</a></li>
-                                            </ul>
-                                            <!-- end sub menu item  -->
-                                        </li>
-                                        <li class="mega-menu-column col-lg-6">
-                                            <!-- start sub menu item  -->
-                                            <ul>
-                                                <li class="dropdown-header">Self-Managed Dedicated Servers</li>
-                                                <li><a href="../Vpshosting/WindowDedicatedSelfManagedSP">Dedicated Windows Server (Self-Managed)</a></li>
-                                                <li><a href="../Vpshosting/LinuxDedicatedSelfManagedSP">Dedicated Linux Server (Self-Managed)</a></li>
-                                            </ul>
-                                            <!-- end sub menu item  -->
-                                        </li>
+                                }
+                                <li class="dropdown megamenu-fw">
+                                    <a href="../Home/ContactUs">Contact Us</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                    <!-- start sub menu -->
 
-                                    </ul>
-                                    <!-- end sub menu -->
-                                </div>
-                            </li>
-                            <li class="dropdown megamenu-fw">
-                                <a href="#">Custom Servers</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                <!-- start sub menu -->
+                                </li>
 
-                            </li>
-                            <li class="dropdown megamenu-fw">
-                                <a href="../Home/ContactUs">Contact Us</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                <!-- start sub menu -->
+                                <!-- end menu item -->
 
-                            </li>
-
-                            <!-- end menu item -->
-
-                        </ul>
+                            </ul>
+                        }
                     </div>
                 </div>
                 <div class="col col-md-auto col-lg-2 pr-0 text-right">
-                        @*<a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-very-small btn-rounded btn-white box-shadow-dark">Buy Now<i class="fas fa-shopping-cart"></i></a>*@
-                        <a href="../UserLogin/Login" class="btn pofo-button-28 sm-display-table button-style6  btn-danger btn-rounded  btn-medium   vc_custom_1507703952526 pofo-button-responsive-6762a27febfab">Client Area<i class="fa-solid fa-arrow-right icon-very-small  margin-5px-left no-margin-right" aria-hidden="true"></i></a>
-                    </div>
+                    @*<a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-very-small btn-rounded btn-white box-shadow-dark">Buy Now<i class="fas fa-shopping-cart"></i></a>*@
+                    <a href="../UserLogin/Login" class="btn pofo-button-28 sm-display-table button-style6  btn-danger btn-rounded  btn-medium   vc_custom_1507703952526 pofo-button-responsive-6762a27febfab">Client Area<i class="fa-solid fa-arrow-right icon-very-small  margin-5px-left no-margin-right" aria-hidden="true"></i></a>
+                </div>
             </div>
         </nav>
         <!-- end navigation -->
@@ -397,7 +366,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 widget border-right border-color-medium-dark-gray md-no-border-right md-margin-30px-bottom sm-text-center">
                         <!-- start logo -->
-                        <a href="index.html" class="margin-20px-bottom d-inline-block"><img class="footer-logo" src="~/Content/images/Dc9Logo1.png" data-rjs="~/Content/images/Dc9Logo1.png" alt=""></a>
+                        <a href="/" class="margin-20px-bottom d-inline-block"><img class="footer-logo" src="~/Content/images/Dc9Logo1.png" data-rjs="~/Content/images/Dc9Logo1.png" alt=""></a>
                         <!-- end logo -->
                         <p class="text-small width-95 sm-width-100">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                         <!-- start social media -->
@@ -415,13 +384,13 @@
                     <div class="col-lg-3 col-md-6 widget border-right border-color-medium-dark-gray padding-45px-left md-padding-15px-left md-no-border-right md-margin-30px-bottom text-center text-md-left">
                         <div class="widget-title alt-font text-small text-medium-gray text-uppercase margin-10px-bottom font-weight-600">Additional Links</div>
                         <ul class="list-unstyled">
-                           
+
                             <li><a href="../Home/AboutUs" class="text-small">About us</a></li>
                             <li><a href="../Home/TermsAndCondition" class="text-small">Terms & Condition</a></li>
-                            <li><a href="../Home/Privacy"class="text-small">Privacy & Policy</a></li>
-                            <li ><a href="../Home/TermsAndCondition" class="text-small">Refund & Return policy</a></li>
-                            <li ><a href="#" class="text-small">Cancellation policy</a></li>
-                            <li ><a href="#" class="text-small">Server level Agreement</a></li>
+                            <li><a href="../Home/Privacy" class="text-small">Privacy & Policy</a></li>
+                            <li><a href="../Home/TermsAndCondition" class="text-small">Refund & Return policy</a></li>
+                            <li><a href="#" class="text-small">Cancellation policy</a></li>
+                            <li><a href="#" class="text-small">Server level Agreement</a></li>
                         </ul>
                     </div>
                     <!-- end additional links -->

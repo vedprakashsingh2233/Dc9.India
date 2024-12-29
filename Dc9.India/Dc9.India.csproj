@@ -4003,6 +4003,7 @@
     <Content Include="revolution\php\twitter\RestApi.php" />
     <Content Include="revolution\php\vimeo\class-vimeo.php" />
     <Content Include="revolution\php\youtube\class-youtube.php" />
+    <Content Include="Scripts\AdditionalItem.js" />
     <Content Include="Scripts\CategoryMaster.js" />
     <Content Include="Scripts\Login.js" />
     <Content Include="Scripts\PlanMaster.js" />
@@ -4142,7 +4143,7 @@
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\UserLogin\Login.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
-    <Content Include="Views\Vpshosting\ManagedVps.cshtml" />
+    <Content Include="Views\Vpshosting\ManagedServer.cshtml" />
     <Content Include="Views\Vpshosting\Cart.cshtml" />
     <Content Include="Views\Vpshosting\checkout.cshtml" />
     <Content Include="Views\Home\UserPlans.cshtml" />
@@ -4158,6 +4159,8 @@
     <Content Include="Views\Admin\CategoryMaster.cshtml" />
     <Content Include="Views\Admin\SubCategoryMaster.cshtml" />
     <Content Include="Views\Admin\PlanMaster.cshtml" />
+    <Content Include="Views\Vpshosting\SelfManagedServer.cshtml" />
+    <Content Include="Views\Admin\AdditionalItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

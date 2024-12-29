@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "SelfManagedServer";
+    Layout = "~/Views/Shared/_LayOut.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<style>
+    /*body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+    */
+    .table-container {
+        padding: 20px;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 10px;
+        }
+
+        table th, table td {
+            color: black;
+        }
+
+        table th {
+            background-color: #151615;
+            color: white;
+        }
+
+    .price-linux {
+        color: #28a745;
+        font-weight: bold;
+    }
+
+    .price-windows {
+        color: #dc3545;
+        font-weight: bold;
+    }
+
+    .btn-signup {
+        background-color: #007bff;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+        .btn-signup:hover {
+            background-color: #0056b3;
+        }
+
+    @@media (max-width: 768px) {
+        table th, table td {
+            font-size: 12px;
+            padding: 8px;
+        }
+
+        .btn-signup {
+            font-size: 12px;
+            padding: 5px 8px;
+        }
+    }
+</style>
+<section class="p-0 one-third-screen position-relative wow fadeIn" style="height:500px;">
+    <div class="opacity-medium bg-extra-dark-gray z-index-0"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 one-third-screen d-flex flex-column justify-content-center page-title-large text-center">
+                <!-- start sub title -->
+                <h1 class="alt-font text-white-2 font-weight-600 width-55 md-width-80 sm-width-100 mx-auto mb-0" id="txtPlanName">
+                </h1>
+
+                <!-- end sub title -->
+                <!-- start page title -->
+                <span class="d-block text-white-2 opacity6 margin-10px-bottom alt-font" id="txtHeading1">
+                </span>
+                <!-- end page title -->
+            </div>
+            <div class="down-section text-center"><a href="#about" class="inner-link"><i class="ti-arrow-down icon-extra-small text-white-2 bg-deep-pink padding-15px-all sm-padding-10px-all rounded-circle"></i></a></div>
+        </div>
+    </div>
+    <div class="swiper-auto-fade swiper-container z-index-minus2 position-absolute top-0 w-100 h-100">
+        <div class="swiper-wrapper">
+            <!-- start slider item -->
+            <div class="swiper-slide cover-background one-third-screen" style="background-image: url('../Content/images/hosting1.jpg'); "></div>
+            <!-- end slider item -->
+
+        </div>
+        <div class="swiper-pagination swiper-auto-pagination d-none"></div>
+    </div>
+</section>
+<section class=" wow fadeIn">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class=" text-center">
+                <h4 class="alt-font text-extra-dark-gray font-weight-600" style="text-align: center;" id="txtHeading2">
+                </h4>
+                <h6 class="alt-font text-extra-dark-gray font-weight-600" style="text-align: center;" id="txtHeading3"></h6>
+                <h5 class="alt-font text-extra-dark-gray font-weight-600" style="text-align: center;" id="txtHeading4"></h5>
+            </div>
+        </div>
+        <div id="divPlan">
+
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        // Get the current URL path
+        // Get the query string from the current URL
+        var queryString = window.location.search; // "?SC=5"
+
+        // Use URLSearchParams to parse the query string
+        var urlParams = new URLSearchParams(queryString);
+
+        // Get the value of the 'SC' parameter
+        var scValue = urlParams.get('SC');
+        BindPlanDetail(scValue)
+    });
+
+    function BindPlanDetail(Id) {
+        $.post("/Vpshosting/BindPlanDetail",
+            { Id: Id },
+            function (data) {
+                if (data.Result == "") {
+                    $("#divPlan").html(data.Plan);
+                    $("#txtPlanName").html(data.SubCategoryName);
+                    $("#txtHeading1").text(data.Heading1);
+                    $("#txtHeading2").text(data.Heading2);
+                    $("#txtHeading3").text(data.Heading3);
+                    $("#txtHeading4").text(data.Heading4);
+                }
+                else {
+                    alert(data.Result);
+                }
+            });
+    }
+    function BuyNow(id) {
+        $(window.location).attr("href", "/Vpshosting/Cart?id=" + id);
+    }
+</script>

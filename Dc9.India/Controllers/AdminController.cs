@@ -447,5 +447,126 @@ namespace Dc9.India.Controllers
             return Json(dic);
         }
         #endregion Plan Master
+
+        #region Additional Item Mater
+        public ActionResult AdditionalItem()
+        {
+            if (Session["UserId"] == null)
+            {
+                return Redirect("~/Admin/Login");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public JsonResult InsertUpdateAdditionalItem(int Id, string ItemName,string ItemPrice, string IsActive)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            string Action = "";
+            if (Id != 0)
+            {
+                Action = "Update";
+            }
+            else
+            {
+                Action = "Insert";
+            }
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action",Action },
+                    {"@Id",Id.ToString().Trim() },
+                    {"@ItemName",ItemName.Trim() },
+                    {"@ItemPrice",ItemPrice },
+                    {"@IsActive",IsActive.Trim() },
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelAdditionItem", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Result"] = dt.Rows[0]["Message"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult ShowAdditionalItem()
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Select" },
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelAdditionItem", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Data"] = JsonConvert.SerializeObject(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult EditAdditionalItem(string Id)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Edit" },
+                    {"@Id",Id},
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelAdditionItem", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Record"] = JsonConvert.SerializeObject(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult DeleteAdditionalItem(string Id)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Delete" },
+                    {"@Id",Id},
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelAdditionItem", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Result"] = dt.Rows[0]["Message"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        #endregion Category Master
     }
 }

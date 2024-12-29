@@ -64,7 +64,7 @@ function showRecord() {
                         { data: "CategoryName", title: "Category Name" },
                         {
                             render: function (data, type, row, meta) {
-                                return '<button onclick="EditRecord(\'' + row.Id + '\')" class="btn btn-success">Edit</button>';
+                                return '<a href="#"><button onclick="EditRecord(\'' + row.Id + '\')" class="btn btn-success">Edit</button></a>';
                             },
                             title: "Edit"
                         },

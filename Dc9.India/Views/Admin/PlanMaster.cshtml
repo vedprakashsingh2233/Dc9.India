@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Admin_LayOut.cshtml";
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<h2>Plan Master</h2>
+<h3>Plan Master</h3>
 
 <div class="container row">
     <div class="col-sm-4">
@@ -20,7 +20,7 @@
 
     <div class="col-sm-4">
         <label>Price</label>
-        <input type="text" id="txtPrice" placeholder="Please Enter Price" class="form-control" />
+        <input type="text" id="txtPrice" placeholder="Please Enter Price" class="form-control number" />
     </div>
     <div class="col-sm-4">
         <label>Remark</label>
@@ -137,3 +137,13 @@
 
 </div>
 <script src="~/Scripts/PlanMaster.js"></script>
+<script>
+    $(document).on('keypress', '.number', function (event) {
+        var charCode = (event.which) ? event.which : event.keyCode;
+        var inputValue = $(this).val();
+        // Allow only digits, one dot, and prevent multiple dots or negative signs
+        if ((charCode != 46 || inputValue.indexOf('.') != -1) && (charCode < 48 || charCode > 57)) {
+            event.preventDefault();
+        }
+    });
+</script>

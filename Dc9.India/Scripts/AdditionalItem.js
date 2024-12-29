@@ -3,17 +3,21 @@ $(document).ready(function () {
     showRecord();
 });
 function InsertUpdate() {
-    if ($("#txtCategoryName").val() == "") {
-        alert('Please Enter Category Name');
-        $("#txtCategoryName").focus();
+    if ($("#txtItemName").val() == "") {
+        alert('Please Enter Item Name');
+        $("#txtItemName").focus();
     }
-  
+    else if ($("#txtItemePrice").val() == "") {
+        alert('Please Enter Item Price');
+        $("#txtItemePrice").focus();
+    }
 
     else {
-        $.post("/Admin/InsertUpdateCategoryMaster",
+        $.post("/Admin/InsertUpdateAdditionalItem",
             {
                 Id: $("#hdId").val(),
-                CategoryName: $("#txtCategoryName").val(),
+                ItemName: $("#txtItemName").val(),
+                ItemPrice: $("#txtItemePrice").val(),
                 IsActive: $("#chkIsActive").is(':checked') ? 1 : 0,
             },
             function (data) {
@@ -26,7 +30,7 @@ function InsertUpdate() {
     }
 }
 function showRecord() {
-    $.post("/Admin/ShowCategoryList",
+    $.post("/Admin/ShowAdditionalItem",
         {},
         function (data) {
             if (data.Data != undefined && data.Data != "") {
@@ -35,11 +39,11 @@ function showRecord() {
                 $('#tblBookList').DataTable({
                     data: jsonData,
                     columns: [
-                        { data: "CategoryName", title: "Category Name" },
-                        { data: "IsActive", title: "Is Active" },
+                        { data: "ItemName", title: "Item Name" },
+                        { data: "ItemPrice", title: "Price" },
                         {
                             render: function (data, type, row, meta) {
-                                return '<a href="#"><button onclick="EditRecord(\'' + row.Id + '\')" class="btn btn-success">Edit</button><a>';
+                                return '<a href="#"><button onclick="EditRecord(\'' + row.Id + '\')" class="btn btn-success">Edit</button></a>';
                             },
                             title: "Edit"
                         },
@@ -62,15 +66,16 @@ function showRecord() {
 
 }
 function EditRecord(Id) {
-    $.post("/Admin/EditRecord",
+    $.post("/Admin/EditAdditionalItem",
         { Id: Id },
         function (data) {
             if (data.Result == "") {
                 var Data = JSON.parse(data.Record);
                 $.each(Data, function (index, Value) {
                     $('#hdId').val(Value.Id),
-                        $('#txtCategoryName').val(Value.CategoryName),
-                    $('#chkIsActive').prop('checked', Value.IsActive == 1 ? true : false);
+                        $('#txtItemName').val(Value.ItemName),
+                        $('#txtItemePrice').val(Value.ItemPrice),
+                        $('#chkIsActive').prop('checked', Value.IsActive == 1 ? true : false);
                 })
                 $('#btnSave').text('Update');
             }
@@ -81,7 +86,7 @@ function EditRecord(Id) {
 }
 function DeleteRecord(Id) {
     if (confirm("Do you want to delete this Category ?")) {
-        $.post("/Admin/DeleteRecord",
+        $.post("/Admin/DeleteAdditionalItem",
             { Id: Id },
             function (data) {
                 if (data.Result != "") {
@@ -93,6 +98,7 @@ function DeleteRecord(Id) {
 }
 function ClearData() {
     $("#hdId").val("0");
-    $("#txtCategoryName").val("");
+    $("#txtItemName").val("");
+    $("#ItemPrice").val("");
     $('#btnSave').text('Save');
 }

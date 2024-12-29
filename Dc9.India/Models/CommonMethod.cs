@@ -29,6 +29,17 @@ namespace Dc9.India.Models
             ad.Fill(dt);
             return dt;
         }
+        public static DataSet ExecuteProcByDataset(string Proc)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Constr"].ToString());
+            SqlCommand com = new SqlCommand(Proc, conn);
+            com.CommandType = System.Data.CommandType.StoredProcedure;
+            
+            SqlDataAdapter ad = new SqlDataAdapter(com);
+            DataSet ds = new DataSet();
+            ad.Fill(ds);
+            return ds;
+        }
         public static string Encrypt(string Value, string EncryptionKey)
         {
             if (EncryptionKey.Trim() == "")

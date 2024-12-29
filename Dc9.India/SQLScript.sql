@@ -340,3 +340,266 @@ Begin
 End
 
 
+Date 29/12/2024+===============
+USE [DC9India]
+GO
+/****** Object:  StoredProcedure [dbo].[USP_InsertUpdateDelCategoryMaster]    Script Date: 12/29/2024 9:58:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[USP_InsertUpdateDelCategoryMaster]
+@Id Int=0,
+@CategoryName nvarchar(100)=null ,
+@IsActive bit=1,
+@Action varchar(20)
+
+As 
+Declare @msg varchar(100)
+Begin
+	 If(@Action='Insert')
+		 Begin
+		 if Exists(select 1 from CategoryMaster where CategoryName=@CategoryName )
+		 Begin
+			set @msg='Record Already Exist ..'
+			select @msg as Message
+		 End
+		 Else
+			Begin
+
+				Insert Into CategoryMaster(CategoryName,IsActive)values(@CategoryName,@IsActive)
+				set @msg='Record Inserted Successfully'
+				select @msg as Message
+			End
+		 End
+	 Else  If(@Action='Update')
+		 Begin
+			 if Exists(select 1 from CategoryMaster where CategoryName=@CategoryName and  Id!=@Id)
+			 Begin
+				set @msg='Record Already Exist ..'
+				select @msg as Message
+			 End
+			 Else
+				 Begin
+					Update CategoryMaster set CategoryName=@CategoryName,IsActive=@IsActive where Id=@Id
+					set @msg='Record Updated Successfully'
+					select @msg as Message
+				End
+		 End
+	 Else  If(@Action='Select')
+		 Begin
+			Select Id,CategoryName,case when IsActive=1 then'True' else 'false'end as IsActive  from CategoryMaster
+		 End
+	  Else  If(@Action='Edit')
+		 Begin
+			Select * from CategoryMaster where Id=@Id
+		 End
+	 Else  If(@Action='Delete')
+		 Begin
+			Delete From CategoryMaster where Id=@Id
+			set @msg='Record Deleted Successfully'
+			select @msg as Message
+		 End
+	
+End
+
+go
+Create proc [dbo].[USP_InsertUpdateDelAdditionItem]
+@Id Int=0,
+@ItemName nvarchar(100)=null ,
+@ItemPrice decimal(18,3)=0 ,
+@IsActive bit=1,
+@Action varchar(20)
+
+As 
+Declare @msg varchar(100)
+Begin
+	 If(@Action='Insert')
+		 Begin
+		 if Exists(select 1 from AdditionItem where ItemName=@ItemName )
+		 Begin
+			set @msg='Record Already Exist ..'
+			select @msg as Message
+		 End
+		 Else
+			Begin
+
+				Insert Into AdditionItem(ItemName,ItemPrice,IsActive)values(@ItemName,@ItemPrice,@IsActive)
+				set @msg='Record Inserted Successfully'
+				select @msg as Message
+			End
+		 End
+	 Else  If(@Action='Update')
+		 Begin
+			 if Exists(select 1 from AdditionItem where ItemName=@ItemName and  Id!=@Id)
+			 Begin
+				set @msg='Record Already Exist ..'
+				select @msg as Message
+			 End
+			 Else
+				 Begin
+					Update AdditionItem set ItemName=@ItemName,ItemPrice=@ItemPrice,IsActive=@IsActive where Id=@Id
+					set @msg='Record Updated Successfully'
+					select @msg as Message
+				End
+		 End
+	 Else  If(@Action='Select')
+		 Begin
+			Select Id,ItemName,ItemPrice from AdditionItem
+		 End
+	  Else  If(@Action='Edit')
+		 Begin
+			Select * from AdditionItem where Id=@Id
+		 End
+	 Else  If(@Action='Delete')
+		 Begin
+			Delete From AdditionItem where Id=@Id
+			set @msg='Record Deleted Successfully'
+			select @msg as Message
+		 End
+	
+End
+
+go
+
+Create proc getPlanDetailBySubCatId
+@Id int,
+@Action varchar(50)
+As 
+Begin
+   If(@Action='Plan')
+		 Begin		 
+			Select * from PlanMaster  where Sub_Cat_Id_Fk =@Id
+		 End
+	Else If	(@Action='Plandetail')
+		Begin
+			Select * from SubCategoryMaster where Id=@Id
+		End
+End
+
+Go
+create proc GetMenu_Bar_Cat_SubCat_SP
+As 
+Begin
+Select * from CategoryMaster
+Select * from SubCategoryMaster
+
+End
+
+go
+Create proc [dbo].[USP_InsertUpdateDelPlanMaster]
+@Id Int=0,
+@PlanName [varchar](100)= NULL,
+@Price [decimal](18, 3)= NULL,
+@PlanType [varchar](100)= NULL,
+@Ram [varchar](20)= NULL,
+@vCPU [varchar](20)= NULL,
+@SSD [varchar](20)= NULL,
+@HDD [varchar](20)= NULL,
+@Memory [varchar](100) =NULL,
+@Bandwidth [varchar](20) =NULL,
+@Sub_Cat_Id_Fk [int] =NULL,
+@IsActive [bit]= NULL,
+@DedicatedIP varchar(20)=Null,
+@OSChoice varchar(100)=Null,
+@Remark varchar(300)=Null,
+@ServerLocation varchar(100)=Null,
+@NVMe varchar(100)=Null,
+@Bonus varchar(100)=Null,
+@Migration varchar(100)=Null,
+@SSL varchar(100)=Null,
+@Security varchar(100)=Null,
+@Monitoring varchar(200)=Null,
+@Prevention varchar(200)=Null,
+@Service_Support varchar(200)=Null,
+@Support varchar(100)=Null,
+@Guarantee varchar(200)=Null,
+@Action varchar(20)
+
+As 
+Declare @msg varchar(100)
+Begin
+	 If(@Action='Insert')
+		 Begin
+		 if Exists(select 1 from PlanMaster where PlanName=@PlanName )
+		 Begin
+			set @msg='Record Already Exist ..'
+			select @msg as Message
+		 End
+		 Else
+			Begin
+
+				Insert Into PlanMaster(PlanName,Price,PlanType,Ram,vCPU,SSD,HDD,Memory,Bandwidth,Sub_Cat_Id_Fk,DedicatedIP,OSChoice,
+				Remark,ServerLocation,NVMe,Bonus,Migration,SSL,Security,Monitoring,Prevention,Service_Support,Support,Guarantee,IsActive)values
+			   (@PlanName,@Price,@PlanType,@Ram,@vCPU,@SSD,@HDD,@Memory,@Bandwidth,@Sub_Cat_Id_Fk,@DedicatedIP,@OSChoice,@Remark,
+				@ServerLocation,@NVMe,@Bonus,@Migration,@SSL,@Security,@Monitoring,@Prevention,@Service_Support,@Support,@Guarantee,@IsActive)
+				set @msg='Record Inserted Successfully'
+				select @msg as Message
+			End
+		 End
+	 Else  If(@Action='Update')
+		 Begin
+			 if Exists(select 1 from PlanMaster where PlanName=@PlanName and  Id!=@Id)
+			 Begin
+				set @msg='Record Already Exist ..'
+				select @msg as Message
+			 End
+			 Else
+				 Begin
+					Update PlanMaster set PlanName=@PlanName,Price=@Price,PlanType=@PlanType,Ram=@Ram,vCPU=@vCPU,SSD=@SSD,HDD=@HDD,Memory=@Memory,
+					Bandwidth=@Bandwidth,Sub_Cat_Id_Fk=@Sub_Cat_Id_Fk,DedicatedIP=@DedicatedIP,OSChoice=@OSChoice,Remark=@Remark,ServerLocation=@ServerLocation,
+					NVMe=@NVMe,Bonus=@Bonus,Migration=@Migration,SSL=@SSL,Security=@Security,Monitoring=@Monitoring,Prevention=@Prevention,
+					Service_Support=@Service_Support,Support=@Support,Guarantee=@Guarantee,IsActive=@IsActive where Id=@Id
+					set @msg='Record Updated Successfully'
+					select @msg as Message
+				End
+		 End
+	 Else  If(@Action='Select')
+		 Begin
+			Select PM.Id,PM.PlanName,PM.Price,PM.Bandwidth, SM.SubCategoryName from PlanMaster PM
+			left join SubCategoryMaster SM on PM.Sub_Cat_Id_Fk =SM.Id
+		 End
+	  Else  If(@Action='Edit')
+		 Begin
+			Select * from PlanMaster where Id=@Id
+		 End
+	 Else  If(@Action='Delete')
+		 Begin
+			Delete From PlanMaster where Id=@Id
+			set @msg='Record Deleted Successfully'
+			select @msg as Message
+		 End
+	
+End
+
+go
+CREATE TABLE [dbo].[PlanMaster](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PlanName] [varchar](100) NULL,
+	[Price] [decimal](18, 3) NULL,
+	[PlanType] [varchar](100) NULL,
+	[Ram] [varchar](20) NULL,
+	[vCPU] [varchar](20) NULL,
+	[SSD] [varchar](20) NULL,
+	[HDD] [varchar](20) NULL,
+	[Memory] [varchar](100) NULL,
+	[Bandwidth] [varchar](20) NULL,
+	[Sub_Cat_Id_Fk] [int] NULL,
+	[IsActive] [bit] NULL,
+	[DedicatedIP] [varchar](20) NULL,
+	[OSChoice] [varchar](100) NULL,
+	[Remark] [varchar](300) NULL,
+	[ServerLocation] [varchar](100) NULL,
+	[NVMe] [varchar](100) NULL,
+	[Bonus] [varchar](100) NULL,
+	[Migration] [varchar](100) NULL,
+	[SSL] [varchar](100) NULL,
+	[Security] [varchar](100) NULL,
+	[Monitoring] [varchar](200) NULL,
+	[Prevention] [varchar](200) NULL,
+	[Service_Support] [varchar](200) NULL,
+	[Support] [varchar](100) NULL,
+	[Guarantee] [varchar](200) NULL
+) ON [PRIMARY]
+
+GO
