@@ -2440,6 +2440,7 @@
     <Content Include="Content\images\image-icon8.png" />
     <Content Include="Content\images\image-icon9.png" />
     <Content Include="Content\images\image-right.png" />
+    <Content Include="Content\images\LoginImage.jpg" />
     <Content Include="Content\images\logo%402x.png" />
     <Content Include="Content\images\logo-1.png" />
     <Content Include="Content\images\logo-10.png" />
