@@ -108,26 +108,86 @@ namespace Dc9.India.Controllers
                         sb.AppendLine("<div class=\"panel-body\">");
                         sb.AppendLine("<ul class=\"list-style-11 bg-light-gray\" style=\"display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0;\">");
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">₹" + dt.Rows[i]["Price"] + "/month</li>");
+                        if (dt.Rows[i]["Remark"].ToString()!="")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Remark"] + "</li>");
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["ServerLocation"] + "</li>");
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["vCPU"] + "</li>");
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Ram"] + "</li>");
+                        }
+                        if (dt.Rows[i]["ServerLocation"].ToString() != "")
+                        { 
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["ServerLocation"] + "</li>");
+                        }
+                        if (dt.Rows[i]["vCPU"].ToString() != "")
+                        { 
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["vCPU"] + "</li>");
+                        }
+                        if (dt.Rows[i]["Ram"].ToString() != "")
+                        { 
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Ram"] + "</li>");
+                        }
+                        if (dt.Rows[i]["NVMe"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["NVMe"] + "</li>");
+                        }
+                        if (dt.Rows[i]["PlanType"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["PlanType"] + "</li>");
+                        }
+                        if (dt.Rows[i]["SSD"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["SSD"] + "</li>");
+                        }
+                        if (dt.Rows[i]["HDD"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["HDD"] + "</li>");
+                        }
+                        if (dt.Rows[i]["Memory"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Memory"] + "</li>");
+                        }
+                        if (dt.Rows[i]["Bandwidth"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Bandwidth"] + "</li>");
+                        }
+                        if (dt.Rows[i]["DedicatedIP"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["DedicatedIP"] + "</li>");
+                        }
+                        if (dt.Rows[i]["OSChoice"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["OSChoice"] + "</li>");
+                        }
+                        if (dt.Rows[i]["Bonus"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Bonus"] + "</li>");
+                        }
+                        if (dt.Rows[i]["Migration"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Migration"] + "</li>");
+                        }
+                        if (dt.Rows[i]["SSL"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["SSL"] + "</li>");
+                        }
+                        if (dt.Rows[i]["Security"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Security"] + "</li>");
+                        }
+                        if (dt.Rows[i]["Monitoring"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Monitoring"] + "</li>");
+                        }
+                        if (dt.Rows[i]["Service_Support"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Service_Support"] + "</li>");
+                        }
+                        if (dt.Rows[i]["Support"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Support"] + "</li>");
+                        }
+                        if (dt.Rows[i]["Guarantee"].ToString() != "")
+                        {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Guarantee"] + "</li>");
+                        }
                         sb.AppendLine("</ul>");
                         sb.AppendLine("</div>");
                         sb.AppendLine("</td>");

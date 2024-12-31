@@ -340,8 +340,8 @@ Begin
 End
 
 
-Date 29/12/2024+===============
-USE [DC9India]
+
+
 GO
 /****** Object:  StoredProcedure [dbo].[USP_InsertUpdateDelCategoryMaster]    Script Date: 12/29/2024 9:58:09 PM ******/
 SET ANSI_NULLS ON
@@ -603,3 +603,52 @@ CREATE TABLE [dbo].[PlanMaster](
 ) ON [PRIMARY]
 
 GO
+
+ALTER Proc [dbo].[UserDetail_Regisration_Login_SP]
+(
+@UserName varchar(100)=null,
+@EmailId varchar(100) =Null,
+@Password varchar(100)=Null,
+@MobileNo varchar(20)=Null,
+@Action varchar(30)
+)
+As
+Begin
+If(@Action='Registration')
+	Begin
+		If Exists(Select EmailId from UserDetail where EmailId= @EmailId)
+		Begin
+			Select 'EmailId Aleardy Exist...' As Msg
+		End
+		Else
+		Begin
+			Insert into UserDetail(UserName,EmailId,Password,MobileNo,CreatedDate)Values(@UserName,@EmailId,@Password,@MobileNo,getdate())
+			declare @id int;
+			set @id=Scope_identity()
+			if(@id>0)
+			Begin
+				select 'Success' As Msg
+			End
+			Else
+			Begin
+				select 'Fail' As Msg
+			End
+		End
+	End
+Else If(@Action='Login')
+	Begin	
+		If Not Exists(Select top 1 1 from UserDetail where EmailId= @EmailId )
+		Begin
+			Select 'Email Id Does Not Match..' As Msg
+		End
+		Else if Not Exists(Select top 1 1 from UserDetail where EmailId= @EmailId and Password=@Password)
+		Begin
+			Select 'Please Enter Valid Password ..' As Msg
+		End
+		Else
+		Begin
+			Select 'Success' as Msg,UserId ,Emailid from UserDetail  where EmailId= @EmailId and Password=@Password
+		End
+
+	End
+End

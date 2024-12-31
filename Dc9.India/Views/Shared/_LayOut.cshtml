@@ -243,13 +243,19 @@
 
                                                     <!-- start sub menu column  -->
                                                     if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Managed)"))
-                                                        {                                                                                                                
-                                                       <li class="dropdown-header"><a href="../Vpshosting/ManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>                                                             
-                                                        }
-                                                        else if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Self-Managed)"))
-                                                        {                                                         
-                                                     <li class="dropdown-header"><a href="../Vpshosting/SelfManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>                                                              
-                                                        }
+                                                    {
+                                                        <li class="dropdown-header"><a href="../Vpshosting/ManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
+
+                                                    }
+                                                    else if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Self-Managed)"))
+                                                    {
+                                                        <li class="dropdown-header"><a href="../Vpshosting/SelfManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="dropdown-header"><a href="../Vpshosting/SelfManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
+                                                    }
                                                 }
                                             }
                                         </ul>
@@ -275,7 +281,7 @@
                 </div>
                 <div class="col col-md-auto col-lg-2 pr-0 text-right">
                     @*<a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-very-small btn-rounded btn-white box-shadow-dark">Buy Now<i class="fas fa-shopping-cart"></i></a>*@
-                    <a href="../UserLogin/Login" class="btn pofo-button-28 sm-display-table button-style6  btn-danger btn-rounded  btn-medium   vc_custom_1507703952526 pofo-button-responsive-6762a27febfab">Client Area<i class="fa-solid fa-arrow-right icon-very-small  margin-5px-left no-margin-right" aria-hidden="true"></i></a>
+                    <a href="../UserLogin/Login" class="btn pofo-button-28 sm-display-table button-style6  btn-danger btn-rounded  btn-medium   vc_custom_1507703952526 pofo-button-responsive-6762a27febfab">Client Area</a>
                 </div>
             </div>
         </nav>
@@ -397,7 +403,7 @@
                     <!-- start contact information -->
                     <div class="col-lg-3 col-md-6 widget border-right border-color-medium-dark-gray padding-45px-left md-padding-15px-left md-clear-both md-no-border-right sm-margin-30px-bottom text-center text-md-left">
                         <div class="widget-title alt-font text-small text-medium-gray text-uppercase margin-10px-bottom font-weight-600">Contact Info</div>
-                        <p class="text-small d-block margin-15px-bottom width-80 sm-width-100">POFO Design Agency<br> 301 The Greenhouse, Custard Factory, London, E2 8DY.</p>
+                        <p class="text-small d-block margin-15px-bottom width-80 sm-width-100">Dc9India<br> 301 The Greenhouse, Custard Factory, London, E2 8DY.</p>
                         <div class="text-small">Email: <a href="mailto:sales@domain.com">sales@domain.com</a></div>
                         <div class="text-small">Phone: +44 (0) 123 456 7890</div>
                         @*<a href="contact-us-modern.html" class="text-small text-uppercase text-decoration-underline">View Direction</a>*@
