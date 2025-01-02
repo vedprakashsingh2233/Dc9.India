@@ -65,19 +65,8 @@
     <div class="col-sm-5">
         <div class="pricing-box border-all border-color-extra-light-gray">
             <div class="padding-55px-all bg-very-light-gray md-padding-30px-all sm-padding-40px-all">
-                <div class="row">
-                    <div class="col-sm-6 item">
-                        <label class="col-sm-8">Antivirus A</label>
-                        <input type="checkbox" class="form-check col-sm-3 chkAddtional" value="Antivirus A" />
-                        <span class="text-extra-dark-gray alt-font font-weight-600 mb-0">$<span class="AddtionalPrice">3</span>/mo</span>
-
-                    </div>
-                    <div class="col-sm-6 item">
-                        <label class="col-sm-8">Antivirus B</label>
-                        <input type="checkbox" class="form-check col-sm-3 chkAddtional" value="Antivirus B" />
-                        <span class="text-extra-dark-gray alt-font font-weight-600 mb-0 ">$<span class="AddtionalPrice">5</span>/mo</span>
-
-                    </div>
+                <div class="row" id="divAdditionalItem">
+                   
                 </div>
 
             </div>
@@ -104,6 +93,7 @@
 <script>
     var additionalItem =[];
     $(document).ready(function () {
+       
         // Event handler for checkbox change
         $('.chkAddtional').change(function () {
             let item = $(this).val();
@@ -124,6 +114,7 @@
                 AddPricing();
             }
         });
+        BindAdditionaltem();
     });
     function AddPricing() {
         var html = '';
@@ -147,14 +138,8 @@
             { },
             function (data) {
                 if (data.Result == "") {
-                    var Data = JSON.parse(data.Record);
-                    $.each(Data, function (index, Value) {
-                        $('#hdId').val(Value.Id),
-                            $('#txtItemName').val(Value.ItemName),
-                            $('#txtItemePrice').val(Value.ItemPrice),
-                            $('#chkIsActive').prop('checked', Value.IsActive == 1 ? true : false);
-                    })
-                    $('#btnSave').text('Update');
+                    $("#divAdditionalItem").html(data.Data);
+                    
                 }
                 else {
                     alert(data.Result);
