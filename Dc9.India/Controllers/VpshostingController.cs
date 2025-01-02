@@ -232,5 +232,40 @@ namespace Dc9.India.Controllers
             }
             return dt;
         }
+
+        public JsonResult BindAdditionaltem()
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Select" },
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelAdditionItem", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    StringBuilder htmlString = new StringBuilder();
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                       
+
+                        htmlString.AppendLine("<div class=\"col-sm-6 item\">");
+                        htmlString.AppendLine("    <label class=\"col-sm-8\">Antivirus A</label>");
+                        htmlString.AppendLine("    <input type=\"checkbox\" class=\"form-check col-sm-3 chkAddtional\" value=\"Antivirus A\" />");
+                        htmlString.AppendLine("    <span class=\"text-extra-dark-gray alt-font font-weight-600 mb-0\">$<span class=\"AddtionalPrice\">3</span>/mo</span>");
+                        htmlString.AppendLine("</div>");
+                    }
+                    dic["Data"] = htmlString.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
     }
 }

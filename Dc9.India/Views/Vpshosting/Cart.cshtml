@@ -142,4 +142,23 @@
     function Checkout(id) {
         $(window.location).attr("href", "/Vpshosting/checkout?id=" + id);
     }
+    function BindAdditionaltem(){
+        $.post("/Vpshosting/BindAdditionaltem",
+            { },
+            function (data) {
+                if (data.Result == "") {
+                    var Data = JSON.parse(data.Record);
+                    $.each(Data, function (index, Value) {
+                        $('#hdId').val(Value.Id),
+                            $('#txtItemName').val(Value.ItemName),
+                            $('#txtItemePrice').val(Value.ItemPrice),
+                            $('#chkIsActive').prop('checked', Value.IsActive == 1 ? true : false);
+                    })
+                    $('#btnSave').text('Update');
+                }
+                else {
+                    alert(data.Result);
+                }
+            });
+    }
 </script>
