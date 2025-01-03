@@ -87,7 +87,7 @@ namespace Dc9.India.Controllers
                     {
                         sb.AppendLine("<tr>");
                         sb.AppendLine("<td>" + dt.Rows[i]["PlanName"] + "</td>");
-                        sb.AppendLine("<td>₹" + dt.Rows[i]["Price"] + "/month</td>");
+                        sb.AppendLine("<td>" + dt.Rows[i]["Price"] + "</td>");
                         sb.AppendLine("<td>" + dt.Rows[i]["vCPU"] + "</td>");
                         sb.AppendLine("<td>" + dt.Rows[i]["Ram"] + "</td>");
                         sb.AppendLine("<td>" + dt.Rows[i]["Bandwidth"] + "</td>");
@@ -107,7 +107,7 @@ namespace Dc9.India.Controllers
                         sb.AppendLine("<td colspan=\"8\">");
                         sb.AppendLine("<div class=\"panel-body\">");
                         sb.AppendLine("<ul class=\"list-style-11 bg-light-gray\" style=\"display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0;\">");
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">₹" + dt.Rows[i]["Price"] + "/month</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Price"] + "</li>");
                         if (dt.Rows[i]["Remark"].ToString()!="")
                         {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Remark"] + "</li>");

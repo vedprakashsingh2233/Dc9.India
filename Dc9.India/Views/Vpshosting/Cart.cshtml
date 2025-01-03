@@ -50,8 +50,8 @@
                 <!-- end price title -->
                 <!-- start price price -->
                 <div class="pricing-price">
-                    <h5 class="text-extra-dark-gray alt-font font-weight-600 mb-0">24 GB Ram</h5><br />
-                    <h5 class="text-extra-dark-gray alt-font font-weight-600 mb-0">$33/mo</h5>
+                    <h5 class="text-extra-dark-gray alt-font font-weight-600 mb-0" id="txtPlanName"></h5><br />
+                    <h5 class="text-extra-dark-gray alt-font font-weight-600 mb-0">$<span id="txtPrice"></span>/mo</h5>
 
                 </div>
 
@@ -115,6 +115,14 @@
             }
         });
         BindAdditionaltem();
+        var queryString = window.location.search; // "?SC=5"
+
+        // Use URLSearchParams to parse the query string
+        var urlParams = new URLSearchParams(queryString);
+
+        // Get the value of the 'SC' parameter
+        var id = urlParams.get('id');
+        BindPlanDetail(id)
     });
     function AddPricing() {
         var html = '';
@@ -140,6 +148,24 @@
                 if (data.Result == "") {
                     $("#divAdditionalItem").html(data.Data);
                     
+                }
+                else {
+                    alert(data.Result);
+                }
+            });
+    }
+    function BindPlanDetail(Id) {
+        $.post("/Admin/EditPlan",
+            { Id: Id },
+            function (data) {
+                if (data.Result == "") {
+                    var Data = JSON.parse(data.Record);
+                    $.each(Data, function (index, Value) {
+                        $('#hdId').val(Value.Id);
+                        $('#txtPlanName').text(Value.PlanName);
+                        $('#txtPrice').text(Value.Price);
+                       
+                    });
                 }
                 else {
                     alert(data.Result);
