@@ -318,7 +318,7 @@ namespace Dc9.India.Controllers
                 return View();
             }
         }
-        public JsonResult InsertUpdatePlanMaster(int Id, string PlanName, string Price,string PlanType,string Ram, string vCPU, string SSD, string HDD, 
+        public JsonResult InsertUpdatePlanMaster(int Id, string PlanName, string Price,string PriceType,string PlanType,string Ram, string vCPU, string SSD, string HDD, 
             string Memory,  string Bandwidth,   string Sub_Cat_Id_Fk, string DedicatedIP, string OSChoice, string Remark, string ServerLocation, 
             string NVMe, string Bonus, string Migration, string SSL, string Security, string Monitoring, string Prevention, string Service_Support,
             string Support, string Guarantee, string IsActive)
@@ -342,6 +342,7 @@ namespace Dc9.India.Controllers
                     {"@Id",Id.ToString().Trim() },
                     {"@PlanName",PlanName.ToString().Trim() },
                     {"@Price",Price.Trim() },
+                    {"@PriceType",PriceType.Trim() },
                     {"@PlanType",PlanType.Trim() },
                     {"@Ram",Ram.Trim() },
                     {"@vCPU",vCPU.Trim() },
@@ -568,5 +569,126 @@ namespace Dc9.India.Controllers
             return Json(dic);
         }
         #endregion Category Master
+
+        #region Discount Mater
+        public ActionResult DiscountMaster()
+        {
+            if (Session["UserId"] == null)
+            {
+                return Redirect("~/Admin/Login");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public JsonResult InsertUpdateDiscountMaster(int Id, string DiscountName,string PercentageAmount, string IsActive)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            string Action = "";
+            if (Id != 0)
+            {
+                Action = "Update";
+            }
+            else
+            {
+                Action = "Insert";
+            }
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action",Action },
+                    {"@Id",Id.ToString().Trim() },
+                    {"@PercentageAmount",PercentageAmount },
+                    {"@DiscountName",DiscountName.Trim() },
+                    {"@IsActive",IsActive.Trim() },
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelDiscountMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Result"] = dt.Rows[0]["Message"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult ShowDiscountList()
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Select" },
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelDiscountMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Data"] = JsonConvert.SerializeObject(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult EditDiscount(string Id)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Edit" },
+                    {"@Id",Id},
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelDiscountMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Record"] = JsonConvert.SerializeObject(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        public JsonResult DeleteDiscount(string Id)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic["Result"] = "";
+            try
+            {
+                string[,] Param = new string[,]
+                {
+                    {"@Action","Delete" },
+                    {"@Id",Id},
+                };
+                DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelDiscountMaster", Param);
+                if (dt.Rows.Count > 0)
+                {
+                    dic["Result"] = dt.Rows[0]["Message"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                dic["Result"] = ex.Message;
+            }
+            return Json(dic);
+        }
+        #endregion Discount Master
     }
 }

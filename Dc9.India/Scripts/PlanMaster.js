@@ -17,11 +17,8 @@ function BindSubCategory() {
 };
 
 function InsertUpdate() {
-    if ($("#ddlSubCategory").val() == "0") {
-        alert('Please Select Sub Category ');
-        $("#ddlSubCategory").focus();
-    }
-    else if ($("#txtPlanName").val() == "") {
+   
+     if ($("#txtPlanName").val() == "") {
         alert('Please Enter Plan Name');
         $("#txtPlanName").focus();
     }
@@ -29,7 +26,10 @@ function InsertUpdate() {
         alert('Please Enter Plan Price');
         $("#txtPrice").focus();
     }
-
+    else if ($("#ddlPriceType").val() == "0") {
+        alert('Please Select Price Type');
+        $("#ddlPriceType").focus();
+    }
 
     else {
         $.post("/Admin/InsertUpdatePlanMaster",
@@ -59,6 +59,7 @@ function InsertUpdate() {
                 Support: $("#txtSupport").val(),
                 Guarantee: $("#txtGuarantee").val(),
                 Sub_Cat_Id_Fk: $("#ddlSubCategory").val(),
+                PriceType: $("#ddlPriceType").val(),
                 IsActive: $("#chkIsActive").is(':checked') ? 1 : 0,
             },
             function (data) {
@@ -140,6 +141,7 @@ function EditRecord(Id) {
                     $('#txtSupport').val(Value.Support);
                     $('#txtGuarantee').val(Value.Guarantee);
                     $('#ddlSubCategory').val(Value.Sub_Cat_Id_Fk);
+                    $('#ddlPriceType').val(Value.PriceType);
                     $('#chkIsActive').prop('checked', Value.IsActive == 1 ? true : false);
                 });
 
@@ -188,6 +190,7 @@ function ClearData() {
     $("#txtSupport").val("");
     $("#txtGuarantee").val("");
     $("#ddlSubCategory").val("0");
+    $("#ddlPriceType").val("0");
     $("#chkIsActive").prop('checked', false);
     $('#btnSave').text('Save');
 }
