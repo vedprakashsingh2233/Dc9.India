@@ -252,7 +252,7 @@ namespace Dc9.India.Controllers
                         htmlString.AppendLine("<div class=\"col-sm-6 item\">");
                         htmlString.AppendLine("<label class=\"col-sm-8\">" + dt.Rows[i]["ItemName"] + "</label>");
                         htmlString.AppendLine("<input type=\"checkbox\" class=\"form-check col-sm-3 chkAddtional\" value=\""+ dt.Rows[i]["ItemName"] + "\" />");
-                        htmlString.AppendLine("<span class=\"text-extra-dark-gray alt-font font-weight-600 mb-0\">$<span class=\"AddtionalPrice\">" + dt.Rows[i]["ItemPrice"] + "</span>/mo</span>");
+                        htmlString.AppendLine("<span class=\"text-extra-dark-gray alt-font font-weight-600 mb-0\">₹<span class=\"AddtionalPrice\">" + dt.Rows[i]["ItemPrice"] + "</span>/month</span>");
                         htmlString.AppendLine("</div>");
                     }
                     dic["Data"] = htmlString.ToString();
