@@ -553,7 +553,7 @@ label {
                     $.each(Data, function (index, Value) {
                         $('#hdId').val(Value.Id);
                         $('#txtPlanName').text(Value.PlanName);
-                        $('#txtPrice').text(Value.Price);
+                        $('#txtPrice').text(parseFloat(Value.Price).toFixed(2));
                         $('#txtPriceType').text(Value.PriceType);
 
                     });
