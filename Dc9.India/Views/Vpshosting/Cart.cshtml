@@ -367,17 +367,17 @@ label {
     <div class="product">
        
         <div class="product-details">
-            <div class="product-title" id="txtPlanName">Dingo Dog Bones</div>
-            <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+            <div class="product-title" id="txtPlanName"></div>
+            <p class="product-description">Bandwidth : <span id="txtBandwidth"></span> ,&nbsp;&nbsp;Dedicated IP's : <span id="txtDedicatedIP"></span></p>
         </div>
         <div class="product-price"><span id="txtPrice"></span> / <span id="txtPriceType"></span></div>
      
         <div class="product-removal">
             <button class="remove-product" onclick="history.back()">
-                Back To Plan
+                Back To Plans
             </button>
         </div>
-        <div class="product-line-price">25.98</div>
+        <div class="product-line-price" id="product-line-price"></div>
     </div>
 
   
@@ -387,12 +387,9 @@ label {
             <label>Subtotal</label>
             <div class="totals-value" id="cart-subtotal">71.97</div>
         </div>
+        
         <div class="totals-item">
-            <label>Tax (5%)</label>
-            <div class="totals-value" id="cart-tax">3.60</div>
-        </div>
-        <div class="totals-item">
-            <label>Shipping</label>
+            <label>Additional Item</label>
             <div class="totals-value" id="cart-shipping">15.00</div>
         </div>
         <div class="totals-item totals-item-total">
@@ -404,19 +401,25 @@ label {
     <button class="checkout">Checkout</button>
 
 </div>
-<div id="divAdditionalItem" style="margin:100px;">
+<h2 style="margin-top:100px;">Additional Item</h2>
+<div id="divAdditionalItem" >
 
+</div>
+<div>
+    <select id="ddlTenure"></select>
+    <input type="text"  id="txtTenure" value="0" disabled style="display:none;" />
 </div>
 <script>
     /* Set rates + misc */
-    var taxRate = 0.05;
+   
     var shippingRate = 15.0;
     var fadeTime = 300;
 
     /* Assign actions */
-    $(".product-quantity input").change(function () {
+    $(".product-quantity txtPrice").change(function () {
         updateQuantity(this);
     });
+
 
     $(".product-removal button").click(function () {
         removeItem(this);
@@ -427,19 +430,17 @@ label {
         var subtotal = 0;
 
         /* Sum up row totals */
-        $(".product").each(function () {
-            subtotal += parseFloat($(this).children(".product-line-price").text());
-        });
+       
+            subtotal += parseFloat($(this).children("#txtPrice").text());
+       
 
         /* Calculate totals */
-        var tax = subtotal * taxRate;
         var shipping = subtotal > 0 ? shippingRate : 0;
-        var total = subtotal + tax + shipping;
+        var total = subtotal  + shipping;
 
         /* Update totals display */
         $(".totals-value").fadeOut(fadeTime, function () {
             $("#cart-subtotal").html(subtotal.toFixed(2));
-            $("#cart-tax").html(tax.toFixed(2));
             $("#cart-shipping").html(shipping.toFixed(2));
             $("#cart-total").html(total.toFixed(2));
             if (total == 0) {
@@ -483,7 +484,7 @@ label {
 <script>
     var additionalItem = [];
     $(document).ready(function () {
-
+        recalculateCart();
         // Event handler for checkbox change
         $('.chkAddtional').change(function () {
             let item = $(this).val();
@@ -505,6 +506,7 @@ label {
             }
         });
         BindAdditionaltem();
+        BindTanure();
         var queryString = window.location.search; // "?SC=5"
 
         // Use URLSearchParams to parse the query string
@@ -512,7 +514,11 @@ label {
 
         // Get the value of the 'SC' parameter
         var id = urlParams.get('id');
-        BindPlanDetail(id)
+        BindPlanDetail(id);
+        $("#ddlTenure").change(function () {
+            $("#txtTenure").show();
+            $("#txtTenure").val($(this).val());
+        });
     });
     function AddPricing() {
         var html = '';
@@ -554,7 +560,10 @@ label {
                         $('#hdId').val(Value.Id);
                         $('#txtPlanName').text(Value.PlanName);
                         $('#txtPrice').text(parseFloat(Value.Price).toFixed(2));
+                        $('#product-line-price').text(parseFloat(Value.Price).toFixed(2));
                         $('#txtPriceType').text(Value.PriceType);
+                        $('#txtDedicatedIP').text(Value.DedicatedIP);
+                        $('#txtBandwidth').text(Value.Bandwidth);
 
                     });
                 }
@@ -563,4 +572,17 @@ label {
                 }
             });
     }
+    function BindTanure() {
+        $.post("/Admin/ShowDiscountList",
+            {},
+            function (data) {
+                var jsonData = JSON.parse(data.Data);
+                $('#ddlTenure').html("").append('<option value="0">Select Tenure</option>');
+                $(jsonData).each(function () {
+                    $('#ddlTenure').append('<option value=' + this.PercentageAmount + '>' + this.DiscountName + '</option>');
+                });
+            }).fail(function (edata) {
+                alert("error while feching record.");
+            });
+    };
 </script>
