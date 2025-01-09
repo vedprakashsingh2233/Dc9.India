@@ -417,7 +417,7 @@ label {
 
     /* Assign actions */
     $(".product-quantity txtPrice").change(function () {
-        updateQuantity(this);
+        //updateQuantity(this);
     });
 
 
@@ -431,7 +431,7 @@ label {
 
         /* Sum up row totals */
        
-            subtotal += parseFloat($(this).children("#txtPrice").text());
+            subtotal += parseFloat($("#txtPrice").text());
        
 
         /* Calculate totals */
@@ -484,7 +484,7 @@ label {
 <script>
     var additionalItem = [];
     $(document).ready(function () {
-        recalculateCart();
+       
         // Event handler for checkbox change
         $('.chkAddtional').change(function () {
             let item = $(this).val();
@@ -515,6 +515,7 @@ label {
         // Get the value of the 'SC' parameter
         var id = urlParams.get('id');
         BindPlanDetail(id);
+        //recalculateCart();
         $("#ddlTenure").change(function () {
             $("#txtTenure").show();
             $("#txtTenure").val($(this).val());
