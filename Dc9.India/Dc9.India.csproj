@@ -4164,6 +4164,9 @@
     <Content Include="Views\Vpshosting\SelfManagedServer.cshtml" />
     <Content Include="Views\Admin\AdditionalItem.cshtml" />
     <Content Include="Views\Admin\DiscountMaster.cshtml" />
+    <Content Include="Views\Home\Agreement.cshtml" />
+    <Content Include="Views\Home\AcceptablePolicy.cshtml" />
+    <Content Include="Views\Home\Cookies.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

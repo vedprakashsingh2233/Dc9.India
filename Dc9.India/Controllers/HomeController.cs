@@ -45,5 +45,17 @@ namespace Dc9.India.Controllers
         {
             return View();
         }
+        public ActionResult Agreement()
+        {
+            return View();
+        }
+        public ActionResult AcceptablePolicy()
+        {
+            return View();
+        }
+        public ActionResult Cookies()
+        {
+            return View();
+        }
     }
 }
