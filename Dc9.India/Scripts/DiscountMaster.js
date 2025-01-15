@@ -40,7 +40,7 @@ function showRecord() {
                 $('#tblBookList').DataTable({
                     data: jsonData,
                     columns: [
-                        { data: "DiscountName", title: "Category Name" },
+                        { data: "DiscountName", title: "Tenure" },
                         { data: "PercentageAmount", title: "Percentage Amount" },
                         { data: "IsActive", title: "Is Active" },
                         {

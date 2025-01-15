@@ -65,13 +65,37 @@
                         </div>
                         <div id="accordion-two-link1" data-parent="#accordion-two" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <p>1.1 “Monthly Service Fee” means the total charges paid by you for the Services in one billing month...</p>
-                                <p>1.2 “Monthly Uptime Percentage” means a percentage of service availability...</p>
-                                <p>1.3 “Downtime” means the total number of minutes in a calendar month...</p>
-                                <p>1.4 “Exclusions” refers to unavailability caused by events outside of reasonable control...</p>
-                                <p>1.5 “Scheduled Downtime” means Downtime for maintenance or upgrades...</p>
-                                <p>1.6 “Service Guarantee” shall have the meaning set forth in Section 2...</p>
-                                <p>1.7 “Service Credit” means the percentage of the Monthly Service Fee credited for validated claims...</p>
+                                <p>1.1  “Monthly Service Fee” means the total charges paid by you for the Services in one billing month. If you pay for the Service by upfront lump sum payment, Monthly Service Fee equals to the lump sum payment divided by the number of months of the Service covered by such payment.</p>
+                                <p>1.2  “Monthly Uptime Percentage” means a percentage of service availability.</p>
+                                <p>1.3  “Downtime” means the total number of minutes in a calendar month when all the running instances in your Dedicated Server have no external connectivity or cannot be operated.</p>
+                                <p>1.4  “Exclusions" means any unavailability, suspension, or termination of the Service that is due to any of the following:</p>
+                                <p>(a) events that are outside of our reasonable control, including any events of force majeure such as earthquakes, downtime of the relevant submarine communication cables, failure of telecommunications infrastructure or systems, riots, Acts of God, etc.;</p>
+                                <p>
+                                    (b) events that result from any actions or inactions on your part in connection with your use of the Service;
+                                </p>
+                                <p>
+                                    (c) events that arise out of your or any third parties’ (not under our direct control) equipment, software, and/or technology;
+                                </p>
+                                <p>
+                                    (d) events that result from your failure to adhere to any required configurations for the use of the Service;
+                                </p>
+                                <p>
+                                    (e) events that result from your illegal or unlawful use of the Service, or your breach of any of the terms and conditions of the Dc9india Dedicated Server Product Terms, Terms of Use, or Membership Agreement;
+                                </p>
+                                <p>
+                                    (f) events that result from your non-payment of any charges payable to us;
+                                </p>
+                                <p>
+                                    (g) events that result from critical accidents or failure of the relevant internet service provider(s); and
+                                </p>
+                                <p>
+                                    (h) Scheduled Downtime.
+                                </p>
+                                <p>
+                                   1.5  “Scheduled Downtime” means the periods of Downtime relating to network, hardware, or service maintenance or upgrades. We will use reasonable commercial endeavors to provide written notice to you prior to the commencement of Scheduled Downtime.
+                                </p>
+                                <p>1.6  “Service Guarantee” shall have the meaning set forth in Section 2 of this SLA. </p>
+                                <p>1.7  “Service Credit” means the percentage of the Monthly Service Fee for the affected Service that is credited to you for a validated claim following our service credit claim process under Section 3.</p>
                             </div>
                         </div>
                     </div>
@@ -86,8 +110,52 @@
                         </div>
                         <div id="accordion-two-link2" data-parent="#accordion-two" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <p>We shall use commercially reasonable endeavors to provide a Monthly Uptime Percentage of no less than 99.9%...</p>
-                                <p>If we fail to meet the Service Guarantee, you shall be entitled to claim a Service Credit rebate...</p>
+                                <p>We shall use commercially reasonable endeavors to provide a Monthly Uptime Percentage of no less than 99.9% each calendar month in connection with your use of the Service (the “Service Guarantee”). If we fail to meet the Service Guarantee, subject to the terms and conditions of this SLA, you shall be entitled to claim a Service Credit rebate in accordance with Section 3 herein. The Service Guarantee does not apply to the Exclusions.</p>
+                                <p>
+                                    2.1 If you believe that the Service Guarantee in connection with your use of the Service is not met in any calendar month, then you may file a claim for Service Credit in accordance with Clause 3.2. Your claim must include at least the following information:
+                                </p>
+                                <p>
+                                    (a) A detailed description of the incident, including the logs or messages for request failure documenting the errors and claimed outage;
+                                </p>
+                                <p>
+                                    (b) The date, time and duration of the Downtime;
+                                </p>
+                                <p>
+                                    (c) Information relating the affected instances, including the affected instance IDs; and
+                                </p>
+                                <p>
+                                    (d) Any other information that we reasonably ask you to provide to support your claim.
+                                </p>
+                                <p>2.2 Your claim for Service Credit must be received by us within thirty (30) days after the last day of the calendar month of occurrence of the event giving rise to the claim. Your failure to submit the claim within this time will be deemed to be an irrevocable waiver of your right to claim and receive such a rebate. Once we receive your claim, we will review and evaluate your claim and may require your co-operation in conducting a joint investigation to ascertain whether the Service Guarantee has been breached and if so, the cause of the failure. We will make a good faith determination if a Service Credit is to be provided to you in our sole discretion and will inform you the result as soon as reasonably practicable. We will use commercially reasonable effort to process your claim and provide the Service Credit to you as early as possible.</p>
+                                <p>
+                                    2.3 If we, after our good-faith review of your claim, determine that a Service Credit must be provided to you, the Service Credit to be provided will be the following:
+                                </p>
+                                <table border="1">
+                                    <tr>
+                                        <th>Monthly Uptime Percentage</th>
+                                        <th>Service Credit Percentage</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Less than 99.9%, but equal to or greater than 99%</td>
+                                        <td>10%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Less than 99.00%</td>
+                                        <td>15%</td>
+                                    </tr>
+                                </table>
+                                <p>
+                                    2.4 Subject to Clauses 3.1, 3.2, and 3.3, the Service Credit shall only apply to set-off the fees payable by you for the Service. The Service Credit shall not be used or applied to set-off the fees for any other Dc9india services unless otherwise stated in writing by us from time to time.
+                                </p>
+                                <p>
+                                    2.5 The Service Credit provided in any billing month for a particular Service or Service Resource will not, under any circumstance, exceed 15% of your Monthly Service Fee for that affected Service or Service Resource, as applicable, in the billing month.
+                                </p>
+                                <p>
+                                    2.6 The Service Credit provided must be used within one (1) year from the date the Service Credit is made available for you to use.
+                                </p>
+                                <p>
+                                    2.7 You agree that any decision or determination made by us relating to your claim for any Service Credit shall be final and binding on you.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -96,15 +164,57 @@
                         <div class="panel-heading">
                             <a data-toggle="collapse" data-parent="#accordion-two" href="#accordion-two-link3" class="collapsed" aria-expanded="false">
                                 <div class="panel-title font-weight-500 text-uppercase position-relative padding-20px-right">
-                                    3. Service Credit Claims:<span class="position-absolute right-0 top-0"><i class="ti-plus"></i></span>
+                                    3. ADDITIONAL TERMS<span class="position-absolute right-0 top-0"><i class="ti-plus"></i></span>
                                 </div>
                             </a>
                         </div>
                         <div id="accordion-two-link3" data-parent="#accordion-two" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <p>3.1 If you believe that the Service Guarantee is not met, you may file a claim with details...</p>
-                                <p>3.2 Claims must include a description of the incident, logs, dates, times, and affected instance details...</p>
-                                <p>3.3 Claims must be submitted within thirty (30) days of the occurrence...</p>
+                                <p>
+                                    3.1  In the event of any inconsistency between your and our system records relating to your claim, unless the discrepancy is caused by any material error or malfunction of our system, our system record shall at all times prevail and be the final and conclusive reference for calculating the Service Credits to be provided to you.
+                                </p>
+                                <p>
+                                    3.2 The Service Credits provided in this SLA are your sole and exclusive remedy for any failure in the performance of the Service and we shall not be liable to you or any person claiming through you for any direct, indirect, consequential or incidental damages or losses or expenses whatsoever, including but not limited to, loss of profits or business and irrespective of whether the claim arises in contract, tort (including negligence), or otherwise.
+                                </p>
+                                <p>3.3  We reserve the right to change the terms of this SLA anytime by posting an amended and restated version of this SLA on our Website. Your continued use of the service after the publication of the amended SLA shall be deemed as your acceptance of the amended SLA.</p>
+                                <p>
+                                    3.4 This SLA shall constitute part of your agreement for your purchase and use of the Service.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-parent="#accordion-two" href="#accordion-two-link4" class="collapsed" aria-expanded="false">
+                                <div class="panel-title font-weight-500 text-uppercase position-relative padding-20px-right">
+                                    4. Server Termination<span class="position-absolute right-0 top-0"><i class="ti-plus"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="accordion-two-link4" data-parent="#accordion-two" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>
+                                    Your server at Dc9india can get terminated due to following reasons:
+                                </p>
+                                <p>
+                                    4.1 You decide to discontinue: At any point of time, during your subscription, if you no more want to continue with our services and want to place a cancellation request with immediate termination, your server will be suspended right away and will be terminated within 24 hours.
+                                </p>
+                                <p>
+                                    4.2 Cancellation upon expiration: If you place a cancellation request to discontinue our services after your subscription expires, your server will be suspended at the end of the subscription and will be terminated within 24 hours (after the expiration date).
+                                </p>
+                                <p>
+                                    4.3 You did not renew: In case you fail to renew the subscription of your dedicated server on the due date, your server will be suspended right away and will be terminated within 24 hours (after the expiration date).
+                                </p>
+                                <p>
+                                    4.4 You violate our Terms of service: If you violate our terms of service during your subscription period at Dc9india it will result in immediate account suspension and termination. As soon as we've been notified about the violation of service, we would usually take instant action.
+                                </p>
+                                <p>
+                                    4.5 Potential fraud: We have an anti-fraud system that monitors all the orders as soon as they are placed. During such an occurrence, we will carry out a verification process manually. In this process, if we ask for certain information and it is not provided the account suspension and termination will be done immediately.
+                                </p>
+                                <p>4.6 A Dispute or ChargeBack: During the violation of our Terms of Service, we would initially suspend and give a 7 days timeframe to resolve the concern with Dc9india before the termination occurs. If still, it remains unsolved termination of your server will take place.</p>
+                                <p>
+                                    Note: It is advised to maintain a back-up copy of your server to avoid losing your data because of the termination. All your files will be deleted from the server, once your server is terminated and Dc9india shall not be liable for the same.
+                                </p>
                             </div>
                         </div>
                     </div>
