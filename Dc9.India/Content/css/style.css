@@ -9335,7 +9335,7 @@ header a.logo {
 }
 
     header a.logo img {
-        max-height: 26px;
+        max-height: 76px;
     }
 
 header .left-nav .sidebar-part1 a.logo img {
@@ -10256,7 +10256,7 @@ nav.navbar.bootsnav .btn-hamburger {
 
 /* header style two */
 .header-with-topbar .navbar-top, .header-with-topbar .navbar-fixed-top {
-    top: 36px;
+    top: 30px;
     background: #fff;
     box-shadow: 0 4px 10px -10px rgba(0, 0, 0, 0.6)
 }

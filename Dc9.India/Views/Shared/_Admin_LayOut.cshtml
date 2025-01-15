@@ -50,7 +50,7 @@
         <!-- start logo -->
         <div class="col-12 sidenav-header">
             <div class="logo-holder">
-                <a href="..Admin/CategoryMaster" class="display-inline-block logo"><img alt="DC9India" src="~/Content/images/Dc9Logo.png" data-rjs="~/Content/images/Dc9Logo.png" /></a>
+                <a href="..Admin/CategoryMaster" class="display-inline-block logo"><img alt="DC9India" src="~/Content/images/Dc9_logo_light.png" data-rjs="~/Content/images/Dc9_logo_light.png" /></a>
             </div>
             <!-- end logo -->
             <button class="navbar-toggler mobile-toggle" type="button" id="mobileToggleSidenav">
@@ -212,5 +212,12 @@
     <script type="text/javascript" src="@Url.Content("~/revolution/js/jquery.themepunch.revolution.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Content/js/main.js")"></script>
     <script src="https://cdn.datatables.net/2.1.0/js/dataTables.min.js"></script>
+    <script>
+        $(".number").bind("paste", function () {
+            setTimeout(jQuery.proxy(function () {
+                this.val(this.val().replace(/[^0-9]/g, ''));
+            }, $(this)), 0);
+        });
+    </script>
 </body>
 </html>

@@ -53,139 +53,40 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/responsive.css")">
 </head>
 <body>
-    <header>
-        <style>
-            .headers {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background-color: black;
-                /*padding: 10px;*/
-                color: white;
-                font-family: Arial, sans-serif;
-            }
-
-            .left {
-                display: flex;
-                align-items: center;
-                margin-left: 40%;
-            }
-
-            .sale {
-                background-color: #2E2D8B;
-                padding: 5px 10px;
-                border-radius: 4px;
-                margin-right: 10px;
-            }
-
-            .home-pill {
-                display: inline-block;
-                background: linear-gradient(90deg, #344385 2%, #a24739 99.97%), linear-gradient(103deg, #fff -0.01%, #ffdb4c 67.22%, #c3ce7f 101.27%);
-                backdrop-filter: blur(1.8896210193634033px);
-                padding: 6px 9px;
-                font-size: 13px !important;
-                line-height: 1;
-                color: #fff;
-                border-radius: 6px;
-                margin: -2px 8px 0 0;
-                font-weight: 500 !important;
-                letter-spacing: 0.01em !important;
-            }
-
-            .discount {
-                font-size: 14px;
-            }
-
-                .discount a {
-                    color: white;
-                    text-decoration: underline;
-                }
-
-            .right a {
-                color: white;
-                margin-left: 15px;
-                text-decoration: none;
-            }
-
-            .right .search-icon, .right .cart-icon {
-                font-size: 18px;
-            }
-
-            .right a:hover {
-                text-decoration: underline;
-            }
-        </style>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-            }
-
-            /* Modal styles */
-            .modal {
-                display: none;
-                position: fixed;
-                z-index: 1;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                overflow: auto;
-                background-color: rgb(0,0,0);
-                background-color: rgba(0,0,0,0.4);
-                padding-top: 60px;
-            }
-
-            .modal-content {
-                background-color: #fefefe;
-                margin: 5% auto;
-                padding: 20px;
-                border: 1px solid #888;
-                width: 300px;
-            }
-
-            .close {
-                color: #aaa;
-                float: right;
-                font-size: 28px;
-                font-weight: bold;
-            }
-
-                .close:hover,
-                .close:focus {
-                    color: black;
-                    text-decoration: none;
-                    cursor: pointer;
-                }
-        </style>
-        <div class="headers">
-            <div class="left">
-                @*<span class="sale home-pill">Black Friday sale</span>
-                    <span class="discount">Up to 75% off <a href="#">Shop now</a></span>*@
-            </div>
-            <div class="right">
-                <a href="#">Support</a>
-                <a href="#">Contact</a>
-                <a href="#"><i class="search-icon"></i></a>
-                @*<a href="#"><i class="cart-icon">🛒</i></a>*@
-                @*<button class="btn btn-very-small btn-rounded btn-white box-shadow-dark" onclick="Login()" type="button">Login</button>*@
-                <script>
-                    function Login() {
-                        $(window.location).attr("href", "/UserLogin/Login");
-                    }
-                </script>
+   
+    <!-- start header -->
+    <header class="header-with-topbar">
+        <!-- topbar -->
+        <div class="top-header-area bg-black padding-10px-tb">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-uppercase alt-font d-flex align-items-center justify-content-center justify-content-md-start">
+                        </div>
+                    <div class="col-md-6 d-none d-md-flex align-items-center justify-content-end">
+                        <div class="icon-social-very-small display-inline-block line-height-normal">
+                             </div>
+                        <div class="btn-group dropdown-style-1">
+                            <button type="button" class="btn  sm-width-100 mr-2">
+                                Support 
+                            </button>
+                            <button type="button" class="btn  sm-width-100 ml-4">
+                                Contact 
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <!--<div id="loginModal" class="modal">-->
+        <!-- end topbar -->
         <!-- start navigation -->
-        <nav class="navbar navbar-default bootsnav background-white header-light navbar-top navbar-expand-lg nav-box-width">
-
-            <div class="container-fluid nav-header-container">
+        <nav class="navbar navbar-default bootsnav navbar-top header-light-transparent background-transparent nav-box-width navbar-expand-lg">
+            <div class="container nav-header-container">
                 <!-- start logo -->
-                <div class=" pl-0">
-                    <a href="../" title="DC9India" class="logo"><img src="~/Content/images/Dc9Logo1.png" data-rjs="~/Content/images/Dc9Logo1.png" alt="Pofo" class="logo-light default" style="width:100px;"></a>
+                <div class="col-auto pl-lg-0">
+                    <a href="../" title="Dc9India" class="logo"><img src="~/Content/images/Dc9_logo_light.png" data-rjs="~/Content/images/Dc9_logo_light.png" class="logo-dark default" alt="Dc9India"><img src="~/Content/images/Dc9_logo_light.png" data-rjs="~/Content/images/Dc9_logo_light.png" alt="Dc9India" class="logo-light"></a>
                 </div>
                 <!-- end logo -->
-                <div class="col col-md accordion-menu pr-0 pr-lg-3">
+                <div class="col accordion-menu pr-0 pr-md-3">
                     <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar-collapse-toggle-1">
                         <span class="sr-only">toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -194,7 +95,7 @@
                     </button>
                     <div class="navbar-collapse collapse justify-content-center" id="navbar-collapse-toggle-1">
                         <!--<ul class="nav navbar-nav alt-font text-normal">
-                        <!-- start menu item -->
+        <!-- start menu item -->
                         <!--<li><a href="../Home/AboutUs" class="inner-link">About us</a></li>-->
                         <!-- end menu item -->
                         <!-- start menu item -->
@@ -208,7 +109,7 @@
                         <!-- end menu item -->
                         <!-- start menu item -->
                         <!--<li><a href="http://www.themezaa.com/html/pofo/documentation/" target="_blank">Documentation</a></li>
-                        <!-- end menu item -->
+        <!-- end menu item -->
                         <!-- start menu item -->
                         <!--<li><a href="#Support">Support</a></li>-->
                         <!-- end menu item -->
@@ -229,41 +130,41 @@
                                 {
                                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                                     {
-                            <li class="dropdown megamenu-fw">
-                                <a href="#">@ds.Tables[0].Rows[i]["CategoryName"]</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                <!-- start sub menu -->
-                                @if (ds.Tables[1].Rows.Count > 0)
-                                {
-                                    <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
-                                        <ul>
-                                            @for (int j = 0; j < ds.Tables[1].Rows.Count; j++)
+                                        <li class="dropdown megamenu-fw">
+                                            <a href="#">@ds.Tables[0].Rows[i]["CategoryName"]</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                            <!-- start sub menu -->
+                                            @if (ds.Tables[1].Rows.Count > 0)
                                             {
-                                                if (ds.Tables[0].Rows[i]["Id"].ToString() == ds.Tables[1].Rows[j]["Category_Id_FK"].ToString())
-                                                {
+                                                <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
+                                                    <ul>
+                                                        @for (int j = 0; j < ds.Tables[1].Rows.Count; j++)
+                                                        {
+                                                            if (ds.Tables[0].Rows[i]["Id"].ToString() == ds.Tables[1].Rows[j]["Category_Id_FK"].ToString())
+                                                            {
 
-                                                    <!-- start sub menu column  -->
-                                                    if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Managed)"))
-                                                    {
-                                                        <li class="dropdown-header"><a href="../Vpshosting/ManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
+                                                                <!-- start sub menu column  -->
+                                                                if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Managed)"))
+                                                                {
+                                                                    <li class="dropdown-header"><a href="../Vpshosting/ManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
 
-                                                    }
-                                                    else if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Self-Managed)"))
-                                                    {
-                                                        <li class="dropdown-header"><a href="../Vpshosting/SelfManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
+                                                                }
+                                                                else if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Self-Managed)"))
+                                                                {
+                                                                    <li class="dropdown-header"><a href="../Vpshosting/SelfManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
 
-                                                    }
-                                                    else
-                                                    {
-                                                        <li class="dropdown-header"><a href="../Vpshosting/SelfManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
-                                                    }
-                                                }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <li class="dropdown-header"><a href="../Vpshosting/SelfManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
+                                                                }
+                                                            }
+                                                        }
+                                                    </ul>
+                                                    <!-- end sub menu -->
+                                                </div>
                                             }
-                                        </ul>
-                                        <!-- end sub menu -->
-                                    </div>
-                                }
 
-                            </li>
+                                        </li>
                                     }
 
                                 }
@@ -279,14 +180,19 @@
                         }
                     </div>
                 </div>
-                <div class="col col-md-auto col-lg-2 pr-0 text-right">
-                    @*<a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-very-small btn-rounded btn-white box-shadow-dark">Buy Now<i class="fas fa-shopping-cart"></i></a>*@
-                    <a href="../UserLogin/Login" class="btn pofo-button-28 sm-display-table button-style6  btn-danger btn-rounded  btn-medium   vc_custom_1507703952526 pofo-button-responsive-6762a27febfab">Client Area</a>
+                <div class="col-auto pr-lg-0">
+                    <div class="header-searchbar">
+                        <a href="../UserLogin/Login" class="btn pofo-button-28 sm-display-table button-style6  btn-danger btn-rounded  btn-medium   vc_custom_1507703952526 pofo-button-responsive-6762a27febfab">Client Area</a>
+
+
+                    </div>
                 </div>
             </div>
         </nav>
         <!-- end navigation -->
+        <!-- end navigation -->
     </header>
+    <!-- end header -->
     <div>
         @RenderBody()
     </div>
@@ -372,11 +278,10 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 widget border-right border-color-medium-dark-gray md-no-border-right md-margin-30px-bottom sm-text-center">
                         <!-- start logo -->
-                        <a href="/" class="margin-20px-bottom d-inline-block"><img class="footer-logo" src="~/Content/images/Dc9Logo1.png" data-rjs="~/Content/images/Dc9Logo1.png" alt=""></a>
+                        <a href="/" class="margin-20px-bottom d-inline-block"><img class="footer-logo" src="~/Content/images/Dc9_logo_light.png" data-rjs="~/Content/images/Dc9_logo_light.png" alt=""></a>
                         <!-- end logo -->
                         <p class="text-small width-95 sm-width-100"></p>
                         <!-- start social media -->
-                       
                         <!-- end social media -->
                     </div>
                     <!-- start additional links -->
@@ -406,16 +311,16 @@
                     <!-- start instagram -->
                     <div class="col-lg-3 col-md-6 widget padding-45px-left md-padding-15px-left text-center text-md-left">
                         <div class="widget-title alt-font text-small text-medium-gray text-uppercase margin-20px-bottom font-weight-600">Connect With Us</div>
-                      
-                            <div class="social-icon-style-8 d-inline-block vertical-align-middle">
-                                <ul class="small-icon no-margin-bottom">
-                                    <li><a class="facebook text-white-2" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                                    <li><a class="twitter text-white-2" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a class="google text-white-2" href="https://plus.google.com" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a class="instagram text-white-2" href="https://instagram.com/" target="_blank"><i class="fab fa-instagram no-margin-right" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                            
+
+                        <div class="social-icon-style-8 d-inline-block vertical-align-middle">
+                            <ul class="small-icon no-margin-bottom">
+                                <li><a class="facebook text-white-2" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                                <li><a class="twitter text-white-2" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a class="google text-white-2" href="https://plus.google.com" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a class="instagram text-white-2" href="https://instagram.com/" target="_blank"><i class="fab fa-instagram no-margin-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+
                     </div>
                     <!-- end instagram -->
                 </div>
