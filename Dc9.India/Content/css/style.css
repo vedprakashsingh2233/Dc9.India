@@ -9335,7 +9335,7 @@ header a.logo {
 }
 
     header a.logo img {
-        max-height: 76px;
+        max-height: 90px;
     }
 
 header .left-nav .sidebar-part1 a.logo img {
@@ -16405,7 +16405,7 @@ a img.aligncenter {
 }
 
 .footer-logo {
-    max-height: 120px;
+    max-height: 175px;
 }
 
 /* footer input */
