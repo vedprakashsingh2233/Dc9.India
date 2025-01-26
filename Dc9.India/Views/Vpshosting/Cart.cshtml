@@ -259,18 +259,28 @@
     };
 </script>
 <script>
+            var selectedItems = [];
     $(document).ready(function () {
         // Use event delegation for dynamically loaded content
         $(document).on("change", "#divAdditionalItem .chkAddtional", function () {
             var total = 0; // Initialize total price
             // Loop through all checked checkboxes to calculate the total price
             $("#divAdditionalItem .chkAddtional:checked").each(function () {
+                var AddPlanName =  $(this).val();
                 var price = parseFloat($(this).closest('.item').find('.AddtionalPrice').text().replace(',', ''));
+                var AddId = $(this).closest('.item').find('.chkAddtionalID').val();
                 total += price; // Add the price of the selected checkbox
+                  selectedItems.push({
+                      AddPlanName: AddPlanName,
+                      price: price,
+                      AddId: AddId
+        });
             });
 
             // Update the total price span
             $("#txtAddPlanPrice").text(total.toFixed(2)); // Adjusted for formatting
+            console.log(selectedItems);
+
             recalculateCart();
         });
     });
