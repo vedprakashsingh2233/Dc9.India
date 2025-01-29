@@ -9335,9 +9335,13 @@ header a.logo {
 }
 
     header a.logo img {
-        max-height: 90px;
+        max-height: 60px;
     }
-
+@media screen and (max-width: 768px) {
+    header a.logo img {
+        max-height: 38px; /* Adjusted for smaller screens */
+    }
+}
 header .left-nav .sidebar-part1 a.logo img {
     max-height: inherit;
 }
@@ -16405,7 +16409,7 @@ a img.aligncenter {
 }
 
 .footer-logo {
-    max-height: 175px;
+    max-height: 87px;
 }
 
 /* footer input */

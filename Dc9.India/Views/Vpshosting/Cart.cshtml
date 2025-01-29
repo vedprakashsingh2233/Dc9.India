@@ -58,7 +58,7 @@
 
                             <div class="row panel-body">
                                 <div class="col-sm-6">
-
+                                    <input type="hidden" id="hdId" value=""/>
                                     <span class="text-extra-dark-gray font-weight-400" id="txtPlanName"> </span>
                                 </div>
                                 <div class="col-sm-6">
@@ -152,7 +152,7 @@
                     <div class="row">
                         <div class="col-12 col-12 text-center btn-dual justify-content-center mt-3">
                             <!-- start buttons -->
-                            <a class="btn btn-extra-large btn-dark-gray btn-rounded lg-margin-15px-bottom d-table d-lg-inline-block md-margin-lr-auto" href="../Vpshosting/checkout">Checkout</a>
+                            <a class="btn btn-extra-large btn-dark-gray btn-rounded lg-margin-15px-bottom d-table d-lg-inline-block md-margin-lr-auto" onclick="checkOutPage()">Checkout</a>
 
                         </div>
                     </div>
@@ -259,22 +259,35 @@
     };
 </script>
 <script>
-            var selectedItems = [];
+    var selectedItems = [];
+
     $(document).ready(function () {
         // Use event delegation for dynamically loaded content
         $(document).on("change", "#divAdditionalItem .chkAddtional", function () {
             var total = 0; // Initialize total price
-            // Loop through all checked checkboxes to calculate the total price
-            $("#divAdditionalItem .chkAddtional:checked").each(function () {
-                var AddPlanName =  $(this).val();
-                var price = parseFloat($(this).closest('.item').find('.AddtionalPrice').text().replace(',', ''));
-                var AddId = $(this).closest('.item').find('.chkAddtionalID').val();
-                total += price; // Add the price of the selected checkbox
-                  selectedItems.push({
-                      AddPlanName: AddPlanName,
-                      price: price,
-                      AddId: AddId
-        });
+            var checkbox = $(this); // Current checkbox
+            var AddPlanName = checkbox.val();
+            var price = parseFloat(checkbox.closest('.item').find('.AddtionalPrice').text().replace(',', ''));
+            var AddId = checkbox.closest('.item').find('.chkAddtionalID').val();
+
+            // Check if the checkbox is checked or unchecked
+            if (checkbox.is(":checked")) {
+                // Add the item to the array if it doesn't already exist
+                if (!selectedItems.some(item => item.AddId === AddId)) {
+                    selectedItems.push({
+                        AddPlanName: AddPlanName,
+                        price: price,
+                        AddId: AddId
+                    });
+                }
+            } else {
+                // Remove the unchecked item from the array
+                selectedItems = selectedItems.filter(item => item.AddId !== AddId);
+            }
+
+            // Recalculate the total price based on selected items
+            selectedItems.forEach(item => {
+                total += item.price;
             });
 
             // Update the total price span
@@ -284,11 +297,17 @@
             recalculateCart();
         });
     });
+   
     function recalculateCart() {
         var billAmount = parseFloat($('#txtBill').text())
         var AddAmount = parseFloat($('#txtAddPlanPrice').text())
         var txtSubtotal = parseFloat(billAmount) + parseFloat(AddAmount)
         $('#txtSubtotal').text(txtSubtotal);
         $('#txtGrandTotal').text(txtSubtotal);
+    }
+    function checkOutPage() {
+        localStorage.setItem("selectedItems", selectedItems);
+        localStorage.setItem("PlanId", $('#hdId').val());
+        $(window.location).attr("href", "/Vpshosting/checkout");
     }
 </script>

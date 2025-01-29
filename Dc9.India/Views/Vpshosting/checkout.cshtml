@@ -4,7 +4,8 @@
     Layout = "~/Views/Shared/_LayOut.cshtml";
 }
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- start page title section -->
 <section class="wow fadeIn bg-extra-dark-gray padding-35px-tb page-title-small top-space">
     <div class="container">
@@ -146,7 +147,42 @@
         </div>
     </div>
 </section>
-                <script>
+                <script>  $(document).ready(function () {
+      var id = localStorage.getItem("PlanId");
+      BindPlanDetail(id);
+                       AdditionalItem = [];
+                        AdditionalItem=localStorage.getItem("selectedItems");
+  });
+                    function BindPlanDetail(Id) {
+                        $.post("/Admin/EditPlan",
+                            { Id: Id },
+                            function (data) {
+                                if (data.Result == "") {
+                                    var Data = JSON.parse(data.Record);
+                                    $.each(Data, function (index, Value) {
+                                        $('#hdId').val(Value.Id);
+                                        $('#txtPlan').text(Value.PlanName);
+                                        $('#txtPrice').text(parseFloat(Value.Price).toFixed(2));
+                                        $('#txtBill').text(parseFloat(Value.Price).toFixed(2));
+                                        $('#txtSubtotal').text(parseFloat(Value.Price).toFixed(2));
+                                        $('#txtGrandTotal').text(parseFloat(Value.Price).toFixed(2));
+                                        $('#txtPriceType').text(Value.PriceType);
+                                        $('#txtvCPU').text(Value.vCPU);
+                                        $('#txtDedicatedIP').text(Value.DedicatedIP);
+                                        $('#txtBandwidth').text(Value.Bandwidth);
+                                        $('#txtDedicatedIP').text(Value.DedicatedIP);
+                                        $('#txtSupport').text(Value.Support);
+                                        $('#txtPlanName').text(Value.PlanName);
+                                        $('#txtPlanType').text(Value.PlanType);
+                                        $('#txtRemark').text(Value.Remark);
+                                        $('#txtRam').text(Value.Ram);
+                                    });
+                                }
+                                else {
+                                    alert(data.Result);
+                                }
+                            });
+                    }
                     function SavePlan() {
                         //if ($("#txtCardNumber").val() == '') {
                         //    alert('Please select Card Number')
