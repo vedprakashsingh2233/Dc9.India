@@ -188,6 +188,94 @@ namespace Dc9.India.Controllers
                         {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Guarantee"] + "</li>");
                         }
+                        if (dt.Rows[i]["Isprevention"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Isprevention"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsFreeSSL"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsFreeSSL"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsFirewallMonitory"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsFirewallMonitory"] + "</li>");
+                        }
+                        if (dt.Rows[i]["Is27Support"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Is27Support"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsUpTimeGuarntee"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsUpTimeGuarntee"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsFreeMigration"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsFreeMigration"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsFreeBonuses"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsFreeBonuses"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsOSChoice"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsOSChoice"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsPowerfulControlPanel"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsPowerfulControlPanel"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsFullRootAccess"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsFullRootAccess"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsOneClickIns"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsOneClickIns"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsCSSJSOptimizers"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsCSSJSOptimizers"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsWorldwideDataCenters"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsWorldwideDataCenters"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsAPIIntegration"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsAPIIntegration"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsVul_Scanner"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsVul_Scanner"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsFullStackDevelopment"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsFullStackDevelopment"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsMultiplePHPVersion"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsMultiplePHPVersion"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsPageSpeed"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsPageSpeed"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsWebsiteOptimization"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsWebsiteOptimization"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsPHPVulCheck"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsPHPVulCheck"] + "</li>");
+                        }
+                        if (dt.Rows[i]["IsProtectiveFirewall"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsProtectiveFirewall"] + "</li>");
+                        } 
+                        if (dt.Rows[i]["IsMalwareScans"].ToString() != "")
+                        {
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsMalwareScans"] + "</li>");
+                        }
                         sb.AppendLine("</ul>");
                         sb.AppendLine("</div>");
                         sb.AppendLine("</td>");

@@ -82,7 +82,7 @@
         <nav class="navbar navbar-default bootsnav navbar-top header-light-transparent background-transparent nav-box-width navbar-expand-lg">
             <div class="container nav-header-container">
                 <!-- start logo -->
-                <div class="col-auto pl-lg-0">
+                <div class="col-auto pl-lg-0 pt-1">
                     <a href="../" title="Dc9India" class="logo"><img src="~/Content/images/Dc9_logo_light.png" data-rjs="~/Content/images/Dc9_logo_light.png" class="logo-dark default" alt="Dc9India"><img src="~/Content/images/Dc9_logo_light.png" data-rjs="~/Content/images/Dc9_logo_light.png" alt="Dc9India" class="logo-light"></a>
                 </div>
                 <!-- end logo -->
@@ -306,6 +306,16 @@
                         <div class="text-small">Email: <a href="mailto:admin@dc9india.com">admin@dc9india.com</a></div>
                         <div class="text-small">Phone: +91 9220882414</div>
                         @*<a href="contact-us-modern.html" class="text-small text-uppercase text-decoration-underline">View Direction</a>*@
+                        <div class="">
+                            <div class="widget-title alt-font text-small mt-3 text-medium-gray text-uppercase margin-15px-bottom font-weight-600">Subscribe Newsletter</div>
+                            <form id="subscribenewsletterform" action="javascript:void(0)" method="post">
+                                <div class="position-relative newsletter width-95">
+                                    <div id="success-subscribe-newsletter" class="mx-0" style="display: none;"></div>
+                                    <input type="text" id="email" name="email" class="bg-transparent text-small m-0 border-color-medium-dark-gray" placeholder="Enter your email...">
+                                    <button id="button-subscribe-newsletter" type="submit" class="btn btn-arrow-small position-absolute border-color-medium-dark-gray"><i class="fas fa-caret-right no-margin-left"></i></button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <!-- end contact information -->
                     <!-- start instagram -->

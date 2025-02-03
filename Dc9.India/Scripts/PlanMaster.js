@@ -1,6 +1,18 @@
 ﻿$(document).ready(function () {
     BindSubCategory();
     showRecord();
+    $('#ddlPriceType').change(function () {
+        var selectedOption = $(this).val();
+        if (selectedOption == 'Yearly') {
+            $("#divYear").show();
+            $("#divMonthy").hide();
+            $("#txtPrice").val("0");
+        } else {
+            $('#divYear').hide();
+            $('#divMonthy').show();
+            $("#txtPriceYear").val("0");
+        }
+    });
 });
 function BindSubCategory() {
     $.post("/Admin/ShowSubCategoryList",
@@ -35,8 +47,9 @@ function InsertUpdate() {
         $.post("/Admin/InsertUpdatePlanMaster",
             {
                 Id: $("#hdId").val(),
-                PlanName: $("#txtPlanName").val(),
+                PlanName: $("#txtPlanName").val(),             
                 Price: $("#txtPrice").val(),
+                PriceYearly: $("#txtPriceYear").val(),
                 PlanType: $("#txtPlanType").val(),
                 Ram: $("#txtRam").val(),
                 vCPU: $("#txtvCPU").val(),
@@ -61,6 +74,28 @@ function InsertUpdate() {
                 Sub_Cat_Id_Fk: $("#ddlSubCategory").val(),
                 PriceType: $("#ddlPriceType").val(),
                 IsActive: $("#chkIsActive").is(':checked') ? 1 : 0,
+                Isprevention: $("#chkDdosAttact").is(':checked')? $("#DdosAttact").text() : "",
+                IsFreeSSL: $("#chkFreeSsl").is(':checked') ? $("#FreeSsl").text() : "",
+                IsFirewallMonitory: $("#chkServerFire").is(':checked') ? $("#ServerFire").text() : "",
+                Is27Support: $("#chk24Support").is(':checked') ? $("#24Support").text() : "",
+                IsUpTimeGuarntee: $("#chkUptimeGurantee").is(':checked') ? $("#UptimeGurantee").text() : "",
+                IsFreeMigration: $("#chkFreeMigration").is(':checked') ? $("#FreeMigration").text() : "",
+                IsFreeBonuses: $("#chkFreeBonus").is(':checked') ? $("#FreeBonus").text() : "",
+                IsOSChoice: $("#chkOSChoice").is(':checked') ? $("#OSChoice").text() : "",
+                IsPowerfulControlPanel: $("#chkPowercontrol").is(':checked') ? $("#Powercontrol").text() : "",
+                IsFullRootAccess: $("#chkFullRoot").is(':checked') ? $("#FullRoot").text() : "",
+                IsOneClickIns: $("#chkOneClick").is(':checked') ? $("#OneClick").text() : "",
+                IsCSSJSOptimizers: $("#chkCSSJsOpt").is(':checked') ? $("#CSSJsOpt").text() : "",
+                IsWorldwideDataCenters: $("#chkWorldwideData").is(':checked') ? $("#WorldwideData").text() : "",
+                IsAPIIntegration: $("#chkAPIIntegrn").is(':checked') ? $("#APIIntegrn").text() : "",
+                IsVul_Scanner: $("#chkVulScanner").is(':checked') ? $("#VulScanner").text() : "",
+                IsFullStackDevelopment: $("#chkFullStack").is(':checked') ? $("#FullStack").text() : "",
+                IsMultiplePHPVersion: $("#chkphpVersion").is(':checked') ? $("#phpVersion").text() : "",
+                IsPageSpeed: $("#chkPageSpeed").is(':checked') ? $("#PageSpeed").text() : "",
+                IsWebsiteOptimization: $("#chkWebsiteOpt").is(':checked') ? $("#WebsiteOpt").text() : "",
+                IsPHPVulCheck: $("#chkphpVulCheck").is(':checked') ? $("#phpVulCheck").text() : "",
+                IsProtectiveFirewall: $("#chkProtectiveFir").is(':checked') ? $("#txtProtectiveFir").text() : "",
+                IsMalwareScans: $("#chkMalwareScan").is(':checked') ? $("#txtMalwareScan").text() : "",
             },
             function (data) {
                 if (data.Result != "") {
@@ -143,6 +178,30 @@ function EditRecord(Id) {
                     $('#ddlSubCategory').val(Value.Sub_Cat_Id_Fk);
                     $('#ddlPriceType').val(Value.PriceType);
                     $('#chkIsActive').prop('checked', Value.IsActive == 1 ? true : false);
+                    $('#chkDdosAttact').prop('checked', Value.Isprevention !== null && Value.Isprevention !==""? true : false);
+                    $('#chkFreeSsl').prop('checked', Value.IsFreeSSL !== null && Value.IsFreeSSL !== "" ? true : false);
+                    $('#chkServerFire').prop('checked', Value.IsFirewallMonitory !== null && Value.IsFirewallMonitory !== "" ? true : false);
+                    $('#chk24Support').prop('checked', Value.Is27Support !== null && Value.Is27Support !== "" ? true : false);
+                    $('#chkUptimeGurantee').prop('checked', Value.IsUpTimeGuarntee !== null && Value.IsUpTimeGuarntee !== "" ? true : false);
+                    $('#chkFreeMigration').prop('checked', Value.IsFreeMigration !== null && Value.IsFreeMigration !== "" ? true : false);
+                    $('#chkFreeBonus').prop('checked', Value.IsFreeBonuses !== null && Value.IsFreeBonuses !== "" ? true : false);
+                    $('#chkOSChoice').prop('checked', Value.IsOSChoice !== null && Value.IsOSChoice !== "" ? true : false);
+                    $('#chkPowercontrol').prop('checked', Value.IsPowerfulControlPanel !== null && Value.IsPowerfulControlPanel !== "" ? true : false);
+                    $('#chkFullRoot').prop('checked', Value.IsFullRootAccess !== null && Value.IsFullRootAccess !== "" ? true : false);
+                    $('#chkOneClick').prop('checked', Value.IsOneClickIns !== null && Value.IsOneClickIns !== "" ? true : false);
+                    $('#chkCSSJsOpt').prop('checked', Value.IsCSSJSOptimizers !== null && Value.IsCSSJSOptimizers !== "" ? true : false);
+                    $('#chkWorldwideData').prop('checked', Value.IsWorldwideDataCenters !== null && Value.IsWorldwideDataCenters !== "" ? true : false);
+                    $('#chkAPIIntegrn').prop('checked', Value.IsAPIIntegration !== null && Value.IsAPIIntegration !== "" ? true : false);
+                    $('#chkVulScanner').prop('checked', Value.IsVul_Scanner !== null && Value.IsVul_Scanner !== "" ? true : false);
+                    $('#chkFullStack').prop('checked', Value.IsFullStackDevelopment !== null && Value.IsFullStackDevelopment !== "" ? true : false);
+                    $('#chkphpVersion').prop('checked', Value.IsMultiplePHPVersion !== null && Value.IsMultiplePHPVersion !== "" ? true : false);
+                    $('#chkPageSpeed').prop('checked', Value.IsPageSpeed !== null && Value.IsPageSpeed !== "" ? true : false);
+                    $('#chkWebsiteOpt').prop('checked', Value.IsWebsiteOptimization !== null && Value.IsWebsiteOptimization !== "" ? true : false);
+                    $('#chkphpVulCheck').prop('checked', Value.IsPHPVulCheck !== null && Value.IsPHPVulCheck !== "" ? true : false);
+                    $('#chkProtectiveFir').prop('checked', Value.IsProtectiveFirewall !== null && Value.IsProtectiveFirewall !== "" ? true : false);
+                    $('#chkMalwareScan').prop('checked', Value.IsMalwareScans !== null && Value.IsMalwareScans !== "" ? true : false);
+
+                    
                 });
 
                 $('#btnSave').text('Update');
@@ -192,5 +251,28 @@ function ClearData() {
     $("#ddlSubCategory").val("0");
     $("#ddlPriceType").val("0");
     $("#chkIsActive").prop('checked', false);
+    $("#chkDdosAttact").prop('checked', false);
+    $("#chkFreeSsl").prop('checked', false);
+    $("#chkServerFire").prop('checked', false);
+    $("#chk24Support").prop('checked', false);
+    $("#chkUptimeGurantee").prop('checked', false);
+    $("#chkFreeMigration").prop('checked', false);
+    $("#chkFreeBonus").prop('checked', false);
+    $("#chkOSChoice").prop('checked', false);
+    $("#chkPowercontrol").prop('checked', false);
+    $("#chkFullRoot").prop('checked', false);
+    $("#chkOneClick").prop('checked', false);
+    $("#chkCSSJsOpt").prop('checked', false);
+    $("#chkWorldwideData").prop('checked', false);
+    $("#chkAPIIntegrn").prop('checked', false);
+    $("#chkVulScanner").prop('checked', false);
+    $("#chkFullStack").prop('checked', false);
+    $("#chkphpVersion").prop('checked', false);
+    $("#chkPageSpeed").prop('checked', false);
+    $("#chkWebsiteOpt").prop('checked', false);
+    $("#chkphpVulCheck").prop('checked', false);
+    $("#chkProtectiveFir").prop('checked', false);
+    $("#chkMalwareScan").prop('checked', false);
+
     $('#btnSave').text('Save');
 }
