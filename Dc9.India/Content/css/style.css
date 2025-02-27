@@ -1770,6 +1770,17 @@ textarea.input-bg {
         border-color: #dbdbdb;
         color: #dbdbdb
     }
+.btn.btn-light-gray-price {
+    background: #dbdbdb;
+    border-color: #dbdbdb;
+    color: #232323
+}
+
+    .btn.btn-light-gray-price:hover, .btn.btn-light-gray:focus {
+        background: transparent;
+        border-color: #dbdbdb;
+        color: #232323
+    }
 
 .btn.btn-deep-pink {
     background: #ff214f;
@@ -10024,7 +10035,7 @@ header.header-appear nav.header-light-transparent, header.sticky nav.navbar-fixe
     }
 
     header.header-appear nav.header-light-transparent .header-social-icon a, header.header-appear nav.header-light .header-social-icon a, header.header-appear nav.header-light.white-link .header-social-icon a, header.header-appear nav.header-light-transparent.white-link .header-social-icon a, header.header-appear nav.header-light-transparent.white-link .heder-menu-button a, header.header-appear nav.header-light-transparent .header-searchbar a, header.header-appear nav.header-light .header-searchbar a, header.header-appear nav.header-light.white-link .header-searchbar a, header.header-appear nav.header-light-transparent.white-link .header-searchbar a {
-        color: #232323
+        color: #f1ebeb
     }
 
 header.header-appear nav.bootsnav.header-light-transparent .navbar-nav > li > a, header.header-appear nav.bootsnav.header-light .navbar-nav > li > a {
@@ -10810,7 +10821,7 @@ nav.navbar.sidebar-nav .navbar-left-sidebar li.dropdown .third-level a > [class^
 }
 
 .nav.navbar-left-sidebar .dropdown .second-level {
-    left: 290px;
+    left: 210px;
     transition: 0.3s;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;

@@ -609,7 +609,7 @@ namespace Dc9.India.Controllers
                 return View();
             }
         }
-        public JsonResult InsertUpdateDiscountMaster(int Id, string DiscountName,string PercentageAmount, string IsActive)
+        public JsonResult InsertUpdateDiscountMaster(int Id, string DiscountName,string TenureText,string PercentageAmount, string IsActive)
         {
             Dictionary<string, string> dic = new Dictionary<string, string>();
             dic["Result"] = "";
@@ -630,6 +630,7 @@ namespace Dc9.India.Controllers
                     {"@Id",Id.ToString().Trim() },
                     {"@PercentageAmount",PercentageAmount },
                     {"@DiscountName",DiscountName.Trim() },
+                    {"@TenureText",TenureText.Trim() },
                     {"@IsActive",IsActive.Trim() },
                 };
                 DataTable dt = CommonMethod.ExecuteProc("USP_InsertUpdateDelDiscountMaster", Param);

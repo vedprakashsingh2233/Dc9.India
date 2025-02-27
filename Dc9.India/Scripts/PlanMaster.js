@@ -1,18 +1,39 @@
 ﻿$(document).ready(function () {
     BindSubCategory();
     showRecord();
-    $('#ddlPriceType').change(function () {
-        var selectedOption = $(this).val();
-        if (selectedOption == 'Yearly') {
-            $("#divYear").show();
-            $("#divMonthy").hide();
-            $("#txtPrice").val("0");
+    $("#chkSecurity").change(function () {
+        if ($(this).is(":checked")) {
+            $(".Security").prop("checked", true);
         } else {
-            $('#divYear').hide();
-            $('#divMonthy').show();
-            $("#txtPriceYear").val("0");
+            $(".Security").prop("checked", false);
         }
     });
+    $("#chkSer_Support").change(function () {
+        if ($(this).is(":checked")) {
+            $(".Ser_Support").prop("checked", true);
+        } else {
+            $(".Ser_Support").prop("checked", false);
+        }
+    });
+    $("#chkAdvance_Feature").change(function () {
+        if ($(this).is(":checked")) {
+            $(".Advance_Feature").prop("checked", true);
+        } else {
+            $(".Advance_Feature").prop("checked", false);
+        }
+    });
+    //$('#ddlPriceType').change(function () {
+    //    var selectedOption = $(this).val();
+    //    if (selectedOption == 'Yearly') {
+    //        $("#divYear").show();
+    //        $("#divMonthy").hide();
+    //        $("#txtPrice").val("0");
+    //    } else {
+    //        $('#divYear').hide();
+    //        $('#divMonthy').show();
+    //        $("#txtPriceYear").val("0");
+    //    }
+    //});
 });
 function BindSubCategory() {
     $.post("/Admin/ShowSubCategoryList",
@@ -38,10 +59,10 @@ function InsertUpdate() {
         alert('Please Enter Plan Price');
         $("#txtPrice").focus();
     }
-    else if ($("#ddlPriceType").val() == "0") {
-        alert('Please Select Price Type');
-        $("#ddlPriceType").focus();
-    }
+    //else if ($("#ddlPriceType").val() == "0") {
+    //    alert('Please Select Price Type');
+    //    $("#ddlPriceType").focus();
+    //}
 
     else {
         $.post("/Admin/InsertUpdatePlanMaster",
@@ -49,7 +70,7 @@ function InsertUpdate() {
                 Id: $("#hdId").val(),
                 PlanName: $("#txtPlanName").val(),             
                 Price: $("#txtPrice").val(),
-                PriceYearly: $("#txtPriceYear").val(),
+                PriceYearly: $("#txtPriceYear").val() == "" ? "0" : $("#txtPriceYear").val(),
                 PlanType: $("#txtPlanType").val(),
                 Ram: $("#txtRam").val(),
                 vCPU: $("#txtvCPU").val(),
@@ -153,7 +174,17 @@ function EditRecord(Id) {
                 $.each(Data, function (index, Value) {
                     $('#hdId').val(Value.Id);
                     $('#txtPlanName').val(Value.PlanName);
+                    //if (Value.PlanType =="Monthly") {
+                       
+                    //    $('#divMonthy').show();
+                    //    $('#divYear').hide();
+                    //}
+                    //else {
+                    //    $('#divMonthy').hide();
+                    //    $('#divYear').show();
+                    //}
                     $('#txtPrice').val(Value.Price);
+                    $('#txtPriceYear').val(Value.PriceYearly);
                     $('#txtPlanType').val(Value.PlanType);
                     $('#txtRam').val(Value.Ram);
                     $('#txtvCPU').val(Value.vCPU);
@@ -227,7 +258,7 @@ function ClearData() {
     $("#hdId").val("0");
     $("#txtPlanName").val("");
     $("#txtPrice").val("");
-    $("#txtPlanType").val("");
+    $("#txtPlanType").val("Fully Managed");
     $("#txtRam").val("");
     $("#txtvCPU").val("");
     $("#txtSSD").val("");
@@ -237,7 +268,7 @@ function ClearData() {
     $("#txtDedicatedIP").val("");
     $("#txtOSChoice").val("");
     $("#txtRemark").val("");
-    $("#txtServerLocation").val("");
+    $("#txtServerLocation").val("India");
     $("#txtNVMe").val("");
     $("#txtBonus").val("");
     $("#txtMigration").val("");
@@ -273,6 +304,11 @@ function ClearData() {
     $("#chkphpVulCheck").prop('checked', false);
     $("#chkProtectiveFir").prop('checked', false);
     $("#chkMalwareScan").prop('checked', false);
-
+    $("#chkSecurity").prop('checked', false);
+    $("#chkAdvance_Feature").prop('checked', false);
+    $("#chkSer_Support").prop('checked', false);
+   // $('#divMonthy').show();
+    //$('#divYear').hide();
+    $("#txtPriceYear").val("")
     $('#btnSave').text('Save');
 }

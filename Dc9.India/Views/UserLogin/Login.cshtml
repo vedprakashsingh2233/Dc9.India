@@ -14,7 +14,7 @@
                     <div class="text-extra-dark-gray alt-font text-large font-weight-600 margin-30px-bottom">Login</div>
                     <div>
                         <div id="success-contact-form-3" class="mx-0"></div>
-                        <label for="username">Username:</label>
+                        <label for="username">Email Id:</label>
                         <input type="text" id="txtUserCode" name="txtUserCode" class="form-control">
                         <label for="password">Password:</label>
                         <input type="password" id="txtPassword" class="form-control" name="txtPassword">
@@ -54,7 +54,7 @@
     function Login() {
         try {
             if ($("#txtUserCode").val() == "") {
-                alert("Please enter User Code.!");
+                alert("Please enter Email Id.!");
                 $("#txtUserCode").focus();
             }
             else if ($("#txtPassword").val() == "") {

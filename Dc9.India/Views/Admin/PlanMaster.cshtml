@@ -29,7 +29,7 @@
         <label>Price Per Month</label>
         <input type="text" id="txtPrice" placeholder="Please Enter Price Per Month" class="form-control number" />
     </div>
-    <div class="col-sm-4" id="divYear" style="display:none;">
+    <div class="col-sm-4" id="divYear" >
         <label>Price Per Year</label>
         <input type="text" id="txtPriceYear" placeholder="Please Enter Price Per Year" class="form-control number" />
     </div>
@@ -37,14 +37,22 @@
             <label>Remark</label>
             <input type="text" id="txtRemark" placeholder="Please Enter Remark" class="form-control" />
         </div>*@
-    <div class="col-sm-4">
-        <label>Server</label>
-        <input type="text" id="txtPlanType" placeholder="Please Enter Server Type" class="form-control" />
-    </div>
-    <div class="col-sm-4">
-        <label>Server Location</label>
-        <input type="text" id="txtServerLocation" placeholder="Please Enter Server Location" class="form-control" />
-    </div>
+<div class="col-sm-4">
+    <label>Server</label>
+    <select class="form-control" id="txtPlanType">
+        <option value="Fully Managed">Fully Managed</option>
+        <option value="Self Managed">Self Managed</option>
+    </select>
+    @*<input type="text" id="txtPlanType" placeholder="Please Enter Server Type" class="form-control" />*@
+</div>
+<div class="col-sm-4">
+    <label>Server Location</label>
+    <select class="form-control" id="txtServerLocation">
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+    </select>
+    @*<input type="text" id="txtServerLocation" placeholder="Please Enter Server Location" class="form-control" />*@
+</div>
 
     <div class="col-sm-4">
         <label>CPU</label>
@@ -78,97 +86,114 @@
         <label>DedicatedIP</label>
         <input type="text" id="txtDedicatedIP" placeholder="Please Enter DedicatedIP" class="form-control" />
     </div>
-    <div class="col-sm-12"><h6>Security</h6></div>
+    <div class="col-sm-12"><div class="col-sm-4">
+    <h6>
+        <input type="checkbox" id="chkSecurity" class="form-check-input " />
+        Security
+    </h6>
+</div>
+</div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="DdosAttact">DDoS attack prevention</label>
-        <input type="checkbox" id="chkDdosAttact"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkDdosAttact"  class="form-check-input ml-4 Security" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="FreeSsl">Free SSL </label>
-        <input type="checkbox" id="chkFreeSsl"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkFreeSsl"  class="form-check-input ml-4 Security" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="ServerFire">Server firewall and monitoring</label>
-        <input type="checkbox" id="chkServerFire"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkServerFire"  class="form-check-input ml-4 Security" />
     </div>
 
-    <div class="col-sm-12 mt-3"><h6>Service and Support</h6></div>
+    <div class="col-sm-12 mt-3"><div class="col-sm-6"><h6>
+    <input type="checkbox" id="chkSer_Support" class="form-check-input " />
+    Service and Support
+</h6>
+        </div>
+        </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="24Support">24/7 Support</label>
-        <input type="checkbox" id="chk24Support"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chk24Support"  class="form-check-input ml-4 Ser_Support" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-        <label id="UptimeGurantee">99.9% Uptime Guarantee</label>
-        <input type="checkbox" id="chkUptimeGurantee"  class="form-check-input ml-4" />
+        <label id="UptimeGurantee">99.9% Guarantee Uptime</label>
+        <input type="checkbox" id="chkUptimeGurantee"  class="form-check-input ml-4 Ser_Support" />
     </div>
-    <div class="col-sm-12 mt-3"><h6>Advance Feature</h6></div>
+    <div class="col-sm-12 mt-3"><div class="col-sm-6">
+    <h6>
+        <input type="checkbox" id="chkAdvance_Feature" class="form-check-input " />
+        Advance Feature
+    </h6>
+</div>
+</div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="FreeMigration">Free Migration</label>
-        <input type="checkbox" id="chkFreeMigration"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkFreeMigration"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="FreeBonus">Free Bonuses</label>
-        <input type="checkbox" id="chkFreeBonus"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkFreeBonus"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="OSChoice">Operating Systems Choice</label>
-        <input type="checkbox" id="chkOSChoice"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkOSChoice"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="Powercontrol">Powerful Control Panel</label>
-        <input type="checkbox" id="chkPowercontrol"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkPowercontrol"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="FullRoot">Full Root Access</label>
-        <input type="checkbox" id="chkFullRoot"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkFullRoot"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="OneClick">One-Click Installs</label>
-        <input type="checkbox" id="chkOneClick"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkOneClick"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="CSSJsOpt">CSS/JS Optimizers</label>
-        <input type="checkbox" id="chkCSSJsOpt"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkCSSJsOpt"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="WorldwideData">Worldwide Data Centers</label>
-        <input type="checkbox" id="chkWorldwideData"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkWorldwideData"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="APIIntegrn">API Integration</label>
-        <input type="checkbox" id="chkAPIIntegrn"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkAPIIntegrn"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="VulScanner">Vulnerabilities Scanner</label>
-        <input type="checkbox" id="chkVulScanner"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkVulScanner"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="FullStack">Full Stack Development</label>
-        <input type="checkbox" id="chkFullStack"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkFullStack"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="phpVersion">Multiple PHP Version</label>
-        <input type="checkbox" id="chkphpVersion"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkphpVersion"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="PageSpeed">Page Speed</label>
-        <input type="checkbox" id="chkPageSpeed"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkPageSpeed"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="WebsiteOpt">Website Optimization</label>
-        <input type="checkbox" id="chkWebsiteOpt"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkWebsiteOpt"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="phpVulCheck">PHP Vulnerability Checks</label>
-        <input type="checkbox" id="chkphpVulCheck"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkphpVulCheck"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="txtProtectiveFir">Protective Firewall</label>
-        <input type="checkbox" id="chkProtectiveFir"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkProtectiveFir"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     <div class="col-sm-4 d-flex align-items-center">
         <label id="txtMalwareScan">Malware Scans</label>
-        <input type="checkbox" id="chkMalwareScan"  class="form-check-input ml-4" />
+        <input type="checkbox" id="chkMalwareScan"  class="form-check-input ml-4 Advance_Feature" />
     </div>
     @*<div class="col-sm-4">
         <label>OS Choice</label>

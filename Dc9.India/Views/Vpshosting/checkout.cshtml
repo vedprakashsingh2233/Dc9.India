@@ -3,7 +3,11 @@
     ViewBag.Title = "checkout";
     Layout = "~/Views/Shared/_LayOut.cshtml";
 }
-
+<style>
+    .priceBox {
+        text-transform: capitalize !important;
+    }
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- start page title section -->
@@ -32,57 +36,51 @@
         <div class="row">
             <!-- start column -->
             <div class="col-12 col-lg-8 md-margin-15px-bottom" style="height:400px;overflow-y:auto">
-               
+
                 <div class=" col-lg-12  ">
                     <div class="bg-light-gray border-radius-6 padding-40px-all sm-padding-30px-all last-paragraph-no-margin">
-                        <h6 class="text-extra-dark-gray alt-font font-weight-600">Payment Method</h6>
-                        <div id="divAdditionalItem" class="row">
+                        <h6 class="text-extra-dark-gray alt-font font-weight-600">Place Your Order</h6>
+
+                        <a class="btn btn-very-small btn-rounded btn-black box-shadow-dark m-4" id="btnNew">New User</a>
+                        <span class="text-extra-dark-gray alt-font font-weight-600">OR</span>
+                        <a class="btn btn-very-small btn-rounded btn-black box-shadow-dark m-4" id="btnExist">Existing User</a>
+                        <input type="hidden" id="hdLogin" value="" />
+                        <input type="hidden" id="hdRegistration" value="" />
+                        <div id="divRegistration" class="row">
                             <div class="col-sm-6">
-                                <label>Select Card Type</label>
-                                <select type="text" name="name" class="form-control" value="">
-                                    <option value="0">Select Card Type</option>
-                                    <option selected="selected" value="Visa">Visa</option>
-                                    <option value="MasterCard">MasterCard</option>
-                                    <option value="American Express">American Express</option>
-                                </select>
+                                <label>User Name</label>
+                                <input type="text" name="txtuserName" id="txtuserName" placeholder="Enter Your User Name" class="input-bg">
+
                             </div>
                             <div class="col-sm-6">
-                                <label >Card No</label>
-                                <input type="text" name="name" class="form-control" value="" />
+                                <label>Email Id</label>
+                                <input type="text" name="txtEmail" id="txtEmail" placeholder="Enter Your Email Id" class="input-bg">
+
                             </div>
                             <div class="col-sm-6">
-                                <label>Name on the Card</label>
-                                <input type="text" name="name" class="form-control" value="" />
+                                <label>Mobile Number</label>
+                                <input type="text" name="txtMobileNo" id="txtMobileNo" placeholder="Enter Your Mobile Number" class="input-bg">
                             </div>
                             <div class="col-sm-6">
-                                <label>CVV/CCV</label>
-                                <input type="text" name="name" class="form-control" value="" />
+                                <label>Your Password</label>
+                                <input type="text" name="txtPassword" id="txtPassword" placeholder="Enter Your Password" class="input-bg">
                             </div>
-                            <div class="col-sm-6">
-                                <label>Expiry Dat</label>
-                                <input type="text" name="name" class="form-control" value="" />
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Address </label>
-                                <input type="text" name="name" class="form-control" value="" />
-                            </div>
-                            <div class="col-sm-6">
-                                <label>City</label>
-                                <input type="text" name="name" class="form-control" value="" />
-                            </div>
-                            <div class="col-sm-6">
-                                <label>State</label>
-                                <input type="text" name="name" class="form-control" value="" />
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Post Code</label>
-                                <input type="text" name="name" class="form-control" value="" />
-                            </div> 
-                            <div class="col-sm-6">
-                                <label>Country</label>
-                                <input type="text" name="name" class="form-control" value="" />
-                            </div>  
+
                         </div>
+
+                        <div id="divLogin" class="row" style="display:none;">
+                            <div class="col-sm-6">
+                                <label for="username">Email Id:</label>
+                                <input type="text" id="txtUserCode" name="txtUserCode" class="form-control">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="password">Password:</label>
+                                <input type="password" id="txtLPassword" class="form-control" name="txtPassword">
+                            </div>
+
+
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -96,9 +94,8 @@
                     <div class="row">
                         <div class=" col-lg-12 mb-2">
                             <div class="row bg-light-gray border-radius-6">
-                                <div class="col-sm-4 text-extra-dark-gray alt-font font-weight-600"><span id="txtPlan"></span></div>
-                                <div class="col-sm-8 text-extra-dark-gray alt-font font-weight-600">₹ <span id="txtPrice"></span> /<span id="txtPriceType">month</span></div>
-                                <div class="col-sm-9">
+                                <div class="col-sm-9 text-extra-dark-gray alt-font font-weight-600"><span id="txtPlan"></span></div>
+                                <div class="col-sm-3">
                                     <a data-toggle="collapse" href="#accordion-one-link1" aria-expanded="false" class="">
                                         <div class=" text-extra-dark-gray alt-font font-weight-600  position-relative padding-20px-right">
                                             <span>
@@ -107,7 +104,7 @@
                                         </div>
                                     </a>
                                 </div>
-                               
+
                                 <div id="accordion-one-link1" class="panel-collapse collapse p-5">
 
                                     <div class="row panel-body">
@@ -142,18 +139,29 @@
 
 
                                 </div>
+                                <div id="divMonthly" class="col-sm-12 btn priceBox btn-light-gray-price btn-rounded text-extra-dark-gray alt-font font-weight-600">
+                                    <span class="col-sm-3">1 Month</span>
+                                    <span class="col-sm-3"></span><span class="col-sm-3">₹ <span id="txtPrice"></span> /<span id="txtPriceTypes">mo</span></span>
+                                </div>
+                                <div id="divYearly" class="col-sm-12 btn priceBox btn-light-gray-price btn-rounded text-extra-dark-gray alt-font font-weight-600 mt-3" style="display:none;">
+                                    <span class="col-sm-3">1 Year</span>
+                                    <s class="col-sm-3">₹ <span id="txtPriceMonth">99</span> /<span id="">mo</span></s>
+                                    <span class="col-sm-3">₹ <span id="txtPriceYearly">99</span> /<span id="">mo</span></span>
+                                </div>
+
+
 
                             </div>
 
                         </div>
                         @*<div class="col-sm-8">
 
-                            <span class="text-extra-dark-gray font-weight-400">Billed every month  </span>
-                        </div>
-                        <div class="col-sm-4">
-                            <span class="text-extra-dark-gray sm-text-left">₹ <span id="txtBill">0</span></span>
+                                <span class="text-extra-dark-gray font-weight-400">Billed every month  </span>
+                            </div>
+                            <div class="col-sm-4">
+                                <span class="text-extra-dark-gray sm-text-left">₹ <span id="txtBill">0</span></span>
 
-                        </div>*@
+                            </div>*@
                     </div>
                     <div class="row mt-3">
                         <div class="col-sm-8">
@@ -165,7 +173,7 @@
 
                         </div>
                     </div>
-                    
+
                     <hr />
                     <div class="row mt-3">
                         <div class="col-sm-8">
@@ -180,8 +188,8 @@
                     <div class="row">
                         <div class="col-12 col-12 text-center btn-dual justify-content-center mt-3">
                             <!-- start buttons -->
-                            <a class="btn btn-very-small btn-rounded btn-black box-shadow-dark m-4" onclick="SavePlan()">Place your order</a>
-
+                            <a class="btn btn-medium btn-dark-gray btn-rounded lg-margin-15px-bottom d-table d-lg-inline-block md-margin-lr-auto" onclick="SavePlan()">Place your order</a>
+                            <input type="hidden" id="hdUserId" value="@Session["UserId"]" />
                         </div>
                     </div>
                 </div>
@@ -190,72 +198,245 @@
         </div>
     </div>
 </section>
-                <script>
-                    $(document).ready(function () {
-      var id = localStorage.getItem("PlanId");
-      BindPlanDetail(id);
-                       AdditionalItem = [];
-                        AdditionalItem = localStorage.getItem("selectedItems");
-                        if (AdditionalItem.length>0) {
+<script>
+    $(document).ready(function () {
+        var id = localStorage.getItem("PlanId");
+        BindPlanDetail(id);
+        AdditionalItem = [];
+        AdditionalItem = localStorage.getItem("selectedItems");
+        if (AdditionalItem.length > 0) {
+
+        }
+    });
+    function BindPlanDetail(Id) {
+        $.post("/Admin/EditPlan",
+            { Id: Id },
+            function (data) {
+                if (data.Result == "") {
+                    var Data = JSON.parse(data.Record);
+                    $.each(Data, function (index, Value) {
+                        $('#hdId').val(Value.Id);
+                        $('#txtPlan').text(Value.PlanName);
+                        $('#txtPrice').text(parseFloat(Value.Price).toFixed(0));
+                        $('#txtPriceMonth').text(parseFloat(Value.Price).toFixed(0));
+                        $('#txtPriceYearly').text(parseFloat(Value.PriceYearly).toFixed(0));
+                        $('#txtBill').text(parseFloat(Value.Price).toFixed(0));
+                        $('#txtSubtotal').text(parseFloat(Value.Price).toFixed(0));
+                        $('#txtGrandTotal').text(parseFloat(Value.Price).toFixed(0));
+                        $('#txtPriceType').text(Value.PriceType);
+                        if (Value.PriceType == 'Yearly') {
+                            $("#divYearly").show();
 
                         }
-  });
-                    function BindPlanDetail(Id) {
-                        $.post("/Admin/EditPlan",
-                            { Id: Id },
-                            function (data) {
-                                if (data.Result == "") {
-                                    var Data = JSON.parse(data.Record);
-                                    $.each(Data, function (index, Value) {
-                                        $('#hdId').val(Value.Id);
-                                        $('#txtPlan').text(Value.PlanName);
-                                        $('#txtPrice').text(parseFloat(Value.Price).toFixed(2));
-                                        $('#txtBill').text(parseFloat(Value.Price).toFixed(2));
-                                        $('#txtSubtotal').text(parseFloat(Value.Price).toFixed(2));
-                                        $('#txtGrandTotal').text(parseFloat(Value.Price).toFixed(2));
-                                        $('#txtPriceType').text(Value.PriceType);
-                                        $('#txtvCPU').text(Value.vCPU);
-                                        $('#txtDedicatedIP').text(Value.DedicatedIP);
-                                        $('#txtBandwidth').text(Value.Bandwidth);
-                                        $('#txtDedicatedIP').text(Value.DedicatedIP);
-                                        $('#txtSupport').text(Value.Support);
-                                        $('#txtPlanName').text(Value.PlanName);
-                                        $('#txtPlanType').text(Value.PlanType);
-                                        $('#txtRemark').text(Value.Remark);
-                                        $('#txtRam').text(Value.Ram);
-                                    });
-                                }
-                                else {
-                                    alert(data.Result);
-                                }
-                            });
+                        $('#txtvCPU').text(Value.vCPU);
+                        $('#txtDedicatedIP').text(Value.DedicatedIP);
+                        $('#txtBandwidth').text(Value.Bandwidth);
+                        $('#txtDedicatedIP').text(Value.DedicatedIP);
+                        $('#txtSupport').text(Value.Support);
+                        $('#txtPlanName').text(Value.PlanName);
+                        $('#txtPlanType').text(Value.PlanType);
+                        $('#txtRemark').text(Value.Remark);
+                        $('#txtRam').text(Value.Ram);
+                    });
+                }
+                else {
+                    alert(data.Result);
+                }
+            });
+    }
+    function SavePlan() {
+        if ($("#hdLogin").val() == 'Login') {
+            if ($("#txtUserCode").val() == "") {
+                alert("Please enter Email Id.!");
+                $("#txtUserCode").focus();
+            }
+            else if ($("#txtLPassword").val() == "") {
+                alert("Please enter PASSWORD.!");
+                $("#txtLPassword").focus();
+            }
+            else {
+                Login();
+            }
+        }
+        else if ($("#hdRegistration").val() == 'Reg') {
+            if ($("#txtuserName").val() == "") {
+                alert('Please Enter Your User Name..');
+                $("#txtuserName").focus();
+            }
+            else if ($("#txtEmail").val() == "") {
+                alert('Please Enter Your Email Id..');
+                $("#txtEmail").focus();
+            }
+            else if ($("#txtMobileNo").val() == "") {
+                alert('Please Enter Your Mobile Number..');
+                $("#txtMobileNo").focus();
+            }
+            else if ($("#txtPassword").val() == "") {
+                alert('Please Enter Your Password..');
+                $("#txtPassword").focus();
+            }
+            else {
+                InsertUserDetails();
+            }
+        }
+       
+    else if ($("#hdUserId").val() == '') {
+
+            alert('Please login if you are existing user..');
+            $("#divRegistration").hide();
+            $("#divLogin").show();
+            $("#hdLogin").val("Login");
+            $("#hdRegistration").val("");
+            $('#btnNew').css('background', '');
+            $('#btnExist').css('background', 'transparent');
+    } else {
+        alert('Logged in');
+    }
+       // $(window.location).attr("href", "/UserLogin/Login");
+
+    }
+</script>
+
+<script>
+    function InsertUserDetails() {
+        if ($("#txtuserName").val() == "") {
+            alert('Please Enter Your User Name..');
+            $("#txtuserName").focus();
+        }
+        else if ($("#txtEmail").val() == "") {
+            alert('Please Enter Your Email Id..');
+            $("#txtEmail").focus();
+        }
+        else if ($("#txtMobileNo").val() == "") {
+            alert('Please Enter Your Mobile Number..');
+            $("#txtMobileNo").focus();
+        }
+        else if ($("#txtPassword").val() == "") {
+            alert('Please Enter Your Password..');
+            $("#txtPassword").focus();
+        }
+
+        else {
+            $.post("/UserLogin/InsertUserDetails",
+                {
+
+                    UserName: $("#txtuserName").val(),
+                    EmailId: $("#txtEmail").val(),
+                    Password: $("#txtPassword").val(),
+                    MobileNo: $("#txtMobileNo").val(),
+                },
+                function (data) {
+
+                    if (data.Result == "Fail") {
+                        alert('Something went wrong!')
                     }
-                    function SavePlan() {
-                        //if ($("#txtCardNumber").val() == '') {
-                        //    alert('Please select Card Number')
-                        //    $("#txtCardNumber").focus()
-                        //}
-                        //else if ($("#txtExpDate").val() == '') {
-                        //    alert('Please select Exipery Date')
-                        //    $("#txtExpDate").focus()
-                        //}
-                        //else if ($("#txtCCV").val() == '') {
-                        //    alert('Please select Card CCV')
-                        //    $("#txtCCV").focus()
-                        //}
-                        //else if ($("#txtFName").val() == '') {
-                        //    alert('Please select First Name')
-                        //    $("#txtFName").focus()
-                        //}
-                        //else if ($("#txtLName").val() == '') {
-                        //    alert('Please select Last Name')
-                        //    $("#txtLName").focus()
-                        //}
-                        //else {
-                        //    alert('Your Payment has been done ...')
-                        //    $(window.location).attr("href", "/Home/UserPlans");
-                        //}
-                        $(window.location).attr("href", "/UserLogin/Login");
+                    else if (data.Result == "Success") {
+
+                        //$(window.location).attr("href", "/UserLogin/Login");
+                    }
+
+                    else {
+                        alert(data.Result);
 
                     }
-                </script>
+                });
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        ClearData();
+        $('#btnNew').css('background', 'transparent');
+        $('#divMonthly').css('background', 'transparent');
+        $("#btnLogin").click(function () {
+            Login();
+            return false;
+        });
+        $("#btnLogin").keydown(function (e) {
+            if (e.which == 13) {
+                Login();
+                return false;
+            }
+        });
+        $("#txtPassword").keydown(function (e) {
+            if (e.which == 13) {
+                Login();
+                return false;
+            }
+        });
+        $("#btnExist").click(function () {
+            $("#divRegistration").hide();
+            $("#divLogin").show();
+            $("#hdLogin").val("Login");
+            $("#hdRegistration").val("");
+            $('#btnNew').css('background', '');
+            $('#btnExist').css('background', 'transparent');
+        });
+        $("#btnNew").click(function () {
+            $("#divLogin").hide();
+            $("#divRegistration").show();
+            $("#hdLogin").val("");
+            $("#hdRegistration").val("Reg");
+            $('#btnNew').css('background', 'transparent');
+            $('#btnExist').css('background', '');
+        });
+        $("#divYearly").click(function () {
+           
+            $('#divYearly').css('background', 'transparent');
+            $('#divMonthly').css('background', '');
+            var billAmount = parseFloat($('#txtPriceYearly').text())
+            var AddAmount = parseFloat($('#txtAddPlanPrice').text())
+            var txtSubtotal = parseFloat(billAmount*12) + parseFloat(AddAmount)
+            $('#txtGrandTotal').text(txtSubtotal);
+        });
+        $("#divMonthly").click(function () {
+
+            $('#divYearly').css('background', '');
+            $('#divMonthly').css('background', 'transparent');
+            var billAmount = parseFloat($('#txtPrice').text())
+            var AddAmount = parseFloat($('#txtAddPlanPrice').text())
+            var txtSubtotal = parseFloat(billAmount) + parseFloat(AddAmount)
+            $('#txtGrandTotal').text(txtSubtotal);
+        });
+    });
+
+
+    function Login() {
+        try {
+            if ($("#txtUserCode").val() == "") {
+                alert("Please enter Email Id.!");
+                $("#txtUserCode").focus();
+            }
+            else if ($("#txtLPassword").val() == "") {
+                alert("Please enter PASSWORD.!");
+                $("#txtLPassword").focus();
+            }
+            else {
+                $.post("/UserLogin/LoginDetail",
+                    {
+                        UserCode: $("#txtUserCode").val(),
+                        Password: $("#txtLPassword").val()
+                    }, function (data) {
+                        if (data.Result == "Success") {
+                            alert("You've successfully logged in.");
+                            //$(window.location).attr("href", "/Vpshosting/checkout");
+                        }
+                        else {
+                            $("#txtPassword").val("");
+                            alert(data.Result);
+                        }
+                    }).fail(function (xhr, err) {
+                        var responseTitle = $(xhr.responseText).filter('title').get(0);
+                        alert($(responseTitle).text() + "\n" + AjaxError(xhr, err));
+                    });
+            }
+        }
+        catch (e) {
+            alert("Error In Login: " + e.message);
+        }
+    }
+    function ClearData() {
+        $("#txtUserCode").val("");
+        $("#txtLPassword").val("");
+    }
+</script>

@@ -66,10 +66,10 @@
                         <div class="icon-social-very-small display-inline-block line-height-normal">
                              </div>
                         <div class="btn-group dropdown-style-1">
-                            <button type="button" class="btn  sm-width-100 mr-2">
+                            <button type="button" class="btn  sm-width-100 mr-2" onclick="GoTo()">
                                 Support 
                             </button>
-                            <button type="button" class="btn  sm-width-100 ml-4">
+                            <button type="button" class="btn  sm-width-100 ml-4" onclick="GoTo()">
                                 Contact 
                             </button>
                         </div>
@@ -119,64 +119,72 @@
 
                             ds = CommonMethod.ExecuteProcByDataset("GetMenu_Bar_Cat_SubCat_SP");
 
-                            <ul id="accordion" class="nav navbar-nav no-margin alt-font text-normal " data-in="fadeIn" data-out="fadeOut">
-                                <!-- start menu item -->
-                                <li class="dropdown megamenu-fw">
-                                    <a href="../">Home</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                    <!-- start sub menu -->
+                                                <ul id="accordion" class="nav navbar-nav no-margin alt-font text-normal " data-in="fadeIn" data-out="fadeOut">
+                                                    <!-- start menu item -->
+                                                    <li class="dropdown megamenu-fw">
+                                                        <a href="../">Home</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                                        <!-- start sub menu -->
 
-                                </li>
-                                @if (ds.Tables[0].Rows.Count > 0)
-                                {
-                                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                                    {
-                                        <li class="dropdown megamenu-fw">
-                                            <a href="#">@ds.Tables[0].Rows[i]["CategoryName"]</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                            <!-- start sub menu -->
-                                            @if (ds.Tables[1].Rows.Count > 0)
-                                            {
-                                                <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
-                                                    <ul>
-                                                        @for (int j = 0; j < ds.Tables[1].Rows.Count; j++)
+                                                    </li>
+                                                    @if (ds.Tables[0].Rows.Count > 0)
+                                                    {
+                                                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                                                         {
-                                                            if (ds.Tables[0].Rows[i]["Id"].ToString() == ds.Tables[1].Rows[j]["Category_Id_FK"].ToString())
-                                                            {
-
-                                                                <!-- start sub menu column  -->
-                                                                if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Managed)"))
+                                                            <li class="dropdown megamenu-fw">
+                                                                <a href="#">@ds.Tables[0].Rows[i]["CategoryName"]</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                                                <!-- start sub menu -->
+                                                                @if (ds.Tables[1].Rows.Count > 0)
                                                                 {
-                                                                    <li class="dropdown-header"><a href="../Vpshosting/ManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
+                                                                    <div class="menu-back-div dropdown-menu megamenu-content mega-menu collapse mega-menu-full">
+                                                                        <div class="row">
+                                                                            <!-- Managed Column -->
+                                                                            <div class="col-md-4">
+                                                                                <ul>
+                                                                                    @for (int j = 0; j < ds.Tables[1].Rows.Count; j++)
+                                                                                    {
+                                                                                        if (ds.Tables[0].Rows[i]["Id"].ToString() == ds.Tables[1].Rows[j]["Category_Id_FK"].ToString())
+                                                                                        {
+                                                                                            if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Managed)"))
+                                                                                            {
+                                                                                                <li class="dropdown-header"><a href="../Vpshosting/ManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                </ul>
+                                                                            </div>
 
+                                                                            <!-- Self-Managed Column -->
+                                                                            <div class="col-md-6">
+                                                                                <ul>
+                                                                                    @for (int j = 0; j < ds.Tables[1].Rows.Count; j++)
+                                                                                    {
+                                                                                        if (ds.Tables[0].Rows[i]["Id"].ToString() == ds.Tables[1].Rows[j]["Category_Id_FK"].ToString())
+                                                                                        {
+                                                                                            if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Self-Managed)"))
+                                                                                            {
+                                                                                                <li class="dropdown-header"><a href="../Vpshosting/SelfManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- end sub menu -->
+                                                                    </div>
                                                                 }
-                                                                else if (ds.Tables[1].Rows[j]["SubCategoryName"].ToString().Contains("(Self-Managed)"))
-                                                                {
-                                                                    <li class="dropdown-header"><a href="../Vpshosting/SelfManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
-
-                                                                }
-                                                                else
-                                                                {
-                                                                    <li class="dropdown-header"><a href="../Vpshosting/SelfManagedServer?SC=@ds.Tables[1].Rows[j]["Id"].ToString()">@ds.Tables[1].Rows[j]["SubCategoryName"].ToString()</a></li>
-                                                                }
-                                                            }
+                                                            </li>
                                                         }
-                                                    </ul>
-                                                    <!-- end sub menu -->
-                                                </div>
-                                            }
+                                                    }
 
-                                        </li>
-                                    }
+                                                    <li class="dropdown megamenu-fw">
+                                                        <a href="../Home/ContactUs">Contact Us</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                                        <!-- start sub menu -->
 
-                                }
-                                <li class="dropdown megamenu-fw">
-                                    <a href="../Home/ContactUs">Contact Us</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                    <!-- start sub menu -->
+                                                    </li>
 
-                                </li>
+                                                    <!-- end menu item -->
 
-                                <!-- end menu item -->
-
-                            </ul>
+                                                </ul>
                         }
                     </div>
                 </div>
@@ -289,7 +297,7 @@
                         <div class="widget-title alt-font text-small text-medium-gray text-uppercase margin-10px-bottom font-weight-600">Additional Links</div>
                         <ul class="list-unstyled">
 
-                            <li><a href="../Home/AboutUs" class="text-small">About us</a></li>
+                            <li><a href="../Home/AboutUs" class="text-small">About Us</a></li>
                             <li><a href="../Home/TermsAndCondition" class="text-small">Terms & Condition</a></li>
                             <li><a href="../Home/Privacy" class="text-small">Privacy & Policy</a></li>
                             <li><a href="../Home/ReturnAndRefund" class="text-small">Cancellation / Refund Policy</a></li>
@@ -322,12 +330,11 @@
                     <div class="col-lg-3 col-md-6 widget padding-45px-left md-padding-15px-left text-center text-md-left">
                         <div class="widget-title alt-font text-small text-medium-gray text-uppercase margin-20px-bottom font-weight-600">Connect With Us</div>
 
-                        <div class="social-icon-style-8 d-inline-block vertical-align-middle">
+                        <div class="social-icon-style-8 d-inline-block vertical-align-middle ml-1">
                             <ul class="small-icon no-margin-bottom">
-                                <li><a class="facebook text-white-2" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                                <li><a class="twitter text-white-2" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="google text-white-2" href="https://plus.google.com" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a class="instagram text-white-2" href="https://instagram.com/" target="_blank"><i class="fab fa-instagram no-margin-right" aria-hidden="true"></i></a></li>
+                                <li><a class="facebook text-white-2" href="https://www.linkedin.com/in/dc9india/" target="_blank"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                                <li><a class="twitter text-white-2" href="https://x.com/DC9_india" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a class="google text-white-2" href="https://dc9india.blogspot.com/" target="_blank"><i class="fas fa-blog fa-fw fa-xl"></i></a></li>
                             </ul>
                         </div>
 
@@ -381,8 +388,8 @@
             }
         </script>*@
     <script>
-        function BuyNow(id) {
-            $(window.location).attr("href", "/Vpshosting/Cart?id=" + id);
+        function GoTo() {
+            $(window.location).attr("href", "/Home/ContactUs");
         }
     </script>
     @*<script type="text/javascript" src="../Content/js/jquery.js"></script>*@

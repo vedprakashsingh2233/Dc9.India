@@ -74,9 +74,9 @@ namespace Dc9.India.Controllers
                     sb.AppendLine("<tr>");
                     sb.AppendLine("<th>Plans</th>");
                     sb.AppendLine("<th>Price</th>");
-                    sb.AppendLine("<th>No. of vCPU</th>");
+                    sb.AppendLine("<th>NVMe DISK Space</th>");
                     sb.AppendLine("<th>RAM</th>");
-                    sb.AppendLine("<th>Bandwidth/Mo</th>");
+                    sb.AppendLine("<th>CPU</th>");
                     sb.AppendLine("<th>Dedicated IP's</th>");
                     sb.AppendLine("<th>Buy Plan</th>");
                     sb.AppendLine("<th>Detail</th>");
@@ -87,17 +87,26 @@ namespace Dc9.India.Controllers
                     {
                         sb.AppendLine("<tr>");
                         sb.AppendLine("<td>" + dt.Rows[i]["PlanName"] + "</td>");
-                        sb.AppendLine("<td>" + dt.Rows[i]["Price"] + "</td>");
-                        sb.AppendLine("<td>" + dt.Rows[i]["vCPU"] + "</td>");
+                        sb.AppendLine("<td>" + dt.Rows[i]["Price"] + "/Month</td>");
+                        //if (Convert.ToDecimal(dt.Rows[i]["Price"])>0)
+                        //{
+                        //sb.AppendLine("<td>" + dt.Rows[i]["Price"] + "/Month</td>");
+
+                        //}
+                        //else
+                        //{
+                        //    sb.AppendLine("<td>" + dt.Rows[i]["PriceYearly"] + "</td>");
+                        //}
+                        sb.AppendLine("<td>" + dt.Rows[i]["NVMe"] + "</td>");
                         sb.AppendLine("<td>" + dt.Rows[i]["Ram"] + "</td>");
-                        sb.AppendLine("<td>" + dt.Rows[i]["Bandwidth"] + "</td>");
+                        sb.AppendLine("<td>" + dt.Rows[i]["vCPU"] + "</td>");
                         sb.AppendLine("<td>" + dt.Rows[i]["DedicatedIP"] + "</td>");
                         sb.AppendLine("<td><span class=\"price-linux\"></span> <button onclick=\"BuyNow('" + dt.Rows[i]["Id"] + "')\" class=\"btn btn-transparent-black btn-small text-extra-small\">Buy Now</button></td>");
                         sb.AppendLine("<td>");
                         sb.AppendLine("<a data-toggle=\"collapse\" href=\"#accordion-one-link" + dt.Rows[i]["Id"] + "\" aria-expanded=\"false\">");
                         sb.AppendLine("<div class=\"panel-title font-weight-500 text-uppercase position-relative padding-20px-right\">");
                         sb.AppendLine("<span>");
-                        sb.AppendLine("<i class=\"ti-plus\"></i>");
+                        sb.AppendLine("<i class=\"ti-plus\" style=\"font-weight: 900;color: red;\"></i>");
                         sb.AppendLine("</span>");
                         sb.AppendLine("</div>");
                         sb.AppendLine("</a>");
@@ -105,32 +114,39 @@ namespace Dc9.India.Controllers
                         sb.AppendLine("</tr>");
                         sb.AppendLine("<tr id=\"accordion-one-link" + dt.Rows[i]["Id"] + "\" class=\"panel-collapse collapse\">");
                         sb.AppendLine("<td colspan=\"8\">");
-                        sb.AppendLine("<div class=\"panel-body\">");
-                        sb.AppendLine("<ul class=\"list-style-11 bg-light-gray\" style=\"display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0;\">");
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Price"] + "</li>");
+                        sb.AppendLine("<div class=\"panel-body bg-light-gray\">");
+                        sb.AppendLine("<ul class=\"list-style-11 bg-light-gray\" style=\"display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin-left: 100px;text-align: left;\">");
+                        //if (Convert.ToDecimal(dt.Rows[i]["Price"]) > 0)
+                        //{
+                        //    sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Price"] + "</li>");
+                        //}
+                        //else
+                        //{
+                        //    sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["PriceYearly"] + "</li>");
+                        //}
                         if (dt.Rows[i]["Remark"].ToString()!="")
                         {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Remark"] + "</li>");
                         }
                         if (dt.Rows[i]["ServerLocation"].ToString() != "")
                         { 
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["ServerLocation"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">Server Location : " + dt.Rows[i]["ServerLocation"] + "</li>");
                         }
-                        if (dt.Rows[i]["vCPU"].ToString() != "")
-                        { 
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["vCPU"] + "</li>");
-                        }
-                        if (dt.Rows[i]["Ram"].ToString() != "")
-                        { 
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Ram"] + "</li>");
-                        }
-                        if (dt.Rows[i]["NVMe"].ToString() != "")
-                        {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["NVMe"] + "</li>");
-                        }
+                        //if (dt.Rows[i]["vCPU"].ToString() != "")
+                        //{ 
+                        //    sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["vCPU"] + "</li>");
+                        //}
+                        //if (dt.Rows[i]["Ram"].ToString() != "")
+                        //{ 
+                        //    sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"> " + dt.Rows[i]["Ram"] + "</li>");
+                        //}
+                        //if (dt.Rows[i]["NVMe"].ToString() != "")
+                        //{
+                        //sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["NVMe"] + "</li>");
+                        //}
                         if (dt.Rows[i]["PlanType"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["PlanType"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">Server : " + dt.Rows[i]["PlanType"] + "</li>");
                         }
                         if (dt.Rows[i]["SSD"].ToString() != "")
                         {
@@ -146,12 +162,12 @@ namespace Dc9.India.Controllers
                         }
                         if (dt.Rows[i]["Bandwidth"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Bandwidth"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">Bandwidth : " + dt.Rows[i]["Bandwidth"] + "</li>");
                         }
-                        if (dt.Rows[i]["DedicatedIP"].ToString() != "")
-                        {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["DedicatedIP"] + "</li>");
-                        }
+                        //if (dt.Rows[i]["DedicatedIP"].ToString() != "")
+                        //{
+                        //sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["DedicatedIP"] + "</li>");
+                        //}
                         if (dt.Rows[i]["OSChoice"].ToString() != "")
                         {
                         sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["OSChoice"] + "</li>");
@@ -353,6 +369,10 @@ namespace Dc9.India.Controllers
                 dic["Result"] = ex.Message;
             }
             return Json(dic);
+        }
+        public ActionResult CustomServer()
+        {
+            return View();
         }
     }
 }

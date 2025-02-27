@@ -8,19 +8,19 @@ alter proc [dbo].[USP_InsertUpdateDelPlanMaster]
 @PriceYearly [decimal](18, 3)= 0,
 @PriceType varchar(100)=Null,
 @PlanType [varchar](100)= NULL,
-@Ram [varchar](20)= NULL,
-@vCPU [varchar](20)= NULL,
-@SSD [varchar](20)= NULL,
-@HDD [varchar](20)= NULL,
-@Memory [varchar](100) =NULL,
+@Ram [varchar](200)= NULL,
+@vCPU [varchar](200)= NULL,
+@SSD [varchar](200)= NULL,
+@HDD [varchar](200)= NULL,
+@Memory [varchar](200) =NULL,
 
-@Bandwidth [varchar](20) =NULL,
+@Bandwidth [varchar](200) =NULL,
 
 @Sub_Cat_Id_Fk [int] =NULL,
 
 @IsActive [bit]= NULL,
 
-@DedicatedIP varchar(20)=Null,
+@DedicatedIP varchar(200)=Null,
 
 @OSChoice varchar(100)=Null,
 
@@ -255,55 +255,78 @@ End
 
 go
 
-CREATE TABLE [dbo].[PlanMaster](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[PlanName] [varchar](100) NULL,
-	[Price] [decimal](18, 3) NULL,
-	[PlanType] [varchar](100) NULL,
-	[Ram] [varchar](20) NULL,
-	[vCPU] [varchar](20) NULL,
-	[SSD] [varchar](20) NULL,
-	[HDD] [varchar](20) NULL,
-	[Memory] [varchar](100) NULL,
-	[Bandwidth] [varchar](20) NULL,
-	[Sub_Cat_Id_Fk] [int] NULL,
+
+
+alter table planmaster alter column Ram varchar(200)
+alter table planmaster alter column vcpu varchar(200)
+alter table planmaster alter column ssd varchar(200)
+alter table planmaster alter column hdd varchar(200)
+alter table planmaster alter column Bandwidth varchar(200)
+alter table planmaster alter column DedicatedIP varchar(200)
+go
+Alter proc [dbo].[USP_InsertUpdateDelDiscountMaster]  
+@Id Int=0,  
+@DiscountName nvarchar(200)=null ,
+@TenureText varchar(200)=null,
+@PercentageAmount decimal(18,3)=Null,  
+@IsActive bit=1,  
+@Action varchar(20)  
+  
+As   
+Declare @msg varchar(100)  
+Begin  
+  If(@Action='Insert')  
+   Begin  
+   if Exists(select 1 from DiscountMaster where DiscountName=@DiscountName)  
+   Begin  
+   set @msg='Record Already Exist ..'  
+   select @msg as Message  
+   End  
+   Else  
+   Begin  
+  
+    Insert Into DiscountMaster(DiscountName,PercentageAmount,IsActive,TenureText)values(@DiscountName,@PercentageAmount,@IsActive,@TenureText)  
+    set @msg='Record Inserted Successfully'  
+    select @msg as Message  
+   End  
+   End  
+  Else  If(@Action='Update')  
+   Begin  
+    if Exists(select 1 from DiscountMaster where DiscountName=@DiscountName and  Id!=@Id)  
+    Begin  
+    set @msg='Record Already Exist ..'  
+    select @msg as Message  
+    End  
+    Else  
+     Begin  
+     Update DiscountMaster set DiscountName=@DiscountName,PercentageAmount=@PercentageAmount,IsActive=@IsActive ,
+	 TenureText=@TenureText where Id=@Id  
+     set @msg='Record Updated Successfully'  
+     select @msg as Message  
+    End  
+   End  
+  Else  If(@Action='Select')  
+   Begin  
+   Select Id,DiscountName,PercentageAmount,TenureText,case when IsActive=1 then'True' else 'false'end as IsActive  from DiscountMaster  
+   End  
+   Else  If(@Action='Edit')  
+   Begin  
+   Select * from DiscountMaster where Id=@Id  
+   End  
+  Else  If(@Action='Delete')  
+   Begin  
+   Delete From DiscountMaster where Id=@Id  
+   set @msg='Record Deleted Successfully'  
+   select @msg as Message  
+   End  
+   
+End  
+  go
+  CREATE TABLE [dbo].[DiscountMaster](
+	[Id] [int] IDENTITY(0,1) NOT NULL,
+	[DiscountName] [varchar](200) NULL,
+	[PercentageAmount] [decimal](18, 3) NULL,
 	[IsActive] [bit] NULL,
-	[DedicatedIP] [varchar](20) NULL,
-	[OSChoice] [varchar](100) NULL,
-	[Remark] [varchar](300) NULL,
-	[ServerLocation] [varchar](100) NULL,
-	[NVMe] [varchar](100) NULL,
-	[Bonus] [varchar](100) NULL,
-	[Migration] [varchar](100) NULL,
-	[SSL] [varchar](100) NULL,
-	[Security] [varchar](100) NULL,
-	[Monitoring] [varchar](200) NULL,
-	[Prevention] [varchar](200) NULL,
-	[Service_Support] [varchar](200) NULL,
-	[Support] [varchar](100) NULL,
-	[Guarantee] [varchar](200) NULL,
-	[PriceType] [varchar](100) NULL,
-	[IsAPIIntegration] [varchar](200) NULL,
-	[IsFreeBonuses] [varchar](200) NULL,
-	[IsFreeMigration] [varchar](200) NULL,
-	[IsFullRootAccess] [varchar](200) NULL,
-	[IsFullStackDevelopment] [varchar](200) NULL,
-	[IsMalwareScans] [varchar](200) NULL,
-	[IsMultiplePHPVersion] [varchar](200) NULL,
-	[IsOSChoice] [varchar](200) NULL,
-	[IsPageSpeed] [varchar](200) NULL,
-	[IsPHPVulCheck] [varchar](200) NULL,
-	[IsProtectiveFirewall] [varchar](200) NULL,
-	[IsVul_Scanner] [varchar](200) NULL,
-	[IsWebsiteOptimization] [varchar](200) NULL,
-	[IsWorldwideDataCenters] [varchar](200) NULL,
-	[IsPowerfulControlPanel] [varchar](200) NULL,
-	[IsCSSJSOptimizers] [varchar](200) NULL,
-	[IsOneClickIns] [varchar](200) NULL,
-	[IsFreeSSL] [varchar](200) NULL,
-	[IsFirewallMonitory] [varchar](200) NULL,
-	[Isprevention] [varchar](200) NULL,
-	[Is27Support] [varchar](200) NULL,
-	[IsUpTimeGuarntee] [varchar](200) NULL,
-	[PriceYearly] [decimal](3, 0) NULL
-	go
+	[TenureText] [varchar](200) NULL
+) ON [PRIMARY]
+GO

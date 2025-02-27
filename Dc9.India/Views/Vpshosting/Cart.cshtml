@@ -58,32 +58,43 @@
 
                             <div class="row panel-body">
                                 <div class="col-sm-6">
-                                    <input type="hidden" id="hdId" value=""/>
-                                    <span class="text-extra-dark-gray font-weight-400" id="txtPlanName"> </span>
-                                </div>
-                                <div class="col-sm-6">
+                                    <input type="hidden" id="hdId" value="" />
+                                    <span class="text-extra-dark-gray font-weight-400">Server : </span>
                                     <span class="text-extra-dark-gray font-weight-400" id="txtPlanType"> </span>
+
                                 </div>
                                 <div class="col-sm-6">
+                                    <span class="text-extra-dark-gray font-weight-400">Server Location : </span>
+                                    <span class="text-extra-dark-gray font-weight-400" id="txtServerLocation"> </span>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <span class="text-extra-dark-gray font-weight-400">Ram: </span>
+
                                     <span class="text-extra-dark-gray font-weight-400" id="txtRam"> </span>
                                 </div>
                                 <div class="col-sm-6">
+                                    <span class="text-extra-dark-gray font-weight-400">CPU: </span>
+
                                     <span class="text-extra-dark-gray font-weight-400" id="txtvCPU"> </span>
                                 </div>
                                 <div class="col-sm-6">
+                                    <span class="text-extra-dark-gray font-weight-400">Bandwidth : </span>
+
                                     <span class="text-extra-dark-gray font-weight-400" id="txtBandwidth"> </span>
 
                                 </div>
                                 <div class="col-sm-6">
+                                    <span class="text-extra-dark-gray font-weight-400">Dedicated IP: </span>
+
                                     <span class="text-extra-dark-gray font-weight-400" id="txtDedicatedIP"> </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="text-extra-dark-gray font-weight-400" id="txtRemark"> </span>
-                                </div>
-                                <div class="col-sm-6">
-                                    <span class="text-extra-dark-gray font-weight-400" id="txtSupport"></span>
+                                    <span class="text-extra-dark-gray font-weight-400">NVMe DISK Space: </span>
 
+                                    <span class="text-extra-dark-gray font-weight-400" id="txtnvm"> </span>
                                 </div>
+                              
                             </div>
 
 
@@ -150,9 +161,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-12 text-center btn-dual justify-content-center mt-3">
+                        <div class="col-12 col-12 text-center btn-dual justify-content-center">
                             <!-- start buttons -->
-                            <a class="btn btn-extra-large btn-dark-gray btn-rounded lg-margin-15px-bottom d-table d-lg-inline-block md-margin-lr-auto" onclick="checkOutPage()">Checkout</a>
+                            <a class="btn btn-medium btn-dark-gray btn-rounded lg-margin-15px-bottom d-table d-lg-inline-block md-margin-lr-auto mt-3" onclick="checkOutPage()">Checkout</a>
 
                         </div>
                     </div>
@@ -184,20 +195,20 @@
             alert("hello");
         })
     });
-    function AddPricing() {
-        var html = '';
-        var Tprice = 0;
-        $("#divAdditionalItems").html('');
-        var VpsPrice = $("#Vpsprice").text();
-        if (additionalItem.length > 0) {
-            additionalItem.forEach(function (items) {
-                html += '<label class="text-extra-dark-gray mr-2">' + items.item + '</label><span class="text-extra-dark-gray">$' + items.price + '</span><br />';
-                Tprice += parseFloat(items.price);
-            });
-            $("#divAdditionalItems").html(html)
-        }
-        $("#totalPrice").text('$' + (parseFloat(VpsPrice) + Tprice));
-    }
+    //function AddPricing() {
+    //    var html = '';
+    //    var Tprice = 0;
+    //    $("#divAdditionalItems").html('');
+    //    var VpsPrice = $("#Vpsprice").text();
+    //    if (additionalItem.length > 0) {
+    //        additionalItem.forEach(function (items) {
+    //            html += '<label class="text-extra-dark-gray mr-2">' + items.item + '</label><span class="text-extra-dark-gray">$' + items.price + '</span><br />';
+    //            Tprice += parseFloat(items.price);
+    //        });
+    //        $("#divAdditionalItems").html(html)
+    //    }
+    //    $("#totalPrice").text('$' + (parseFloat(VpsPrice) + Tprice));
+    //}
     function Checkout(id) {
         $(window.location).attr("href", "/Vpshosting/checkout?id=" + id);
     }
@@ -233,9 +244,9 @@
                         $('#txtBandwidth').text(Value.Bandwidth);
                         $('#txtDedicatedIP').text(Value.DedicatedIP);
                         $('#txtSupport').text(Value.Support);
-                        $('#txtPlanName').text(Value.PlanName);
+                        $('#txtServerLocation').text(Value.ServerLocation);
                         $('#txtPlanType').text(Value.PlanType);
-                        $('#txtRemark').text(Value.Remark);
+                        $('#txtnvm').text(Value.NVMe);
                         $('#txtRam').text(Value.Ram);
                     });
                 }

@@ -4167,6 +4167,7 @@
     <Content Include="Views\Home\Agreement.cshtml" />
     <Content Include="Views\Home\AcceptablePolicy.cshtml" />
     <Content Include="Views\Home\Cookies.cshtml" />
+    <Content Include="Views\Vpshosting\CustomServer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

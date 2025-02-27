@@ -4,8 +4,12 @@ $(document).ready(function () {
 });
 function InsertUpdate() {
     if ($("#txtDiscountName").val() == "") {
-        alert('Please Enter Discount Name');
+        alert('Please Enter Tenure');
         $("#txtDiscountName").focus();
+    }
+    else if ($("#txtTenureText").val() == "") {
+        alert('Please Enter Tenure Text');
+        $("#txtTenureText").focus();
     }
     else if ($("#txtPercentageAmount").val() == "") {
         alert('Please Enter Percentage Amount');
@@ -18,6 +22,7 @@ function InsertUpdate() {
             {
                 Id: $("#hdId").val(),
                 DiscountName: $("#txtDiscountName").val(),
+                TenureText: $("#txtTenureText").val(),
                 PercentageAmount: $("#txtPercentageAmount").val(),
                 IsActive: $("#chkIsActive").is(':checked') ? 1 : 0,
             },
@@ -40,7 +45,7 @@ function showRecord() {
                 $('#tblBookList').DataTable({
                     data: jsonData,
                     columns: [
-                        { data: "DiscountName", title: "Tenure" },
+                        { data: "TenureText", title: "Tenure" },
                         { data: "PercentageAmount", title: "Percentage Amount" },
                         { data: "IsActive", title: "Is Active" },
                         {
@@ -76,6 +81,7 @@ function EditRecord(Id) {
                 $.each(Data, function (index, Value) {
                     $('#hdId').val(Value.Id),
                         $('#txtDiscountName').val(Value.DiscountName),
+                        $('#txtTenureText').val(Value.TenureText),
                         $('#txtPercentageAmount').val(Value.PercentageAmount),
                         $('#chkIsActive').prop('checked', Value.IsActive == 1 ? true : false);
                 })
@@ -101,6 +107,7 @@ function DeleteRecord(Id) {
 function ClearData() {
     $("#hdId").val("0");
     $("#txtDiscountName").val("");
+    $("#txtTenureText").val("");
     $("#txtPercentageAmount").val("");
     $('#btnSave').text('Save');
 }
