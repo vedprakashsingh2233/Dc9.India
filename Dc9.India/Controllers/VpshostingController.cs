@@ -126,11 +126,11 @@ namespace Dc9.India.Controllers
                         //}
                         if (dt.Rows[i]["Remark"].ToString()!="")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Remark"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["Remark"] + "</li>");
                         }
                         if (dt.Rows[i]["ServerLocation"].ToString() != "")
                         { 
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">Server Location : " + dt.Rows[i]["ServerLocation"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">Server Location : " + dt.Rows[i]["ServerLocation"] + "</li>");
                         }
                         //if (dt.Rows[i]["vCPU"].ToString() != "")
                         //{ 
@@ -146,23 +146,23 @@ namespace Dc9.India.Controllers
                         //}
                         if (dt.Rows[i]["PlanType"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">Server : " + dt.Rows[i]["PlanType"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">Server : " + dt.Rows[i]["PlanType"] + "</li>");
                         }
                         if (dt.Rows[i]["SSD"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["SSD"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["SSD"] + "</li>");
                         }
                         if (dt.Rows[i]["HDD"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["HDD"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["HDD"] + "</li>");
                         }
                         if (dt.Rows[i]["Memory"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Memory"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["Memory"] + "</li>");
                         }
                         if (dt.Rows[i]["Bandwidth"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">Bandwidth : " + dt.Rows[i]["Bandwidth"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">Bandwidth : " + dt.Rows[i]["Bandwidth"] + "</li>");
                         }
                         //if (dt.Rows[i]["DedicatedIP"].ToString() != "")
                         //{
@@ -170,47 +170,47 @@ namespace Dc9.India.Controllers
                         //}
                         if (dt.Rows[i]["OSChoice"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["OSChoice"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["OSChoice"] + "</li>");
                         }
                         if (dt.Rows[i]["Bonus"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Bonus"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["Bonus"] + "</li>");
                         }
                         if (dt.Rows[i]["Migration"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Migration"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["Migration"] + "</li>");
                         }
                         if (dt.Rows[i]["SSL"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["SSL"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["SSL"] + "</li>");
                         }
                         if (dt.Rows[i]["Security"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Security"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["Security"] + "</li>");
                         }
                         if (dt.Rows[i]["Monitoring"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Monitoring"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["Monitoring"] + "</li>");
                         }
                         if (dt.Rows[i]["Service_Support"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Service_Support"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["Service_Support"] + "</li>");
                         }
                         if (dt.Rows[i]["Support"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Support"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["Support"] + "</li>");
                         }
                         if (dt.Rows[i]["Guarantee"].ToString() != "")
                         {
-                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Guarantee"] + "</li>");
+                        sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["Guarantee"] + "</li>");
                         }
                         if (dt.Rows[i]["Isprevention"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Isprevention"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["Isprevention"] + "</li>");
                         }
                         if (dt.Rows[i]["IsFreeSSL"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsFreeSSL"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsFreeSSL"] + "</li>");
                         }
                         if (dt.Rows[i]["IsFirewallMonitory"].ToString() != "")
                         {
@@ -218,19 +218,19 @@ namespace Dc9.India.Controllers
                         }
                         if (dt.Rows[i]["Is27Support"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["Is27Support"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["Is27Support"] + "</li>");
                         }
                         if (dt.Rows[i]["IsUpTimeGuarntee"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsUpTimeGuarntee"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsUpTimeGuarntee"] + "</li>");
                         }
                         if (dt.Rows[i]["IsFreeMigration"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsFreeMigration"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsFreeMigration"] + "</li>");
                         }
                         if (dt.Rows[i]["IsFreeBonuses"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsFreeBonuses"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsFreeBonuses"] + "</li>");
                         }
                         if (dt.Rows[i]["IsOSChoice"].ToString() != "")
                         {
@@ -238,59 +238,59 @@ namespace Dc9.India.Controllers
                         }
                         if (dt.Rows[i]["IsPowerfulControlPanel"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsPowerfulControlPanel"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsPowerfulControlPanel"] + "</li>");
                         }
                         if (dt.Rows[i]["IsFullRootAccess"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsFullRootAccess"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsFullRootAccess"] + "</li>");
                         }
                         if (dt.Rows[i]["IsOneClickIns"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsOneClickIns"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsOneClickIns"] + "</li>");
                         }
                         if (dt.Rows[i]["IsCSSJSOptimizers"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsCSSJSOptimizers"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsCSSJSOptimizers"] + "</li>");
                         }
                         if (dt.Rows[i]["IsWorldwideDataCenters"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsWorldwideDataCenters"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsWorldwideDataCenters"] + "</li>");
                         }
                         if (dt.Rows[i]["IsAPIIntegration"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsAPIIntegration"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsAPIIntegration"] + "</li>");
                         }
                         if (dt.Rows[i]["IsVul_Scanner"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsVul_Scanner"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsVul_Scanner"] + "</li>");
                         }
                         if (dt.Rows[i]["IsFullStackDevelopment"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsFullStackDevelopment"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsFullStackDevelopment"] + "</li>");
                         }
                         if (dt.Rows[i]["IsMultiplePHPVersion"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsMultiplePHPVersion"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsMultiplePHPVersion"] + "</li>");
                         }
                         if (dt.Rows[i]["IsPageSpeed"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsPageSpeed"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsPageSpeed"] + "</li>");
                         }
                         if (dt.Rows[i]["IsWebsiteOptimization"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsWebsiteOptimization"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsWebsiteOptimization"] + "</li>");
                         }
                         if (dt.Rows[i]["IsPHPVulCheck"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsPHPVulCheck"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsPHPVulCheck"] + "</li>");
                         }
                         if (dt.Rows[i]["IsProtectiveFirewall"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsProtectiveFirewall"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsProtectiveFirewall"] + "</li>");
                         } 
                         if (dt.Rows[i]["IsMalwareScans"].ToString() != "")
                         {
-                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\">" + dt.Rows[i]["IsMalwareScans"] + "</li>");
+                            sb.AppendLine("<li style=\"flex: 1 0 33%; margin-bottom: 10px;\"class=\"col-sm-4\">" + dt.Rows[i]["IsMalwareScans"] + "</li>");
                         }
                         sb.AppendLine("</ul>");
                         sb.AppendLine("</div>");
