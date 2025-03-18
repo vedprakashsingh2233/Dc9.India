@@ -8,6 +8,7 @@
         text-transform: capitalize !important;
     }
 </style>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- start page title section -->
@@ -245,43 +246,39 @@
             });
     }
     function SavePlan() {
-        if ($("#hdLogin").val() == 'Login') {
-            if ($("#txtUserCode").val() == "") {
-                alert("Please enter Email Id.!");
-                $("#txtUserCode").focus();
-            }
-            else if ($("#txtLPassword").val() == "") {
-                alert("Please enter PASSWORD.!");
-                $("#txtLPassword").focus();
-            }
-            else {
-                Login();
-            }
-        }
-        else if ($("#hdRegistration").val() == 'Reg') {
-            if ($("#txtuserName").val() == "") {
-                alert('Please Enter Your User Name..');
-                $("#txtuserName").focus();
-            }
-            else if ($("#txtEmail").val() == "") {
-                alert('Please Enter Your Email Id..');
-                $("#txtEmail").focus();
-            }
-            else if ($("#txtMobileNo").val() == "") {
-                alert('Please Enter Your Mobile Number..');
-                $("#txtMobileNo").focus();
-            }
-            else if ($("#txtPassword").val() == "") {
-                alert('Please Enter Your Password..');
-                $("#txtPassword").focus();
-            }
-            else {
-                InsertUserDetails();
-            }
-        }
-       
-    else if ($("#hdUserId").val() == '') {
+        if ($("#hdUserId").val() != '') {
 
+            var amount = $("#amount").val();
+            if (amount <= 0) {
+                alert("Enter a valid amount!");
+                return;
+            }
+
+            var options = {
+                "key": "YOUR_RAZORPAY_KEY", // Use your Razorpay Key ID here
+                "amount": amount * 100, // Convert to paise
+                "currency": "INR",
+                "name": "Your Website Name",
+                "description": "Test Payment",
+                "handler": function (response) {
+                    alert("Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+                    // You CANNOT verify the payment without a Secret Key
+                },
+                "prefill": {
+                    "name": "Customer Name",
+                    "email": "customer@example.com",
+                    "contact": "9876543210"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+
+            var rzp = new Razorpay(options);
+            rzp.open();
+          
+        }
+        else {
             alert('Please login if you are existing user..');
             $("#divRegistration").hide();
             $("#divLogin").show();
@@ -289,9 +286,44 @@
             $("#hdRegistration").val("");
             $('#btnNew').css('background', '');
             $('#btnExist').css('background', 'transparent');
-    } else {
-        alert('Logged in');
-    }
+               if ($("#hdLogin").val() == 'Login') {
+                if ($("#txtUserCode").val() == "") {
+                    alert("Please enter Email Id.!");
+                    $("#txtUserCode").focus();
+                }
+                else if ($("#txtLPassword").val() == "") {
+                    alert("Please enter PASSWORD.!");
+                    $("#txtLPassword").focus();
+                }
+                else {
+                    Login();
+                }
+            }
+            else if ($("#hdRegistration").val() == 'Reg') {
+                if ($("#txtuserName").val() == "") {
+                    alert('Please Enter Your User Name..');
+                    $("#txtuserName").focus();
+                }
+                else if ($("#txtEmail").val() == "") {
+                    alert('Please Enter Your Email Id..');
+                    $("#txtEmail").focus();
+                }
+                else if ($("#txtMobileNo").val() == "") {
+                    alert('Please Enter Your Mobile Number..');
+                    $("#txtMobileNo").focus();
+                }
+                else if ($("#txtPassword").val() == "") {
+                    alert('Please Enter Your Password..');
+                    $("#txtPassword").focus();
+                }
+                else {
+                    InsertUserDetails();
+                }
+            }
+        }
+       
+       
+    
        // $(window.location).attr("href", "/UserLogin/Login");
 
     }
@@ -424,6 +456,7 @@
                         else {
                             $("#txtPassword").val("");
                             alert(data.Result);
+                            $("#hdUserId").val(data.UserId)
                         }
                     }).fail(function (xhr, err) {
                         var responseTitle = $(xhr.responseText).filter('title').get(0);
