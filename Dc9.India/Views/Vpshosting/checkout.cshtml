@@ -248,35 +248,62 @@
     function SavePlan() {
         if ($("#hdUserId").val() != '') {
 
-            var amount = $("#amount").val();
-            if (amount <= 0) {
-                alert("Enter a valid amount!");
-                return;
-            }
+           var amount = 1; // Amount in INR (Update this dynamically if needed)
 
-            var options = {
-                "key": "YOUR_RAZORPAY_KEY", // Use your Razorpay Key ID here
-                "amount": amount * 100, // Convert to paise
-                "currency": "INR",
-                "name": "Your Website Name",
-                "description": "Test Payment",
-                "handler": function (response) {
-                    alert("Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
-                    // You CANNOT verify the payment without a Secret Key
+            $.ajax({
+                url: "/Payment/CreateOrder",
+                type: "POST",
+                data: { amount: amount },
+                success: function (response) {
+                    if (response.success) {
+                        var options = {
+                            "key": response.key,
+                            "amount": response.amount,
+                            "currency": "INR",
+                            "name": "NabberxTechnologies",
+                            "description": "Payment for Order",
+                            "order_id": response.orderId,
+                            "handler": function (razorpayResponse) {
+                                $.ajax({
+                                    url: "/Payment/VerifyPayment",
+                                    type: "POST",
+                                    data: {
+                                        razorpay_payment_id: razorpayResponse.razorpay_payment_id,
+                                        razorpay_order_id: razorpayResponse.razorpay_order_id,
+                                        razorpay_signature: razorpayResponse.razorpay_signature
+                                    },
+                                    success: function (verifyResponse) {
+                                        if (verifyResponse.success) {
+                                            alert("Payment Successful!");
+                                        } else {
+                                            alert("Payment Verification Failed: " + verifyResponse.message);
+                                        }
+                                    },
+                                    error: function () {
+                                        alert("Error verifying payment.");
+                                    }
+                                });
+                            },
+                            "prefill": {
+                                "name": "NabberxTechnologies",
+                                "email": "Dc9india@gmail.com",
+                                "contact": "9220882414"
+                            },
+                            "theme": {
+                                "color": "#3399cc"
+                            }
+                        };
+
+                        var rzp = new Razorpay(options);
+                        rzp.open();
+                    } else {
+                        alert("Error: " + response.message);
+                    }
                 },
-                "prefill": {
-                    "name": "Customer Name",
-                    "email": "customer@example.com",
-                    "contact": "9876543210"
-                },
-                "theme": {
-                    "color": "#3399cc"
+                error: function () {
+                    alert("Error creating order.");
                 }
-            };
-
-            var rzp = new Razorpay(options);
-            rzp.open();
-          
+            });
         }
         else {
             alert('Please login if you are existing user..');
@@ -321,9 +348,9 @@
                 }
             }
         }
-       
-       
-    
+
+
+
        // $(window.location).attr("href", "/UserLogin/Login");
 
     }

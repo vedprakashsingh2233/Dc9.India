@@ -330,3 +330,5 @@ End
 	[TenureText] [varchar](200) NULL
 ) ON [PRIMARY]
 GO
+<add key="RazorpayKey" value="rzp_live_TWdGhHwGRjbIHG" />
+    <add key="RazorpaySecret" value="DAQN0o4WCb7ERFIn0l2LZBID" />
